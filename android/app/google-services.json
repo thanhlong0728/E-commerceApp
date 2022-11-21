@@ -1,0 +1,39 @@
+{
+    "project_info": {
+        "project_number": "130405525240",
+        "project_id": "appkousei",
+        "storage_bucket": "appkousei.appspot.com"
+    },
+    "client": [
+        {
+            "client_info": {
+                "mobilesdk_app_id": "1:130405525240:android:61215e7fc69b581f5bfd0d",
+                "android_client_info": {
+                    "package_name": "com.spray"
+                }
+            },
+            "oauth_client": [
+                {
+                    "client_id": "130405525240-757h7qmgtt4s8bdkib804lg0iofs44vg.apps.googleusercontent.com",
+                    "client_type": 3
+                }
+            ],
+            "api_key": [
+                {
+                    "current_key": "AIzaSyBqr3FJhzNissusYLpN0I3GJT_bPb6P4SM"
+                }
+            ],
+            "services": {
+                "appinvite_service": {
+                    "other_platform_oauth_client": [
+                        {
+                            "client_id": "130405525240-757h7qmgtt4s8bdkib804lg0iofs44vg.apps.googleusercontent.com",
+                            "client_type": 3
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "configuration_version": "1"
+}
