@@ -1,28 +1,28 @@
 import React from 'react'
-import { Alert, TouchableOpacity } from 'react-native'
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useNavigation } from '@react-navigation/native';
-import {useDispatch, useSelector} from 'react-redux'
+import { Alert, TouchableOpacity, View } from 'react-native'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import { useNavigation } from '@react-navigation/native'
+import { useDispatch, useSelector } from 'react-redux'
 
 import styles from './styles'
 import { COLORS } from '../../contains'
-import {RemoveFavorite} from '../../store/slices/favorite'
+import { RemoveFavorite } from '../../store/slices/favorite'
 
-const IconHeader = ({name = 'menu',product = false,right = true}) => {
+const IconHeader = ({ name = 'menu', product = false, right = true }) => {
     const dispatch = useDispatch()
-    const navigation = useNavigation();
-    const favoriteData = useSelector(state => state.Favorite.items)
+    const navigation = useNavigation()
+    const favoriteData = useSelector((state) => state.Favorite.items)
     let icon = ''
 
     const openDrawer = () => {
-        navigation.openDrawer();
+        // navigation.openDrawer()
     }
     const openCart = () => {
         navigation.navigate('CartScreen')
     }
 
     const goBackHome = () => {
-        navigation.goBack();
+        navigation.goBack()
     }
 
     const goFillter = () => {
@@ -30,75 +30,74 @@ const IconHeader = ({name = 'menu',product = false,right = true}) => {
     }
 
     const goDelete = () => {
-        if (favoriteData.length !==0) {
-            Alert.alert(
-                "Thông báo !",
-                "Bạn có chắc chắn muốn xóa tất cả?",
-                [
-                    {
-                        text: "Hủy",
-                        style : "cancel"
-                    },
-                    {
-                        text: "Đồng ý",
-                        onPress:() =>{
-                            dispatch(RemoveFavorite())
-                        }
+        if (favoriteData.length !== 0) {
+            Alert.alert('Thông báo !', 'Bạn có chắc chắn muốn xóa tất cả?', [
+                {
+                    text: 'Hủy',
+                    style: 'cancel'
+                },
+                {
+                    text: 'Đồng ý',
+                    onPress: () => {
+                        dispatch(RemoveFavorite())
                     }
-                ]
-            )
-        }else{
+                }
+            ])
+        } else {
             alert('chưa có sản phẩm nào')
         }
-        
-        
     }
 
     switch (name) {
         case 'menu':
-            icon =  (
-                        <TouchableOpacity onPress={openDrawer} style={styles.container}>
-                            <Ionicons name="ios-home-outline" size={24} color={COLORS.main} />
-                        </TouchableOpacity>
-                    )
-            break;
+            icon = (
+                <View onPress={openDrawer} style={styles.container}>
+                    <Ionicons name='menu-outline' size={24} color={COLORS.main} />
+                </View>
+            )
+            break
         case 'cart':
-            icon =   (
-                        <TouchableOpacity onPress={openCart} style={styles.cart}>
-                            <Ionicons name="ios-home-outline" size={24} color={(product ? COLORS.white : COLORS.main)} />
-                        </TouchableOpacity>
-                    )
-            break;
+            icon = (
+                <TouchableOpacity onPress={openCart} style={styles.cart}>
+                    <Ionicons
+                        name='cart-outline'
+                        size={24}
+                        color={product ? COLORS.white : COLORS.main}
+                    />
+                </TouchableOpacity>
+            )
+            break
         case 'back':
-            icon =   (
+            icon = (
                 <TouchableOpacity onPress={goBackHome} style={styles.container}>
-                    
-                    <Ionicons name="arrow-back" size={24} color={(product ? COLORS.white : COLORS.main)} />
+                    <Ionicons
+                        name='arrow-back'
+                        size={24}
+                        color={product ? COLORS.white : COLORS.main}
+                    />
                 </TouchableOpacity>
             )
-            break;
+            break
         case 'sort':
-            icon =   (
+            icon = (
                 <TouchableOpacity onPress={goFillter} style={styles.cart}>
-                    <Ionicons name="funnel-outline" size={24} color={COLORS.main}  />
+                    <Ionicons name='funnel-outline' size={24} color={COLORS.main} />
                 </TouchableOpacity>
             )
-            break;
+            break
         case 'delete':
-            icon =   (
+            icon = (
                 <TouchableOpacity onPress={goDelete} style={styles.cart}>
-                    <Ionicons name="trash-bin-outline" size={24} color={COLORS.main}  />
+                    <Ionicons name='trash-bin-outline' size={24} color={COLORS.main} />
                 </TouchableOpacity>
             )
-            break;
-    
+            break
+
         default:
-            break;
+            break
     }
 
-    return (
-        icon
-    )
+    return icon
 }
 
 export default IconHeader
