@@ -13,8 +13,6 @@ const HomeScreen = () => {
     const [categoryList, setCategoryList] = useState([])
     const [productSpecList, setProductSpecList] = useState([])
     const [productIsNewList, setProductIsNewList] = useState([])
-    // console.log('productSpecList::', productSpecList)
-    // console.log('productIsNewList:::', productIsNewList)
 
     const getCategoryList = async () => {
         RNProgressHud.show()

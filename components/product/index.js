@@ -7,12 +7,13 @@ import IconHeart from '../iconHeart'
 import { Favorite } from '../../store/slices/favorite'
 import { AddCart } from '../../store/slices/cart'
 
-import { FormatPrice, SalePercent } from '../../help'
+import { formatPriceNumber, SalePercent } from '../../help'
 import { IMAGES } from '../../contains'
 import { useDispatch, useSelector } from 'react-redux'
 import { ShowToast } from '../../help/showToast'
 
 const Product = ({ data, sale = true }) => {
+    console.log('datấdasdadasdaa', data)
     const navigation = useNavigation()
     const dispatch = useDispatch()
     const [heart, setHeart] = useState(false)
@@ -24,7 +25,8 @@ const Product = ({ data, sale = true }) => {
 
     const showProduct = () => {
         navigation.navigate('ProductScreen', {
-            id: data.id
+            id: data?.id,
+            categoryID: data?.categoryID
         })
     }
 
@@ -57,8 +59,8 @@ const Product = ({ data, sale = true }) => {
                     <Text numberOfLines={1} style={styles.title}>
                         {data.summary}
                     </Text>
-                    {sale && <Text style={styles.oldPrice}>{FormatPrice(data.price)}</Text>}
-                    <Text style={styles.price}>{FormatPrice(data.price_sale_off)}</Text>
+                    {sale && <Text style={styles.oldPrice}>{formatPriceNumber(data.price)}</Text>}
+                    <Text style={styles.price}>{formatPriceNumber(data.price_sale_off)}</Text>
                 </View>
                 <View style={styles.iconLike}>
                     <TouchableOpacity onPress={onHeart}>

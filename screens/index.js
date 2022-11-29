@@ -4,7 +4,6 @@ import CategoryAllScreen from './CategoryAll'
 import ProductScreen from './Product'
 import InfoScreen from './Info'
 import FavoriteScreen from './Favorite'
-import DrawerContent from './Drawer'
 import InfoShipScreen from './InfoShip'
 import InfoCartScreen from './InfoCart'
 import FillterScreen from './Fillter'
@@ -19,13 +18,11 @@ import AddressScreen from './Address'
 import ForgotPassScreen from './ForgotPass'
 import MyCommentScreen from './MyComment'
 
-
 export {
     HomeScreen,
     CategoryScreen,
     ProductScreen,
     InfoScreen,
-    DrawerContent,
     FavoriteScreen,
     CategoryAllScreen,
     InfoShipScreen,

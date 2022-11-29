@@ -59,7 +59,7 @@ const BoxSlider = () => {
                 itemWidth={350}
                 onSnapToItem={(index) => setActiveSlide(index)}
                 loop={true}
-                // autoplay={true}
+                autoplay={true}
                 enableSnap={true}
             />
             <View style={styles.pagination}>{pagination()}</View>
