@@ -1,8 +1,11 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState, useEffect, useContext } from 'react'
-import { ScrollView, View, Text, TouchableOpacity, FlatList, LogBox } from 'react-native'
+import { ScrollView, View, Text, TouchableOpacity, FlatList, LogBox, Alert } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import firestore from '@react-native-firebase/firestore'
+import auth from '@react-native-firebase/auth'
+import storage from '@react-native-firebase/storage'
 import { EmptyData } from '../../common'
 import IconRight from 'react-native-vector-icons/AntDesign'
 import { ProductList } from '../../components'
@@ -12,44 +15,93 @@ import { orderModel } from '../../model'
 import { ShowToast } from '../../help/showToast'
 import { AuthContext } from '../../navigation/AuthProvider'
 import { RemoveAll } from '../../store/slices/cart'
+import RNProgressHud from 'progress-hud'
+
+LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
 
 const CartScreen = () => {
     const dispatch = useDispatch()
-    const { user } = useContext(AuthContext)
-    const { uid, displayName } = user
-    const name = displayName
+    const { uid } = auth().currentUser
     const navigation = useNavigation()
     const cartItems = useSelector((state) => state.Cart.cart)
+    // console.log('cartItems:alalal', cartItems)
     const createdAt = new Date()
     const cartID = uid.toString() + createdAt.toString()
     const [total, setTotal] = useState(0)
-    const dataAddress = useSelector((state) => state.Address.items)
-    const { phone, address } = dataAddress
+
+    const [userName, setUserName] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+    const [address, setAddress] = useState('')
+
     useEffect(() => {
         let totalCurrent = 0
         cartItems.map((item) => {
-            totalCurrent += item.total
+            totalCurrent += item?.total
         })
         setTotal(totalCurrent)
-        LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
     }, [cartItems])
 
     const handleRender = ({ item }) => {
         return <ProductList item={item} cart />
     }
     const changeAddress = () => {
-        navigation.navigate('AddressScreen')
+        navigation.navigate('ProfileEditScreen')
     }
     const handleBuy = () => {
-        if (dataAddress.length == 0) {
+        if (phone == '' && address == '') {
             navigation.navigate('AddressScreen')
-            ShowToast('Vui lòng nhập địa chỉ')
+            alert('Vui lòng nhập địa chỉ')
         } else {
-            orderModel.addOrder({ uid, cartID, phone, address, createdAt, total, cartItems })
-            navigation.navigate('HomeScreen')
-            dispatch(RemoveAll())
+            Alert.alert('Thông báo', 'Bạn có chắc chắn muốn đặt đơn hàng？', [
+                {
+                    text: 'No'
+                },
+                {
+                    text: 'Yes',
+                    style: 'destructive',
+                    onPress: () => {
+                        orderModel.addOrder({
+                            uid,
+                            cartID,
+                            phone,
+                            address,
+                            createdAt,
+                            total,
+                            cartItems
+                        })
+                        navigation.navigate('HomeScreen')
+                        dispatch(RemoveAll())
+                    }
+                }
+            ])
         }
     }
+
+    const getProfile = async () => {
+        RNProgressHud.show()
+        firestore()
+            .collection('users')
+            .doc(auth().currentUser.uid)
+            .get()
+            .then((data) => {
+                setUserName(data?.data()?.userName)
+                setPhone(data?.data()?.phone)
+                setAddress(data?.data()?.address)
+            })
+            .catch((error) => {
+                console.log('Error getting documents: ', error)
+            })
+            .finally(() => {
+                RNProgressHud.dismiss()
+            })
+    }
+
+    useEffect(() => {
+        navigation.addListener('focus', () => {
+            getProfile()
+        })
+    }, [])
 
     return (
         <>
@@ -58,11 +110,11 @@ const CartScreen = () => {
                     <Ionicons name='arrow-back' size={24} color='white' style={styles.iconBack} />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.contentAddress} onPress={changeAddress}>
-                    {dataAddress.length == 0 ? (
+                    {phone == '' || address == '' ? (
                         <Text style={styles.textAddress}>Vui lòng nhập địa chỉ</Text>
                     ) : (
                         <Text style={styles.textAddress}>
-                            Tên: {name}, Số điện thoại: {phone}, Địa chỉ: {address}
+                            Tên: {userName}, Số điện thoại: {phone}, Địa chỉ: {address}
                         </Text>
                     )}
                 </TouchableOpacity>
@@ -85,7 +137,7 @@ const CartScreen = () => {
                 <View style={styles.sum}>
                     <Text style={styles.contentPrice}>Tổng đơn hàng: </Text>
                     <Text numberOfLines={1} style={styles.contentPrice}>
-                        {FormatPrice(total)}
+                        {formatPriceNumber(total)}
                     </Text>
                 </View>
                 <TouchableOpacity onPress={handleBuy} style={styles.applyButton}>

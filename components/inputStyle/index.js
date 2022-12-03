@@ -1,51 +1,57 @@
-import React , { useState } from 'react'
-import { TextInput, Text , View } from 'react-native'
+import React, { useState } from 'react'
+import { TextInput, Text, View } from 'react-native'
 import styles from './styles'
 import { COLORS } from '../../contains'
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
+const InputStyle = ({ name, style, editable = true, value, onChange, placeholder }) => {
+    const [showPass, setShowPass] = useState(false)
 
-const InputStyle = ({name,style,editable = true,value,onChange}) => {
-    const [showPass, setShowPass]  = useState(false)
-
-    let obj = { 
-        name            : name,  
-        placeholder     : `...`, 
-        autoCapitalize  : 'none', 
-        style           : {...style},
-        editable        : editable,
-        secureTextEntry : showPass,
-        icon            : <></>,
-        multiline       : false,
-        numberOfLines   : 1
+    let obj = {
+        name: name,
+        placeholder: placeholder,
+        autoCapitalize: 'none',
+        style: { ...style },
+        editable: editable,
+        secureTextEntry: showPass,
+        icon: <></>,
+        multiline: false,
+        numberOfLines: 1
     }
 
     switch (name) {
-        case 'ConfirmPassword' :
+        case 'ConfirmPassword':
         case 'Password':
-        case 'Nhập mật khẩu cũ': 
-        case 'Nhập mật khẩu mới':
-        case 'Nhập lại mật khẩu mới':
+        case 'Mật khẩu hiện tại':
+        case 'Mật khẩu mới':
+        case 'Xác nhận mật khẩu mới':
             obj.secureTextEntry = !showPass
-            obj.icon = <Ionicons size={18} color={COLORS.icon} name={showPass ? 'ios-eye' : 'ios-eye-off'}  onPress={() =>setShowPass(!showPass) }/>
-            break;
+            obj.icon = (
+                <Ionicons
+                    size={18}
+                    color={COLORS.icon}
+                    name={showPass ? 'ios-eye' : 'ios-eye-off'}
+                    onPress={() => setShowPass(!showPass)}
+                />
+            )
+            break
         case 'Địa chỉ':
             obj.multiline = true
             obj.numberOfLines = 4
-            break;
+            break
         default:
-            break;
+            break
     }
 
     return (
         <>
             <Text style={styles.textInputLabel}>{obj.name}</Text>
-            <TextInput 
+            <TextInput
                 multiline={obj.multiline}
-                numberOfLines = {obj.numberOfLines}
+                numberOfLines={obj.numberOfLines}
                 placeholder={obj.placeholder}
-                autoCapitalize={obj.autoCapitalize} 
-                style={[styles.textInput,obj.style]}
+                autoCapitalize={obj.autoCapitalize}
+                style={[styles.textInput, obj.style]}
                 editable={obj.editable}
                 secureTextEntry={obj.secureTextEntry}
                 value={value}

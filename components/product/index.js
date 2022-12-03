@@ -13,12 +13,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { ShowToast } from '../../help/showToast'
 
 const Product = ({ data, sale = true }) => {
-    console.log('datấdasdadasdaa', data)
     const navigation = useNavigation()
     const dispatch = useDispatch()
     const [heart, setHeart] = useState(false)
 
     const favoriteData = useSelector((state) => state.Favorite.items)
+
     useEffect(() => {
         favoriteData.indexOf(data.id) !== -1 ? setHeart(true) : setHeart(false)
     }, [favoriteData])
@@ -32,15 +32,16 @@ const Product = ({ data, sale = true }) => {
 
     const onHeart = () => {
         setHeart(!heart)
-        dispatch(Favorite({ id: data.id }))
+        dispatch(Favorite({ id: data?.id }))
     }
     const handleCart = () => {
         dispatch(
             AddCart({
-                id: data.id,
-                photoProduct: data.image,
-                nameProduct: data.name,
-                priceProduct: data.price_sale_off
+                id: data?.id,
+                photoProduct: data?.image,
+                nameProduct: data?.name,
+                priceProduct: data?.price_sale_off,
+                description: data?.description
             })
         )
         ShowToast('Đã thêm sản phẩm vào giỏ hàng')

@@ -11,6 +11,7 @@ const commentModel = {
         createdAt,
         productImg
     ) => {
+        RNProgressHud.show()
         firestore()
             .collection('comment')
             .add(uid, productId, photoURL, displayName, textComment, createdAt, productImg)
@@ -19,6 +20,10 @@ const commentModel = {
             })
             .catch((error) => {
                 console.log(error)
+                RNProgressHud.dismiss()
+            })
+            .finally(() => {
+                RNProgressHud.dismiss()
             })
     }
 }

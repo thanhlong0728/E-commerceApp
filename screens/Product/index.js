@@ -28,7 +28,6 @@ const ProductScreen = () => {
     const [productArray, setProductArray] = useState([])
     const product = Object.assign({}, ...productArray)
     const [productInCategoryList, setProductInCategoryList] = useState([])
-    console.log(productInCategoryList)
     const [isRefreshing, setIsRefreshing] = useState(false)
 
     const getProduct = async () => {
@@ -47,7 +46,6 @@ const ProductScreen = () => {
     }
 
     const getProductInCategoryList = async () => {
-        console.log('vaod dây')
         RNProgressHud.show()
         const ref = firestore().collection('product')
         const snapshot = await ref.where('categoryID', '==', categoryID).get()
@@ -65,7 +63,7 @@ const ProductScreen = () => {
     useEffect(() => {
         getProduct()
         getProductInCategoryList()
-    }, [])
+    }, [id])
 
     const showItems = ({ item }) => {
         return <ProductHorizital data={item} />

@@ -1,32 +1,53 @@
-import React , { useContext, useEffect, useState } from 'react'
-import { View , Text, TouchableOpacity, FlatList, Image  } from 'react-native'
-import {commentModel} from '../../model'
+import React, { useContext, useEffect, useState } from 'react'
+import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native'
+import { commentModel } from '../../model'
 import styles from './styles'
-import {AuthContext} from '../../navigation/AuthProvider'
 import { useNavigation } from '@react-navigation/native'
+import auth from '@react-native-firebase/auth'
+import firestore from '@react-native-firebase/firestore'
+import RNProgressHud from 'progress-hud'
 
 const MyCommentScreen = () => {
     const navigation = useNavigation()
-    const {user} = useContext(AuthContext)
-    const {uid} = user
+    const { uid } = auth().currentUser
     const [dataAllComment, setAllDataComment] = useState([])
+
+    const getAllComment = async () => {
+        RNProgressHud.show()
+        const ref = firestore().collection('comment')
+        const snapshot = await ref.where('uid', '==', uid).get()
+        const list = []
+        snapshot.forEach((doc) => {
+            list.push({
+                ...doc.data()
+            })
+        })
+        setAllDataComment(list)
+        RNProgressHud.dismiss()
+    }
+
     useEffect(() => {
-        commentModel.getAllComment(uid,(dataAllComment) => setAllDataComment(dataAllComment))
+        navigation.addListener('focus', () => {
+            getAllComment()
+        })
     }, [])
 
-    const showItems =({item}) =>{
-        let mm = item.createdAt.getMonth() + 1;
-        let dd = item.createdAt.getDate();
-        let yyyy = item.createdAt.getFullYear();
-        return(
-            <TouchableOpacity onPress={() =>{
-                navigation.navigate('ProductScreen',{
-                    id: item.productId
-                })
-            }}>
+    const showItems = ({ item }) => {
+        const createdAt = item?.createdAt.toDate()
+        let mm = createdAt.getMonth() + 1
+        let dd = createdAt.getDate()
+        let yyyy = createdAt.getFullYear()
+        return (
+            <TouchableOpacity
+                onPress={() => {
+                    navigation.navigate('ProductScreen', {
+                        id: item?.productId
+                    })
+                }}
+            >
                 <View style={styles.myComment}>
                     <View style={styles.boxImg}>
-                        <Image source={{uri: item.photoURL }} style={styles.img} />
+                        <Image source={{ uri: item.photoURL }} style={styles.img} />
                     </View>
                     <View style={styles.content}>
                         <View style={styles.nameAndDate}>
@@ -42,15 +63,15 @@ const MyCommentScreen = () => {
                         </View>
                     </View>
                     <View style={styles.boxImgProduct}>
-                        <Image source={{uri: item.productImg}} style={styles.imgProduct} />
+                        <Image source={{ uri: item.productImg }} style={styles.imgProduct} />
                     </View>
                 </View>
             </TouchableOpacity>
         )
     }
-    return(
+    return (
         <View style={styles.container}>
-            <FlatList 
+            <FlatList
                 data={dataAllComment}
                 renderItem={showItems}
                 keyExtractor={(comment, uid) => 'comment+' + uid}

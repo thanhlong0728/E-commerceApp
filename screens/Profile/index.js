@@ -8,15 +8,18 @@ import {
     Linking,
     Image
 } from 'react-native'
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome5'
-import { Avatar } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
+import { useDispatch, useSelector } from 'react-redux'
+import FastImage from 'react-native-fast-image'
+import ActionSheet from 'react-native-actionsheet'
+import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
 import auth from '@react-native-firebase/auth'
-import { useDispatch, useSelector } from 'react-redux'
+import storage from '@react-native-firebase/storage'
+
 import { AuthContext } from '../../navigation/AuthProvider'
-import FastImage from 'react-native-fast-image'
 
 import { COLORS } from '../../contains'
 
@@ -37,17 +40,16 @@ const list = [
         id: 4,
         name: 'Thay đổi mật khẩu'
     }
-    // {
-    //     id: 5,
-    //     name: 'Giải quyết khiếu nại'
-    // }
 ]
 
-const Profile = () => {
+const ProfileScreen = () => {
     const navigation = useNavigation()
     const dispatch = useDispatch()
     const infoUser = useSelector((state) => state.user.data)
     const { logout } = useContext(AuthContext)
+    const [avatarUser, setAvatarUser] = useState(auth().currentUser.photoURL)
+    const [userName, setUserName] = useState('')
+    const [phone, setPhone] = useState('')
 
     const handleOnClickLogout = () => {
         Alert.alert('Thông báo', 'Bạn có chắc chắn muốn đăng xuất?', [
@@ -69,7 +71,7 @@ const Profile = () => {
     const handleOnClickItem = (item) => {
         switch (item.id) {
             case 1:
-                navigation.navigate('InfoShipScreen')
+                navigation.navigate('ProfileInfoScreen')
                 break
             case 2:
                 navigation.navigate('MyOderScreen')
@@ -78,12 +80,38 @@ const Profile = () => {
                 navigation.navigate('MyCommentScreen')
                 break
             case 4:
-                navigation.navigate('ChangePassScreen')
+                // navigation.navigate('ChangePassScreen')
                 break
             default:
                 break
         }
     }
+
+    const getProfile = async () => {
+        RNProgressHud.show()
+        firestore()
+            .collection('users')
+            .doc(auth().currentUser.uid)
+            .get()
+            .then((data) => {
+                setUserName(data?.data()?.userName)
+                setPhone(data?.data()?.phone)
+            })
+            .catch((error) => {
+                console.log('Error getting documents: ', error)
+            })
+            .finally(() => {
+                RNProgressHud.dismiss()
+            })
+    }
+
+    useEffect(() => {
+        navigation.addListener('focus', () => {
+            getProfile()
+            setAvatarUser(auth().currentUser.photoURL)
+        })
+    }, [])
+
     return (
         <View style={styles.container}>
             <View
@@ -95,24 +123,28 @@ const Profile = () => {
                 <Text style={styles.text}>Thông tin cá nhân</Text>
             </View>
             <View style={styles.viewInformation}>
-                <View style={styles.view}>
+                <TouchableOpacity style={styles.view}>
                     <Image
                         source={{
-                            uri: 'https://res.cloudinary.com/teepublic/image/private/s--YHcR2U-W--/t_Resized%20Artwork/c_fit,g_north_west,h_1054,w_1054/co_ffffff,e_outline:53/co_ffffff,e_outline:inner_fill:53/co_bbbbbb,e_outline:3:1000/c_mpad,g_center,h_1260,w_1260/b_rgb:eeeeee/c_limit,f_auto,h_630,q_90,w_630/v1635629206/production/designs/25244985_0.jpg'
+                            uri: avatarUser
                         }}
                         style={styles.avatar}
                     />
-                </View>
+                </TouchableOpacity>
                 <View style={styles.viewText}>
-                    <Text style={styles.text1}>{infoUser.name}</Text>
-                    <Text style={styles.text2}>{infoUser.phone}</Text>
-                    <TouchableOpacity>
+                    <Text style={styles.text1}>{userName}</Text>
+                    <Text style={styles.text2}>{phone}</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('ProfileEditScreen')}>
                         <Text style={styles.text3}>Chỉnh sửa thông tin</Text>
                     </TouchableOpacity>
                 </View>
             </View>
             {list.map((item, index) => (
-                <TouchableOpacity key={index} onPress={() => handleOnClickItem(item)}>
+                <TouchableOpacity
+                    activeOpacity={0.7}
+                    key={index}
+                    onPress={() => handleOnClickItem(item)}
+                >
                     <View style={styles.problem}>
                         <Text style={styles.textProblems}>{item.name}</Text>
                         <Icon style={styles.iconHandling} name='angle-right' size={15} />
@@ -132,7 +164,7 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default ProfileScreen
 
 const styles = StyleSheet.create({
     container: {
@@ -214,7 +246,7 @@ const styles = StyleSheet.create({
     avatar: {
         width: 120,
         height: 120,
-        resizeMode: 'contain'
-        // borderRadius: 60
+        resizeMode: 'contain',
+        borderRadius: 10
     }
 })
