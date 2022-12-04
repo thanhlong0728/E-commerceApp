@@ -98,6 +98,8 @@ const ProductScreen = () => {
         setModalVisible(true)
     }
 
+    console.log(productInCategoryList)
+
     return (
         <>
             <ScrollView
@@ -156,19 +158,24 @@ const ProductScreen = () => {
                             quantity={number}
                         />
                     </View>
-                    <View style={styles.view_main}>
-                        <Text style={styles.title}> Sản phẩm liên quan </Text>
-                        <View style={styles.boxProduct}>
-                            <FlatList
-                                showsVerticalScrollIndicator={false}
-                                data={productInCategoryList}
-                                renderItem={showItems}
-                                keyExtractor={(item) => item.name.toString()}
-                                horizontal={true}
-                                showsHorizontalScrollIndicator={false}
-                            />
+                    {productInCategoryList.length === 0 ? (
+                        <View></View>
+                    ) : (
+                        <View style={styles.view_main}>
+                            <Text style={styles.title}> Sản phẩm liên quan </Text>
+                            <View style={styles.boxProduct}>
+                                <FlatList
+                                    showsVerticalScrollIndicator={false}
+                                    data={productInCategoryList}
+                                    renderItem={showItems}
+                                    keyExtractor={(item) => item.name.toString()}
+                                    horizontal={true}
+                                    showsHorizontalScrollIndicator={false}
+                                />
+                            </View>
                         </View>
-                    </View>
+                    )}
+
                     <View style={styles.view_main}>
                         <Comment productId={id} productImg={product?.image} />
                     </View>
