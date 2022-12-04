@@ -1,126 +1,154 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 
 import { COLORS } from '../../contains'
 
 const styles = StyleSheet.create({
-    container : {
-        flex : 1,
-        backgroundColor : COLORS.pink,
+    container: {
+        flex: 1,
+        backgroundColor: COLORS.pink,
         marginBottom: 60
     },
-    product : {
-        height : 200,
-        width : '100%',
-        flexDirection : 'row',
-        zIndex : 1
+    product: {
+        height: 200,
+        width: '100%',
+        flexDirection: 'row',
+        zIndex: 1
     },
-    view : {
-        borderTopLeftRadius : 45,
-        borderTopRightRadius : 45,
-        flex : 1,
-        backgroundColor : COLORS.white,
-        paddingTop : 50,
-        paddingHorizontal : 20
+    view: {
+        borderTopLeftRadius: 45,
+        borderTopRightRadius: 45,
+        flex: 1,
+        backgroundColor: COLORS.white,
+        paddingTop: 50,
+        paddingHorizontal: 20
     },
-    productImg : {
-        width : '50%',
-        height : '120%',
+    productImg: {
+        width: '50%',
+        height: '120%'
     },
-    productContent : {
-        height : '120%',
-        width : '50%',
-        justifyContent : 'space-evenly',
-        alignItems : 'center',
+    productContent: {
+        height: '120%',
+        width: '50%',
+        justifyContent: 'space-evenly',
+        alignItems: 'center'
     },
-    img : {
-        width : '100%',
-        height : '100%',
-        resizeMode:'contain'
+    img: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain'
     },
-    name : {
-        fontSize : 22,
-        fontWeight : 'bold',
-        color : COLORS.white
+    name: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: COLORS.white
     },
-    oldPrice : {
-        textDecorationLine : 'line-through',
-        color : COLORS.white,
-        fontSize : 16
+    oldPrice: {
+        textDecorationLine: 'line-through',
+        color: COLORS.white,
+        fontSize: 16
     },
-    price : {
-        width : 180,
-        height : 45,
-        backgroundColor : COLORS.main,
-        justifyContent : 'center',
-        alignItems : 'center',
-        borderRadius : 15
+    price: {
+        width: 180,
+        height: 45,
+        backgroundColor: COLORS.main,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 15
     },
-    priceText : {
-        color : COLORS.white,
-        fontSize : 16,
-        fontWeight : 'bold'
+    priceText: {
+        color: COLORS.white,
+        fontSize: 16,
+        fontWeight: 'bold'
     },
-    title : {
-        fontWeight : 'bold',
-        fontSize : 18,
-        marginBottom : 10
+    title: {
+        fontWeight: 'bold',
+        fontSize: 18,
+        marginBottom: 10
     },
-    view_main : {
-        marginBottom : 40
+    view_main: {
+        marginBottom: 40
     },
-    boxProduct : {
-        height : 280,
+    boxProduct: {
+        height: 280
     },
-    quantity : {
-        flexDirection : 'row',
-        width : 140,
-        justifyContent : 'space-between',
-        alignItems : 'center'
+    quantity: {
+        flexDirection: 'row',
+        width: 140,
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },
-    quantity_button : {
-        width : 50,
-        height : 30,
-        backgroundColor : COLORS.main,
-        borderRadius : 15,
-        justifyContent : 'center',
-        alignItems : 'center'
+    quantity_button: {
+        width: 50,
+        height: 30,
+        backgroundColor: COLORS.main,
+        borderRadius: 15,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    quantity_buttonText : {
-        fontSize : 20
+    quantity_buttonText: {
+        fontSize: 20
     },
-    add : {
-        width : '100%',
-        height : 100,
-        position : 'absolute',
-        bottom : 0,
-        left : 0,
-        alignItems : 'center',
-        flexDirection : 'row',
-        justifyContent : 'space-around',
-        backgroundColor : '#979797'
-      },
-      addItem : {
-          color : COLORS.white,
-          fontSize : 20,
-      },
-      addBuy : {
-        padding : 10,
-        backgroundColor : '#B23F56',
-        borderRadius : 20,
-        justifyContent : 'center',
-        alignItems : 'center'
-      },
-      addBuyText : {
-          color : COLORS.white,
-          fontSize : 16,
-          marginBottom : 10
-      },
-      addBuyPrice : {
-        fontSize : 20,
-        color : COLORS.white,
-        fontWeight : 'bold'
-      },
-
+    add: {
+        width: '100%',
+        height: 100,
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        backgroundColor: '#979797'
+    },
+    addItem: {
+        color: COLORS.white,
+        fontSize: 20
+    },
+    addBuy: {
+        padding: 10,
+        backgroundColor: '#B23F56',
+        borderRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    addBuyText: {
+        color: COLORS.white,
+        fontSize: 16,
+        marginBottom: 10
+    },
+    addBuyPrice: {
+        fontSize: 20,
+        color: COLORS.white,
+        fontWeight: 'bold'
+    },
+    buttonQr: {
+        height: 46,
+        flex: 1,
+        borderWidth: 2,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+        borderColor: '#CCCCE3',
+        paddingHorizontal: 12,
+        paddingVertical: 8,
+        marginVertical: 30
+    },
+    qrcodeImg: {
+        width: 23,
+        height: 23,
+        marginRight: 8,
+        resizeMode: 'contain'
+    },
+    textOnQr: {
+        fontSize: 10,
+        color: 'black'
+    },
+    textQr: {
+        fontSize: 24,
+        color: 'black',
+        includeFontPadding: false,
+        marginTop: -4
+    }
 })
 
-export default styles;
+export default styles

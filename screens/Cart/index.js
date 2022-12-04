@@ -61,17 +61,23 @@ const CartScreen = () => {
                     text: 'Yes',
                     style: 'destructive',
                     onPress: () => {
-                        orderModel.addOrder({
-                            uid,
-                            cartID,
-                            phone,
-                            address,
-                            createdAt,
-                            total,
-                            cartItems
-                        })
-                        navigation.navigate('HomeScreen')
-                        dispatch(RemoveAll())
+                        orderModel
+                            .addOrder({
+                                uid,
+                                cartID,
+                                phone,
+                                address,
+                                createdAt,
+                                total,
+                                cartItems
+                            })
+                            .then(() => {
+                                navigation.navigate('HomeScreen')
+                                dispatch(RemoveAll())
+                            })
+                            .catch((err) => {
+                                console.log(err)
+                            })
                     }
                 }
             ])
@@ -98,9 +104,7 @@ const CartScreen = () => {
     }
 
     useEffect(() => {
-        navigation.addListener('focus', () => {
-            getProfile()
-        })
+        getProfile()
     }, [])
 
     return (

@@ -39,7 +39,7 @@ const SignInScreen = () => {
         if (password === confirmPassword) {
             register(userName, email, password)
         } else {
-            ShowToast('Nhập lại mật khẩu không đúng')
+            Alert.alert('Thông báo', 'Nhập lại mật khẩu không đúng')
         }
     }
 

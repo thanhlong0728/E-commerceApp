@@ -18,6 +18,8 @@ import { RatingComponent, ProductHorizital, Comment, Quantify } from '../../comp
 import styles from './styles'
 import { ShowToast } from '../../help/showToast'
 import { AddCart } from '../../store/slices/cart'
+import Constants from './../../controller/Constant'
+import ImgQrCode from './components/ImgQrCode'
 
 const ProductScreen = () => {
     const route = useRoute()
@@ -29,6 +31,7 @@ const ProductScreen = () => {
     const product = Object.assign({}, ...productArray)
     const [productInCategoryList, setProductInCategoryList] = useState([])
     const [isRefreshing, setIsRefreshing] = useState(false)
+    const [isModalVisible, setModalVisible] = useState(false)
 
     const getProduct = async () => {
         RNProgressHud.show()
@@ -78,7 +81,8 @@ const ProductScreen = () => {
                 id,
                 photoProduct: product.image,
                 nameProduct: product.name,
-                priceProduct: product.price_sale_off
+                priceProduct: product.price_sale_off,
+                description: product?.description
             })
         )
         setNumber(1)
@@ -90,12 +94,22 @@ const ProductScreen = () => {
         getProductInCategoryList()
     }
 
+    const onQrcode = () => {
+        setModalVisible(true)
+    }
+
     return (
         <>
             <ScrollView
                 style={styles.container}
                 refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />}
             >
+                <ImgQrCode
+                    value={product?.name}
+                    dataQR={`{"app": "Spray", "id": "${product?.id}"}`}
+                    isModalVisible={isModalVisible}
+                    setModalVisible={(value) => setModalVisible(value)}
+                />
                 <View style={styles.product}>
                     <View style={styles.productImg}>
                         <Image style={styles.img} source={{ uri: product?.image }} />
@@ -120,10 +134,21 @@ const ProductScreen = () => {
                     </View>
                 </View>
                 <View style={styles.view}>
+                    <TouchableOpacity
+                        onPress={onQrcode}
+                        activeOpacity={0.8}
+                        style={styles.buttonQr}
+                    >
+                        <Image source={Constants.icons.qrcode} style={styles.qrcodeImg} />
+                        <View>
+                            <Text style={styles.textQr}>QR Code</Text>
+                        </View>
+                    </TouchableOpacity>
                     <View style={styles.view_main}>
                         <Text style={styles.title}> Thông tin sản phẩm </Text>
                         <Text style={styles.title_source}>{`${product?.description}`}</Text>
                     </View>
+
                     <View style={styles.view_main}>
                         <Text style={styles.title}> Số lượng </Text>
                         <Quantify

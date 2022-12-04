@@ -8,8 +8,8 @@ import styles from './styles'
 
 const BoxSlider = () => {
     const [activeSlide, setActiveSlide] = useState(0)
-    const [entries, setEntries] = useState(sliderList ? sliderList.length : 0)
     const [sliderList, setSliderList] = useState([])
+    const [entries, setEntries] = useState(sliderList ? sliderList.length : 0)
 
     const getSilderList = async () => {
         RNProgressHud.show()
@@ -28,6 +28,7 @@ const BoxSlider = () => {
 
     useEffect(() => {
         getSilderList()
+        setEntries(sliderList.length)
     }, [])
 
     const renderItems = (item) => {

@@ -77,28 +77,27 @@ export const AuthProvider = ({ children }) => {
                     RNProgressHud.show()
                     await auth()
                         .createUserWithEmailAndPassword(email, password)
-                        .then(() => {
-                            const user = auth().currentUser
-                            if (user) {
-                                firestore()
-                                    .collection('users')
-                                    .doc(user.uid)
-                                    .set({
-                                        userName: userName,
-                                        phone: '',
-                                        address: '',
-                                        avatarUser:
-                                            'https://firebasestorage.googleapis.com/v0/b/shopbond-cc6cb.appspot.com/o/default%2Favatar_default.png?alt=media&token=e1cad5ef-fdf4-464c-b308-8b92fb48485b'
-                                    })
-                                    .then(() => {
-                                        console.log('Đã thêm thành công')
-                                    })
-                                    .catch((error) => {
-                                        console.log(error)
-                                    })
-                            }
-                            RNProgressHud.showSuccessWithStatus('đăng ký thành công')
-                            navigation.navigate('LoginScreen')
+                        .then((userCredential) => {
+                            userCredential.user
+                                .updateProfile({
+                                    photoURL:
+                                        'https://firebasestorage.googleapis.com/v0/b/shopbond-cc6cb.appspot.com/o/default%2Favatar_default.png?alt=media&token=e1cad5ef-fdf4-464c-b308-8b92fb48485b'
+                                })
+                                .then(() => {
+                                    const user = auth().currentUser
+                                    if (user) {
+                                        firestore().collection('users').doc(user.uid).set({
+                                            userName: userName,
+                                            phone: '',
+                                            address: ''
+                                        })
+                                        RNProgressHud.showSuccessWithStatus('đăng ký thành công')
+                                        navigation.navigate('LoginScreen')
+                                    }
+                                })
+                                .catch((error) => {
+                                    ShowToast(error.message)
+                                })
 
                             // userCredential.user
                             //     .updateProfile({
@@ -155,35 +154,6 @@ export const AuthProvider = ({ children }) => {
                             }, 1500)
                         })
                 }
-                // updateInfo: async (displayName) => {
-                //     setLoading(true)
-                //     await auth()
-                //         .currentUser.updateProfile({
-                //             displayName: displayName
-                //         })
-                //         .then(() => {
-                //             ShowToast('Cập nhật thành công!!!')
-                //         })
-                //         .catch((error) => {
-                //             ShowToast(error.message)
-                //         })
-                //     setLoading(false)
-                // },
-                // forgotPassword: async (email) => {
-                //     RNProgressHud.show()
-                //     await auth()
-                //         .sendPasswordResetEmail(email)
-                //         .then(function (user) {
-                //             RNProgressHud.showSuccessWithStatus('Lấy mật khẩu thành công')
-                //             alert('Lấy mật khẩu thành công. Vui lòng kiểm tra email...')
-                //         })
-                //         .catch(function (e) {
-                //             ShowToast('Email chưa đăng ký')
-                //         })
-                //         .finally(() => {
-                //             RNProgressHud.dismiss()
-                //         })
-                // }
             }}
         >
             {children}
