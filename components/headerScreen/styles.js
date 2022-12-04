@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         height: 100
     },
     background: {
-        backgroundColor: COLORS.main
+        backgroundColor: COLORS.pink
     },
     top: {
         flex: 1,

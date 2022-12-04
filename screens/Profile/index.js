@@ -119,7 +119,7 @@ const ProfileScreen = () => {
             <View
                 style={{
                     padding: 30,
-                    backgroundColor: COLORS.main
+                    backgroundColor: COLORS.pink
                 }}
             >
                 <Text style={styles.text}>Thông tin cá nhân</Text>

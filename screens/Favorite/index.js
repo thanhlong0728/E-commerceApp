@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, FlatList } from 'react-native'
+import { View, FlatList, ScrollView, RefreshControl } from 'react-native'
 import { Product } from '../../components'
 import { useDispatch, useSelector } from 'react-redux'
 import RNProgressHud from 'progress-hud'
@@ -11,6 +11,7 @@ const FavoriteScreen = () => {
     const favoriteData = useSelector((state) => state.Favorite.items)
     const [items, setItems] = useState([])
     const [productList, setProductList] = useState([])
+    const [isRefreshing, setIsRefreshing] = useState(false)
 
     const getProductList = async () => {
         RNProgressHud.show()
@@ -27,11 +28,7 @@ const FavoriteScreen = () => {
         RNProgressHud.dismiss()
     }
 
-    useEffect(() => {
-        getProductList()
-    }, [])
-
-    useEffect(() => {
+    const getDataFavorite = () => {
         try {
             RNProgressHud.show()
             let itemsFavorite = productList.filter((item) => favoriteData.indexOf(item.id) !== -1)
@@ -41,6 +38,17 @@ const FavoriteScreen = () => {
             console.log(err)
             RNProgressHud.dismiss()
         }
+    }
+
+    const onRefreshing = () => {
+        getProductList()
+
+        getDataFavorite()
+    }
+
+    useEffect(() => {
+        getProductList()
+        getDataFavorite()
     }, [favoriteData])
 
     const showItems = ({ item }) => {
@@ -49,7 +57,12 @@ const FavoriteScreen = () => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.aside}>
+            <ScrollView
+                style={styles.aside}
+                refreshControl={
+                    <RefreshControl refreshing={isRefreshing} onRefresh={onRefreshing} />
+                }
+            >
                 <FlatList
                     showsVerticalScrollIndicator={false}
                     data={items}
@@ -57,7 +70,7 @@ const FavoriteScreen = () => {
                     keyExtractor={(item) => item.name.toString()}
                     numColumns={2}
                 />
-            </View>
+            </ScrollView>
         </View>
     )
 }

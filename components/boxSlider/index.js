@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { View, Image } from 'react-native'
+import { View, Image, Text } from 'react-native'
 import Carousel, { Pagination } from 'react-native-snap-carousel'
 import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
+import { useNavigation } from '@react-navigation/native'
 
 import styles from './styles'
+import { Ionicons } from 'react-native-vector-icons/Ionicons'
 
 const BoxSlider = () => {
     const [activeSlide, setActiveSlide] = useState(0)
     const [sliderList, setSliderList] = useState([])
-    const [entries, setEntries] = useState(sliderList ? sliderList.length : 0)
+    const [entries, setEntries] = useState(3)
+    const navigation = useNavigation()
 
     const getSilderList = async () => {
         RNProgressHud.show()
@@ -28,7 +31,6 @@ const BoxSlider = () => {
 
     useEffect(() => {
         getSilderList()
-        setEntries(sliderList.length)
     }, [])
 
     const renderItems = (item) => {

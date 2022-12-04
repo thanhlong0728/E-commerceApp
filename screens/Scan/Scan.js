@@ -64,12 +64,12 @@ const Scan = () => {
     }
 
     const onBarcodeRead = (event) => {
-        if (!isBarcodeRead) {
-            if (isJsonString(event.data)) {
-                handleCheckType(JSON.parse(event.data))
-            }
-            setIsBarcodeRead(true)
-        }
+        // if (!isBarcodeRead) {
+        //     if (isJsonString(event.data)) {
+        handleCheckType(JSON.parse(event.data))
+        // }
+        // setIsBarcodeRead(true)
+        // }
     }
     // const onBarcodeRead = (event) => {
     //     if (!isScanning.current) {

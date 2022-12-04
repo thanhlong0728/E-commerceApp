@@ -14,7 +14,7 @@ const LoginScreen = () => {
     const { colors } = useTheme()
     const { login } = useContext(AuthContext)
 
-    const [email, setEmail] = useState('longadmin@gmail.com')
+    const [email, setEmail] = useState('long@gmail.com')
     const [password, setPassword] = useState('123456')
     const [secureTextEntry, setSecureTextEntry] = useState(true)
 

@@ -347,7 +347,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     button: {
-        backgroundColor: COLORS.main,
+        backgroundColor: COLORS.pink,
         marginHorizontal: 16,
         borderRadius: 15,
         height: 51,

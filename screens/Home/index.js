@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, ScrollView } from 'react-native'
+import { View, ScrollView, RefreshControl } from 'react-native'
 import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
 import { useDispatch, useSelector } from 'react-redux'
@@ -13,6 +13,8 @@ const HomeScreen = () => {
     const [categoryList, setCategoryList] = useState([])
     const [productSpecList, setProductSpecList] = useState([])
     const [productIsNewList, setProductIsNewList] = useState([])
+
+    const [isRefreshing, setIsRefreshing] = useState(false)
 
     const getCategoryList = async () => {
         RNProgressHud.show()
@@ -59,6 +61,12 @@ const HomeScreen = () => {
         RNProgressHud.dismiss()
     }
 
+    const onRefreshing = () => {
+        getCategoryList()
+        getProductSpecList()
+        getProductIsNewList()
+    }
+
     useEffect(() => {
         getCategoryList()
         getProductSpecList()
@@ -67,7 +75,12 @@ const HomeScreen = () => {
 
     return (
         <View style={styles.container}>
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                refreshControl={
+                    <RefreshControl refreshing={isRefreshing} onRefresh={onRefreshing} />
+                }
+            >
                 <BoxSlider />
                 <View style={styles.aside}>
                     <Category items={categoryList} />

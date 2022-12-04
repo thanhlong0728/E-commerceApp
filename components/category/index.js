@@ -12,7 +12,7 @@ const Category = ({ items }) => {
     const showProduct = (item) => {
         navigation.navigate('CategoryScreen', {
             id: item.id,
-            name: item.names
+            name: item.name
         })
     }
 

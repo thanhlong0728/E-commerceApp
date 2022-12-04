@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, FlatList } from 'react-native'
+import { View, FlatList, RefreshControl, ScrollView } from 'react-native'
 
 import { BoxSlider, Product } from '../../components'
 import styles from './styles'
@@ -12,6 +12,7 @@ const CategoryAllScreen = () => {
     const dispatch = useDispatch()
     const itemsFillter = useSelector((state) => state.Fillter.items)
     const [allProductList, setAllProductList] = useState([])
+    const [isRefreshing, setIsRefreshing] = useState(false)
 
     const getAllProductList = async () => {
         RNProgressHud.show()
@@ -26,6 +27,10 @@ const CategoryAllScreen = () => {
         })
         setAllProductList(list)
         RNProgressHud.dismiss()
+    }
+
+    const onRefreshing = () => {
+        getAllProductList()
     }
 
     useEffect(() => {
@@ -67,7 +72,10 @@ const CategoryAllScreen = () => {
     }
 
     return (
-        <View style={styles.container}>
+        <ScrollView
+            refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefreshing} />}
+            style={styles.container}
+        >
             <FlatList
                 showsVerticalScrollIndicator={false}
                 data={allProductList}
@@ -77,7 +85,7 @@ const CategoryAllScreen = () => {
                 nestedScrollEnabled={true}
                 ListHeaderComponent={<BoxSlider />}
             />
-        </View>
+        </ScrollView>
     )
 }
 

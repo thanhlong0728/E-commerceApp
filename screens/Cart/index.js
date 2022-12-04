@@ -49,8 +49,8 @@ const CartScreen = () => {
         navigation.navigate('ProfileEditScreen')
     }
     const handleBuy = () => {
-        if (phone == '' && address == '') {
-            navigation.navigate('AddressScreen')
+        if (phone == '' || address == '') {
+            navigation.navigate('ProfileEditScreen')
             alert('Vui lòng nhập địa chỉ')
         } else {
             Alert.alert('Thông báo', 'Bạn có chắc chắn muốn đặt đơn hàng？', [
@@ -104,7 +104,9 @@ const CartScreen = () => {
     }
 
     useEffect(() => {
-        getProfile()
+        navigation.addListener('focus', () => {
+            getProfile()
+        })
     }, [])
 
     return (
@@ -117,7 +119,7 @@ const CartScreen = () => {
                     {phone == '' || address == '' ? (
                         <Text style={styles.textAddress}>Vui lòng nhập địa chỉ</Text>
                     ) : (
-                        <Text style={styles.textAddress}>
+                        <Text numberOfLines={3} style={styles.textAddress}>
                             Tên: {userName}, Số điện thoại: {phone}, Địa chỉ: {address}
                         </Text>
                     )}
