@@ -74,6 +74,8 @@ const MyOderScreen = () => {
         let mm = createdAt.getMonth() + 1
         let dd = createdAt.getDate()
         let yyyy = createdAt.getFullYear()
+        let hours = createdAt.getHours()
+        let minutes = createdAt.getMinutes()
 
         const deleteOrder = () => {
             RNProgressHud.show()
@@ -130,7 +132,7 @@ const MyOderScreen = () => {
                                     <Text style={[styles.textInfo, styles.textGreen]}>
                                         Ngày đặt: {dd + '/' + mm + '/' + yyyy}
                                         {'  '}
-                                        {/* {createdAt.toLocaleTimeString('vi_VN')} */}
+                                        {hours + ':' + minutes}
                                     </Text>
                                     {item.status === 'confirmed' ? (
                                         <View style={styles.statusOrder}>

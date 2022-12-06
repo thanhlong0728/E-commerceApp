@@ -83,6 +83,8 @@ const Comment = ({ productId, productImg }) => {
         let mm = createdAt.getMonth() + 1
         let dd = createdAt.getDate()
         let yyyy = createdAt.getFullYear()
+        let hours = createdAt.getHours()
+        let minutes = createdAt.getMinutes()
 
         const deleteComment = () => {
             RNProgressHud.show()
@@ -120,7 +122,7 @@ const Comment = ({ productId, productImg }) => {
                     </View>
                     <Text style={styles.textDayComment}>
                         {dd + '/' + mm + '/' + yyyy} {'  '}
-                        {/* {item.createdAt.toLocaleTimeString('vi_VN')} */}
+                        {hours + ':' + minutes}
                     </Text>
                     <Text numberOfLines={3} style={styles.data}>
                         {item.textComment}

@@ -37,6 +37,9 @@ const MyCommentScreen = () => {
         let mm = createdAt.getMonth() + 1
         let dd = createdAt.getDate()
         let yyyy = createdAt.getFullYear()
+        let hours = createdAt.getHours()
+        let minutes = createdAt.getMinutes()
+
         return (
             <TouchableOpacity
                 onPress={() => {
@@ -54,9 +57,11 @@ const MyCommentScreen = () => {
                             <View style={styles.nameUser}>
                                 <Text style={styles.textUser}>{item.displayName}</Text>
                             </View>
-                            <View style={styles.date}>
-                                <Text style={styles.textDay}>{dd + '/' + mm + '/' + yyyy}</Text>
-                            </View>
+                            <Text style={styles.textDay}>
+                                {dd + '/' + mm + '/' + yyyy}
+                                {'  '}
+                                {hours + ':' + minutes}
+                            </Text>
                         </View>
                         <View style={styles.contentComment}>
                             <Text style={styles.textComment}>{item.textComment}</Text>
