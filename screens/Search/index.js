@@ -15,13 +15,16 @@ const InfoCartScreen = () => {
     const route = useRoute()
     const { search } = route.params
     const dispatch = useDispatch()
-    const [loading, setLoading] = useState(true)
     const [items, setItems] = useState({})
 
     const getAllProductList = async () => {
         RNProgressHud.show()
         const ref = firestore().collection('product')
-        const snapshot = await ref.where('name', '==', search).get()
+        const snapshot = await ref
+            .orderBy('name')
+            .startAt(search)
+            .endAt(search + '\uf8ff')
+            .get()
         const list = []
         snapshot.forEach((doc) => {
             list.push({
