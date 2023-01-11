@@ -1,11 +1,10 @@
 import IconStyle from './Icon'
-import IconHeader  from './iconHeader'
+import IconHeader from './iconHeader'
 import BoxSearch from './boxSearch'
 import BoxSlider from './boxSlider'
 import Header from './header'
 import Category from './category'
 import CategorySpecial from './categorySpecial'
-import DrawerItemComponent from './drawerItem'
 import HeaderScreen from './headerScreen'
 import Product from './product'
 import ProductHorizital from './productHorizital'
@@ -25,7 +24,6 @@ import Progess from './progessBar'
 import Quantify from './quantify'
 import HeaderMini from './headerMini'
 
-
 export {
     IconStyle,
     IconHeader,
@@ -34,7 +32,6 @@ export {
     Header,
     Category,
     CategorySpecial,
-    DrawerItemComponent,
     HeaderScreen,
     Product,
     ProductHorizital,

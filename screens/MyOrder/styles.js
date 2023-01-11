@@ -1,92 +1,81 @@
-import {StyleSheet,Dimensions} from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 const styles = StyleSheet.create({
-    container:{
-        flex:1
+    container: {
+        flex: 1
     },
-    boxProductOrder:{
-        flex:1,
-        borderRadius: 8,
-        shadowColor: "#000",
-        shadowOffset: {
-        width: 0,
-        height: 1,
-        },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
-        elevation: 3,
+    boxProductOrder: {
+        flex: 1,
         borderRadius: 20,
-        marginTop:20
+        marginVertical: 20
     },
-    imgOrder:{
-        width : '100%',
-        height : '100%',
-        resizeMode:'contain'
+    imgOrder: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain'
     },
-    boxImg:{
-        width:100,
+    boxImg: {
+        width: 100,
         height: 120,
-        marginRight: 20 
+        marginRight: 20
     },
-    productOrder:{
-        flex:1,
-        width:width,
-        height:height/3,
+    productOrder: {
+        flex: 1,
+        width: width,
         marginTop: 5,
-        backgroundColor:'white',
-        justifyContent:'center'
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        paddingVertical: 5
     },
-    boxOrder:{
-        flex:1,
-        justifyContent:'space-between'
+
+    infoOrder: {
+        flexDirection: 'row'
     },
-    infoOrder:{
-        flexDirection:'row'
-    },
-    textInfo:{
+    textInfo: {
         fontSize: 16,
-        fontWeight:'500',
+        fontWeight: '500',
         marginBottom: 2
     },
-    textRed:{
-        color:'red'
+    textRed: {
+        color: 'red'
     },
-    textGreen:{
-        color:'green'
+    textGreen: {
+        color: 'green',
+        textAlign: 'center'
     },
-    boxtext:{
-        alignItems:'center',
+    boxtext: {
+        alignItems: 'center',
         marginTop: 7
     },
-    textHuy:{
-
+    textHuy: {},
+    textStatus: {
+        fontSize: 16
     },
-    textStatus:{
-        fontSize: 16,
-    },
-    statusOrder:{
-        backgroundColor:'#F5B455',
-        width:width,
-        justifyContent:'center',
+    statusOrder: {
+        backgroundColor: '#F5B455',
+        width: width,
+        justifyContent: 'center',
         alignItems: 'center',
-        paddingVertical: 3,
+        paddingVertical: 5,
+        marginTop: 10
     },
-    boxHuy:{
-        shadowColor: "#000",
+    boxHuy: {
+        shadowColor: '#000',
         shadowOffset: {
-        width: 0,
-        height: 1,
+            width: 0,
+            height: 1
         },
         shadowOpacity: 0.22,
         shadowRadius: 2.22,
         elevation: 3,
-        alignItems:'center',
-        marginTop:5,
-        borderRadius: 3
+        alignItems: 'center',
+        marginTop: 5,
+        borderRadius: 3,
+        paddingVertical: 5
     },
-    textHuy:{
-        color:'red',
+    textHuy: {
+        color: 'red',
         fontSize: 17,
         paddingVertical: 5
     }

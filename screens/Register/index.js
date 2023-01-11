@@ -142,7 +142,7 @@ const SignInScreen = () => {
                             )}
                         </TouchableOpacity>
                     </View>
-                    <View style={styles.textPrivate}>
+                    {/* <View style={styles.textPrivate}>
                         <Text style={styles.color_textPrivate}>By signing up you agree to our</Text>
                         <Text style={[styles.color_textPrivate, { fontWeight: 'bold' }]}>
                             {' '}
@@ -153,7 +153,7 @@ const SignInScreen = () => {
                             {' '}
                             Privacy policy
                         </Text>
-                    </View>
+                    </View> */}
                     <View style={styles.button}>
                         <TouchableOpacity style={styles.signIn} onPress={handleRegister}>
                             <LinearGradient colors={['#08d4c4', '#01ab9d']} style={styles.signIn}>
