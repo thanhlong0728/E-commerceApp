@@ -10,6 +10,8 @@ import HeaderScreen from '../components/common/Header/HeaderScreen'
 import 'react-native-gesture-handler'
 import ProfileEditScreen from '../components/Profile/ProfileEditScreen'
 import ProfileInfoScreen from '../components/Profile/ProfileInfoScreen'
+import InfoShipScreen from '../components/Cart/InfoShipScreen'
+import AddressScreen from '../components/Cart/AddressScreen'
 
 const Stack = createStackNavigator()
 
@@ -31,21 +33,9 @@ const TabStackScreen = (props) => {
                     header: () => <HeaderScreen product right={false} name={'Lọc sản phẩm'} />
                 }}
             />
-            <Stack.Screen
-                name='CartScreen'
-                component={CartScreen}
-                options={{ headerShown: false }}
-            />
-            <Stack.Screen
-                name='ProductScreen'
-                component={ProductScreen}
-                options={{ header: () => <HeaderScreen product /> }}
-            />
-            <Stack.Screen
-                name='SearchScreen'
-                component={SearchScreen}
-                options={{ header: () => <HeaderScreen right={false} /> }}
-            />
+            <Stack.Screen name='CartScreen' component={CartScreen} options={{ headerShown: false }} />
+            <Stack.Screen name='ProductScreen' component={ProductScreen} options={{ header: () => <HeaderScreen product /> }} />
+            <Stack.Screen name='SearchScreen' component={SearchScreen} options={{ header: () => <HeaderScreen right={false} /> }} />
             <Stack.Screen
                 name='InfoShipScreen'
                 component={InfoShipScreen}
@@ -57,18 +47,14 @@ const TabStackScreen = (props) => {
                 name='AddressScreen'
                 component={AddressScreen}
                 options={{
-                    header: () => (
-                        <HeaderScreen product right={false} name={'Thông tin giao hàng'} />
-                    )
+                    header: () => <HeaderScreen product right={false} name={'Thông tin giao hàng'} />
                 }}
             />
             <Stack.Screen
                 name='ProfileEditScreen'
                 component={ProfileEditScreen}
                 options={{
-                    header: () => (
-                        <HeaderScreen product right={false} name={'Chỉnh sửa thông tin cá nhân'} />
-                    )
+                    header: () => <HeaderScreen product right={false} name={'Chỉnh sửa thông tin cá nhân'} />
                 }}
             />
             <Stack.Screen

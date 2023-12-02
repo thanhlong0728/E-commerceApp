@@ -40,27 +40,23 @@ const MyTabs = () => {
                     // You can return any component that you like here!
                     return <Ionicons name={iconName} size={size} color={color} />
                 },
-                tabBarActiveTintColor: COLORS.main,
-                tabBarInactiveTintColor: COLORS.icon,
+                tabBarActiveTintColor: Constant.COLORS.main,
+                tabBarInactiveTintColor: Constant.COLORS.icon,
                 tabBarStyle: {
-                    backgroundColor: COLORS.tabBar,
+                    backgroundColor: Constant.COLORS.tabBar,
                     height: 65,
                     paddingBottom: 10
                     // paddunTop: 50
                 },
                 tabBarLabelStyle: {
                     fontSize: 13,
-                    color: COLORS.icon
+                    color: Constant.COLORS.icon
                 },
                 headerShown: false
             })}
         >
             <Tab.Screen name='Home' component={HomeStackScreen} options={{ title: 'Trang chủ' }} />
-            <Tab.Screen
-                name='Category'
-                component={CategoryStackScreen}
-                options={{ title: 'Danh mục' }}
-            />
+            <Tab.Screen name='Category' component={CategoryStackScreen} options={{ title: 'Danh mục' }} />
             <Tab.Screen
                 name='ScanScreen'
                 component={ScanScreen}
@@ -81,11 +77,7 @@ const MyTabs = () => {
                     )
                 }}
             />
-            <Tab.Screen
-                name='Favorite'
-                component={FavoriteStackScreen}
-                options={{ title: 'Yêu thích' }}
-            />
+            <Tab.Screen name='Favorite' component={FavoriteStackScreen} options={{ title: 'Yêu thích' }} />
             <Tab.Screen name='Info' component={InfoStackScreen} options={{ title: 'Thông tin' }} />
         </Tab.Navigator>
     )

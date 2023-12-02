@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, Image, StyleSheet, Dimensions } from 'rea
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useDispatch, useSelector } from 'react-redux'
 
-import IconHeart from '../../common/Icon/IconHeader'
+import IconHeart from '../../common/Icon/IconHeart'
 import { Favorite } from '../../../redux/slices/favorite'
 import { AddCart } from '../../../redux/slices/cart'
 import { ShowToast } from '../../common/ShowToast'
