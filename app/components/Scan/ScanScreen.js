@@ -169,26 +169,26 @@ const styles = StyleSheet.create({
     },
     titleText: {
         fontSize: 16,
-        color: Constant.color.white,
+        color: Constant.COLORS.white,
         paddingTop: 10,
-        backgroundColor: Constant.color.backgScan,
+        backgroundColor: Constant.COLORS.backgScan,
         textAlign: 'center'
     },
     cameraView: {
         flex: 1,
-        backgroundColor: Constant.color.backgScan
+        backgroundColor: Constant.COLORS.backgScan
     },
     backView: {
-        backgroundColor: Constant.color.backgScan
+        backgroundColor: Constant.COLORS.backgScan
     },
     scanText: {
         fontSize: 30,
-        color: Constant.color.white,
+        color: Constant.COLORS.white,
         marginLeft: 12,
         includeFontPadding: false
     },
     viewIcon: {
-        backgroundColor: Constant.color.backgScan,
+        backgroundColor: Constant.COLORS.backgScan,
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 40,
@@ -199,16 +199,16 @@ const styles = StyleSheet.create({
         height: 48
     },
     textGallery: {
-        color: Constant.color.white,
+        color: Constant.COLORS.white,
         textAlign: 'center',
         paddingTop: 10
     },
     view: {
         flex: 1,
-        backgroundColor: Constant.color.backgScan
+        backgroundColor: Constant.COLORS.backgScan
     },
     viewBot: {
-        backgroundColor: Constant.color.backgScan,
+        backgroundColor: Constant.COLORS.backgScan,
         paddingBottom: 24
     }
 })

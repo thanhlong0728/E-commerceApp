@@ -26,14 +26,7 @@ const InputStyle = ({ name, style, editable = true, value, onChange, placeholder
         case 'Mật khẩu mới':
         case 'Xác nhận mật khẩu mới':
             obj.secureTextEntry = !showPass
-            obj.icon = (
-                <Ionicons
-                    size={18}
-                    color={Constant.COLORS.icon}
-                    name={showPass ? 'ios-eye' : 'ios-eye-off'}
-                    onPress={() => setShowPass(!showPass)}
-                />
-            )
+            obj.icon = <Ionicons size={18} color={Constant.COLORS.icon} name={showPass ? 'ios-eye' : 'ios-eye-off'} onPress={() => setShowPass(!showPass)} />
             break
         case 'Địa chỉ':
             obj.multiline = true
@@ -66,13 +59,13 @@ export default InputStyle
 
 const styles = StyleSheet.create({
     textInputLabel: {
-        color: COLORS.black,
+        color: Constant.COLORS.black,
         fontSize: 16
     },
     textInput: {
         marginTop: 10,
         height: 40,
-        borderColor: COLORS.main,
+        borderColor: Constant.COLORS.main,
         borderWidth: 1,
         borderRadius: 10,
         paddingLeft: 10

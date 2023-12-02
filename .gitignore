@@ -152,3 +152,6 @@ ios/Podfile.lock
 .env.production
 .env.development
 .env.staging
+
+package-lock.json
+yarn.lock
