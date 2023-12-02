@@ -1,4 +1,4 @@
-package com.spray.newarchitecture;
+package com.longv.commerce.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.spray.BuildConfig;
-import com.spray.newarchitecture.components.MainComponentsRegistry;
-import com.spray.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.longv.commerce.BuildConfig;
+import com.longv.commerce.newarchitecture.components.MainComponentsRegistry;
+import com.longv.commerce.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

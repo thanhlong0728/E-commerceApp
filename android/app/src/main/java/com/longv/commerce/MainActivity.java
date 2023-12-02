@@ -1,4 +1,4 @@
-package com.spray;
+package com.longv.commerce;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
@@ -15,7 +15,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "SPRAY";
+    return "E-commerceApp";
   }
 
   @Override
