@@ -4,13 +4,12 @@ import { View, Text, TouchableOpacity, Image, StyleSheet, Dimensions } from 'rea
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useDispatch, useSelector } from 'react-redux'
 
-import IconHeart from './iconHeart'
-import { Favorite } from '../../../store/slices/favorite'
-import { AddCart } from '../../../store/slices/cart'
-import { formatPriceNumber, SalePercent } from '../../../help'
-import { IMAGES } from '../../../contains'
-import { ShowToast } from '../../../help/showToast'
+import IconHeart from '../../common/Icon/IconHeader'
+import { Favorite } from '../../../redux/slices/favorite'
+import { AddCart } from '../../../redux/slices/cart'
+import { ShowToast } from '../../common/ShowToast'
 import Constant from '../../../controller/Constant'
+import Util from '../../../controller/Util'
 
 const Product = ({ data, sale = true }) => {
     const navigation = useNavigation()
@@ -60,8 +59,8 @@ const Product = ({ data, sale = true }) => {
                     <Text numberOfLines={1} style={styles.title}>
                         {data.summary}
                     </Text>
-                    {sale && <Text style={styles.oldPrice}>{formatPriceNumber(data.price)}</Text>}
-                    <Text style={styles.price}>{formatPriceNumber(data.price_sale_off)}</Text>
+                    {sale && <Text style={styles.oldPrice}>{Util.formatPriceNumber(data.price)}</Text>}
+                    <Text style={styles.price}>{Util.formatPriceNumber(data.price_sale_off)}</Text>
                 </View>
                 <View style={styles.iconLike}>
                     <TouchableOpacity onPress={onHeart}>
@@ -73,10 +72,8 @@ const Product = ({ data, sale = true }) => {
                 </TouchableOpacity>
                 {sale && (
                     <View style={styles.sale}>
-                        <Image style={styles.saleImg} source={IMAGES.sale} />
-                        <Text style={styles.salePr}>
-                            {SalePercent(data.price, data.price_sale_off)}
-                        </Text>
+                        <Image style={styles.saleImg} source={Constant.IMAGES.sale} />
+                        <Text style={styles.salePr}>{Util.SalePercent(data.price, data.price_sale_off)}</Text>
                         <Text style={styles.saleOf}>GIẢM GIÁ</Text>
                     </View>
                 )}

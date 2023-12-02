@@ -1,15 +1,5 @@
 import React, { useState, useContext } from 'react'
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    TextInput,
-    ScrollView,
-    StatusBar,
-    Alert,
-    StyleSheet,
-    Dimensions
-} from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, ScrollView, StatusBar, Alert, StyleSheet, Dimensions } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 import LinearGradient from 'react-native-linear-gradient'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
@@ -64,13 +54,7 @@ const SignInScreen = () => {
                     <Text style={styles.text_footer}>Username</Text>
                     <View style={styles.action}>
                         <FontAwesome name='user-o' color='#05375a' size={20} />
-                        <TextInput
-                            value={userName}
-                            placeholder='Your Username'
-                            style={styles.textInput}
-                            onChangeText={setUserName}
-                            autoCapitalize='none'
-                        />
+                        <TextInput value={userName} placeholder='Your Username' style={styles.textInput} onChangeText={setUserName} autoCapitalize='none' />
                     </View>
                     <Text
                         style={[
@@ -84,13 +68,7 @@ const SignInScreen = () => {
                     </Text>
                     <View style={styles.action}>
                         <FontAwesome name='envelope-o' color='#05375a' size={20} />
-                        <TextInput
-                            value={email}
-                            placeholder='Your Email'
-                            style={styles.textInput}
-                            onChangeText={setEmail}
-                            autoCapitalize='none'
-                        />
+                        <TextInput value={email} placeholder='Your Email' style={styles.textInput} onChangeText={setEmail} autoCapitalize='none' />
                     </View>
 
                     <Text
@@ -114,11 +92,7 @@ const SignInScreen = () => {
                             autoCapitalize='none'
                         />
                         <TouchableOpacity onPress={() => setSecureTextEntry(!secureTextEntry)}>
-                            {secureTextEntry ? (
-                                <Feather name='eye-off' color='grey' size={20} />
-                            ) : (
-                                <Feather name='eye' color='grey' size={20} />
-                            )}
+                            {secureTextEntry ? <Feather name='eye-off' color='grey' size={20} /> : <Feather name='eye' color='grey' size={20} />}
                         </TouchableOpacity>
                     </View>
 
@@ -142,14 +116,8 @@ const SignInScreen = () => {
                             autoCapitalize='none'
                             onChangeText={setConfirmPassword}
                         />
-                        <TouchableOpacity
-                            onPress={() => setConfirmSecureTextEntry(!confirmSecureTextEntry)}
-                        >
-                            {secureTextEntry ? (
-                                <Feather name='eye-off' color='grey' size={20} />
-                            ) : (
-                                <Feather name='eye' color='grey' size={20} />
-                            )}
+                        <TouchableOpacity onPress={() => setConfirmSecureTextEntry(!confirmSecureTextEntry)}>
+                            {secureTextEntry ? <Feather name='eye-off' color='grey' size={20} /> : <Feather name='eye' color='grey' size={20} />}
                         </TouchableOpacity>
                     </View>
                     {/* <View style={styles.textPrivate}>

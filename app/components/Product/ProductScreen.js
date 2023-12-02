@@ -1,27 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import {
-    View,
-    Image,
-    Text,
-    ScrollView,
-    TouchableOpacity,
-    FlatList,
-    RefreshControl,
-    StyleSheet
-} from 'react-native'
+import { View, Image, Text, ScrollView, TouchableOpacity, FlatList, RefreshControl, StyleSheet } from 'react-native'
 import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
 import { useRoute } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { formatPriceNumber } from '../../app/help'
-import { RatingComponent, ProductHorizital, Comment, Quantify } from '../../components'
-import { ShowToast } from '../../app/help/showToast'
-import { AddCart } from '../../store/slices/cart'
-import Constants from '../../app/controller/Constant'
+import RatingComponent from '../Home/Components/Rating'
+import ProductHorizital from '../Product/components/ProductHorizital'
+import Comment from '../Product/components/Comment'
+import Quantify from '../Product/components/Quantify'
+import { ShowToast } from '../common/ShowToast'
+import { AddCart } from '../../redux/slices/cart'
 import ImgQrCode from './components/ImgQrCode'
+import Util from '../../controller/Util'
 import Constant from '../../controller/Constant'
-
 
 const ProductScreen = () => {
     const route = useRoute()
@@ -104,16 +96,8 @@ const ProductScreen = () => {
 
     return (
         <>
-            <ScrollView
-                style={styles.container}
-                refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />}
-            >
-                <ImgQrCode
-                    value={product?.name}
-                    dataQR={`{"app": "Spray", "id": "${product?.id}"}`}
-                    isModalVisible={isModalVisible}
-                    setModalVisible={(value) => setModalVisible(value)}
-                />
+            <ScrollView style={styles.container} refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />}>
+                <ImgQrCode value={product?.name} dataQR={`{"app": "Spray", "id": "${product?.id}"}`} isModalVisible={isModalVisible} setModalVisible={(value) => setModalVisible(value)} />
                 <View style={styles.product}>
                     <View style={styles.productImg}>
                         <Image style={styles.img} source={{ uri: product?.image }} />
@@ -128,22 +112,16 @@ const ProductScreen = () => {
                             <RatingComponent product={true} />
                         </View>
                         <View>
-                            <Text style={styles.oldPrice}>{formatPriceNumber(product?.price)}</Text>
+                            <Text style={styles.oldPrice}>{Util.formatPriceNumber(product?.price)}</Text>
                         </View>
                         <View style={styles.price}>
-                            <Text style={styles.priceText}>
-                                {formatPriceNumber(product?.price_sale_off)}
-                            </Text>
+                            <Text style={styles.priceText}>{Util.formatPriceNumber(product?.price_sale_off)}</Text>
                         </View>
                     </View>
                 </View>
                 <View style={styles.view}>
-                    <TouchableOpacity
-                        onPress={onQrcode}
-                        activeOpacity={0.8}
-                        style={styles.buttonQr}
-                    >
-                        <Image source={Constants.icons.qrcode} style={styles.qrcodeImg} />
+                    <TouchableOpacity onPress={onQrcode} activeOpacity={0.8} style={styles.buttonQr}>
+                        <Image source={Constant.icons.qrcode} style={styles.qrcodeImg} />
                         <View>
                             <Text style={styles.textQr}>QR Code</Text>
                         </View>
@@ -155,10 +133,7 @@ const ProductScreen = () => {
 
                     <View style={styles.view_main}>
                         <Text style={styles.title}> Số lượng </Text>
-                        <Quantify
-                            handleChangeNumber={(val) => handleChangeNumber(val)}
-                            quantity={number}
-                        />
+                        <Quantify handleChangeNumber={(val) => handleChangeNumber(val)} quantity={number} />
                     </View>
                     {productInCategoryList.length === 0 ? (
                         <View></View>
@@ -187,9 +162,7 @@ const ProductScreen = () => {
                 <Text style={styles.addItem}>{number} item</Text>
                 <TouchableOpacity style={styles.addBuy} onPress={handleAddCart}>
                     <Text style={styles.addBuyText}>Thêm vào giỏ hàng</Text>
-                    <Text style={styles.addBuyPrice}>
-                        {formatPriceNumber(number * product?.price_sale_off)}
-                    </Text>
+                    <Text style={styles.addBuyPrice}>{Util.formatPriceNumber(number * product?.price_sale_off)}</Text>
                 </TouchableOpacity>
             </View>
         </>

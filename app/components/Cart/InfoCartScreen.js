@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-import { InputStyle, CheckCart } from '../components'
+import InputStyle from '../../components/common/InputStyle'
+import CheckCart from '../../components/Cart/CheckCart'
 
 const InfoCartScreen = () => {
     const [nickName, setNickName] = useState('')
@@ -13,11 +14,7 @@ const InfoCartScreen = () => {
     return (
         <View style={styles.container}>
             <View style={styles.boxCode}>
-                <InputStyle
-                    name={'Nhập mã đơn hàng của bạn'}
-                    value={nickName}
-                    onChange={(value) => setNickName(value)}
-                />
+                <InputStyle name={'Nhập mã đơn hàng của bạn'} value={nickName} onChange={(value) => setNickName(value)} />
             </View>
             <CheckCart />
         </View>

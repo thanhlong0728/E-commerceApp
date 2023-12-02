@@ -1,13 +1,12 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import { View, FlatList, StyleSheet } from 'react-native'
-
-import { Product } from '../components'
 import { useDispatch, useSelector } from 'react-redux'
 import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
-import Constant from '../../controller/Constant'
 
+import Product from '../../components/Product/components/Product'
+import Constant from '../../controller/Constant'
 
 const CategoryScreen = () => {
     const dispatch = useDispatch()
@@ -72,13 +71,7 @@ const CategoryScreen = () => {
 
     return (
         <View style={styles.container}>
-            <FlatList
-                showsVerticalScrollIndicator={false}
-                data={items}
-                renderItem={showItems}
-                keyExtractor={(item) => item.name.toString()}
-                numColumns={2}
-            />
+            <FlatList showsVerticalScrollIndicator={false} data={items} renderItem={showItems} keyExtractor={(item) => item.name.toString()} numColumns={2} />
         </View>
     )
 }

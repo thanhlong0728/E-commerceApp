@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-import IconHeader from '../../../componentssss/IconHeader'
-import BoxSearch from './boxSearch'
+import IconHeader from '../../common/Icon/IconHeader'
+import BoxSearch from '../../Search/component/BoxSearch'
 import Constant from '../../../controller/Constant'
 
 const HeaderScreen = ({ product = false, right = true, name = false }) => {

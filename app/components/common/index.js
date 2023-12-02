@@ -1,7 +1,3 @@
+import EmptyData from './EmptyData/index'
 
-import EmptyData from './EmptyData'
-
-export {
-
-    EmptyData,
-}
+export { EmptyData }

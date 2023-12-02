@@ -1,28 +1,18 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState, useEffect, useContext } from 'react'
-import {
-    ScrollView,
-    View,
-    Text,
-    TouchableOpacity,
-    FlatList,
-    LogBox,
-    Alert,
-    StyleSheet,
-    Dimensions
-} from 'react-native'
+import { ScrollView, View, Text, TouchableOpacity, FlatList, LogBox, Alert, StyleSheet, Dimensions } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import firestore from '@react-native-firebase/firestore'
 import auth from '@react-native-firebase/auth'
 import RNProgressHud from 'progress-hud'
-
 import IconRight from 'react-native-vector-icons/AntDesign'
-import { ProductList } from '../components'
-import { formatPriceNumber } from '../app/help'
-import { orderModel } from '../../model'
-import { RemoveAll } from '../../store/slices/cart'
+
+import ProductList from '../Product/components/ProductList'
+import orderModel from '../common/model/orderModel'
+import { RemoveAll } from '../../redux/slices/cart'
 import Constant from '../../controller/Constant'
+import Util from '../../controller/Util'
 
 LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
 
@@ -139,18 +129,14 @@ const CartScreen = () => {
                 {cartItems.length == 0 ? (
                     <Text style={styles.textEmpty}>Chưa có sản phẩm trong giỏ hàng</Text>
                 ) : (
-                    <FlatList
-                        data={cartItems}
-                        renderItem={handleRender}
-                        keyExtractor={(item) => item.id.toString()}
-                    />
+                    <FlatList data={cartItems} renderItem={handleRender} keyExtractor={(item) => item.id.toString()} />
                 )}
             </ScrollView>
             <View style={styles.apply}>
                 <View style={styles.sum}>
                     <Text style={styles.contentPrice}>Tổng đơn hàng: </Text>
                     <Text numberOfLines={1} style={styles.contentPrice}>
-                        {formatPriceNumber(total)}
+                        {Util.formatPriceNumber(total)}
                     </Text>
                 </View>
                 <TouchableOpacity onPress={handleBuy} style={styles.applyButton}>

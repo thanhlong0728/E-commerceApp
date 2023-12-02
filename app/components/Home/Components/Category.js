@@ -30,13 +30,7 @@ const Category = ({ items }) => {
             <View style={styles.title}>
                 <Text style={styles.titleText}>Tất cả các danh mục</Text>
             </View>
-            <FlatList
-                data={items}
-                renderItem={showItems}
-                keyExtractor={(item) => item.name.toString()}
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}
-            />
+            <FlatList data={items} renderItem={showItems} keyExtractor={(item) => item.name.toString()} horizontal={true} showsHorizontalScrollIndicator={false} />
         </View>
     )
 }

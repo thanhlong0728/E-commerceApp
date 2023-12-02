@@ -1,22 +1,11 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import {
-    Alert,
-    BackHandler,
-    Image,
-    Linking,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-    ActionSheet
-} from 'react-native'
+import { Alert, BackHandler, Image, Linking, StyleSheet, Text, TouchableOpacity, View, ActionSheet } from 'react-native'
 import { RNCamera } from 'react-native-camera'
-import Icon from 'react-native-vector-icons/Ionicons'
 import ImagePicker from 'react-native-image-crop-picker'
 import { useNavigation, useRoute } from '@react-navigation/core'
 import RNQRGenerator from 'rn-qr-generator'
 import RNProgressHud from 'progress-hud'
-import Constants from '../app/controller/Constant'
+import Constant from '../../controller/Constant'
 
 const HandleButtonImage = ({ title, icon, onPress }) => {
     return (
@@ -43,7 +32,7 @@ const Scan = () => {
                 const { values } = response
                 const dataValues = JSON.parse(values)
                 console.log(dataValues)
-                if (dataValues.app == Constants.QRCodeType.app) {
+                if (dataValues.app == Constant.QRCodeType.app) {
                     navigation.navigate('ProductScreen', {
                         id: dataValues.id
                     })
@@ -91,7 +80,7 @@ const Scan = () => {
 
     const handleCheckType = (data) => {
         console.log('dataaaaa:::', data)
-        if (data.app == Constants.QRCodeType.app) {
+        if (data.app == Constant.QRCodeType.app) {
             navigation.navigate('ProductScreen', {
                 id: data.id
             })
@@ -131,7 +120,7 @@ const Scan = () => {
                                 navigation.goBack()
                             }}
                         >
-                            <Image source={Constants.icons.left} style={{ marginLeft: 20 }} />
+                            <Image source={Constant.icons.left} style={{ marginLeft: 20 }} />
                             <Text style={styles.scanText}>SCAN</Text>
                         </TouchableOpacity>
                     </View>
@@ -152,17 +141,9 @@ const Scan = () => {
                     </View>
                     <View style={styles.viewBot} />
                     <View style={styles.viewIcon}>
-                        <HandleButtonImage
-                            title='Gallery'
-                            icon={Constants.icons.gallery}
-                            onPress={onShowGallery}
-                        />
-                        <HandleButtonImage
-                            title='Light'
-                            icon={Constants.icons.light}
-                            onPress={onChangeFlashMode}
-                        />
-                        <HandleButtonImage title='Help' icon={Constants.icons.help1} />
+                        <HandleButtonImage title='Gallery' icon={Constant.icons.gallery} onPress={onShowGallery} />
+                        <HandleButtonImage title='Light' icon={Constant.icons.light} onPress={onChangeFlashMode} />
+                        <HandleButtonImage title='Help' icon={Constant.icons.help1} />
                     </View>
                 </View>
             </RNCamera>
@@ -188,26 +169,26 @@ const styles = StyleSheet.create({
     },
     titleText: {
         fontSize: 16,
-        color: Constants.color.white,
+        color: Constant.color.white,
         paddingTop: 10,
-        backgroundColor: Constants.color.backgScan,
+        backgroundColor: Constant.color.backgScan,
         textAlign: 'center'
     },
     cameraView: {
         flex: 1,
-        backgroundColor: Constants.color.backgScan
+        backgroundColor: Constant.color.backgScan
     },
     backView: {
-        backgroundColor: Constants.color.backgScan
+        backgroundColor: Constant.color.backgScan
     },
     scanText: {
         fontSize: 30,
-        color: Constants.color.white,
+        color: Constant.color.white,
         marginLeft: 12,
         includeFontPadding: false
     },
     viewIcon: {
-        backgroundColor: Constants.color.backgScan,
+        backgroundColor: Constant.color.backgScan,
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 40,
@@ -218,16 +199,16 @@ const styles = StyleSheet.create({
         height: 48
     },
     textGallery: {
-        color: Constants.color.white,
+        color: Constant.color.white,
         textAlign: 'center',
         paddingTop: 10
     },
     view: {
         flex: 1,
-        backgroundColor: Constants.color.backgScan
+        backgroundColor: Constant.color.backgScan
     },
     viewBot: {
-        backgroundColor: Constants.color.backgScan,
+        backgroundColor: Constant.color.backgScan,
         paddingBottom: 24
     }
 })

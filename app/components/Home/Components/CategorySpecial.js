@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, FlatList, Image, StyleSheet } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { formatPriceNumber } from '../../../help'
 
-import RatingComponent from './Rating'
+import RatingComponent from '../Components/Rating'
+import Util from '../../../controller/Util'
 
 const CategorySpecial = ({ nameCategory, items }) => {
     const navigation = useNavigation()
@@ -30,7 +30,7 @@ const CategorySpecial = ({ nameCategory, items }) => {
                         <RatingComponent />
                     </Text>
                     <Text numberOfLines={1} style={[styles.infoPrice]}>
-                        {formatPriceNumber(item?.price)}
+                        {Util.formatPriceNumber(item?.price)}
                     </Text>
                 </View>
             </TouchableOpacity>
@@ -42,13 +42,7 @@ const CategorySpecial = ({ nameCategory, items }) => {
             <View style={styles.title}>
                 <Text style={styles.titleText}>{nameCategory}</Text>
             </View>
-            <FlatList
-                data={items}
-                renderItem={showItems}
-                keyExtractor={(item) => item?.name.toString()}
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}
-            />
+            <FlatList data={items} renderItem={showItems} keyExtractor={(item) => item?.name.toString()} horizontal={true} showsHorizontalScrollIndicator={false} />
         </View>
     )
 }

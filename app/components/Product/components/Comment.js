@@ -1,24 +1,12 @@
 import React, { useEffect, useContext, useState } from 'react'
-import {
-    View,
-    Text,
-    FlatList,
-    Image,
-    TextInput,
-    TouchableOpacity,
-    LogBox,
-    Alert,
-    StyleSheet,
-    Dimensions
-} from 'react-native'
+import { View, Text, FlatList, Image, TextInput, TouchableOpacity, LogBox, Alert, StyleSheet, Dimensions } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
 import { useNavigation } from '@react-navigation/native'
 import auth from '@react-native-firebase/auth'
 
-import { AuthContext } from '../../../navigation/AuthProvider'
-import { commentModel } from '../../../model'
+import commentModel from '../../common/model/commentModel'
 import Constant from '../../../controller/Constant'
 
 LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
@@ -168,12 +156,7 @@ const Comment = ({ productId, productImg }) => {
                             </View>
                         </TouchableOpacity>
                         <View style={styles.input}>
-                            <TextInput
-                                value={textComment}
-                                onChangeText={(textComment) => setTextComment(textComment)}
-                                placeholder='Nhập bình luận'
-                                style={styles.textInput}
-                            />
+                            <TextInput value={textComment} onChangeText={(textComment) => setTextComment(textComment)} placeholder='Nhập bình luận' style={styles.textInput} />
                         </View>
                     </View>
                     <View style={styles.buttonComment}>
@@ -191,11 +174,7 @@ const Comment = ({ productId, productImg }) => {
                     </View>
                 )}
 
-                <FlatList
-                    data={commentList}
-                    renderItem={showItems}
-                    keyExtractor={(comment, uid) => 'comment+' + uid}
-                />
+                <FlatList data={commentList} renderItem={showItems} keyExtractor={(comment, uid) => 'comment+' + uid} />
             </View>
         </>
     )

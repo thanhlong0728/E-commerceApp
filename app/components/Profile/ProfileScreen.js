@@ -1,27 +1,14 @@
-import {
-    StyleSheet,
-    Text,
-    View,
-    TouchableOpacity,
-    Alert,
-    ToastAndroid,
-    Linking,
-    Image
-} from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Alert, ToastAndroid, Linking, Image } from 'react-native'
 import React, { useContext, useState, useEffect } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
-import FastImage from 'react-native-fast-image'
-import ActionSheet from 'react-native-actionsheet'
 import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
 import auth from '@react-native-firebase/auth'
-import storage from '@react-native-firebase/storage'
 
 import { AuthContext } from '../../navigation/AuthProvider'
 import Constant from '../../controller/Constant'
-
 
 const list = [
     {
@@ -142,11 +129,7 @@ const ProfileScreen = () => {
                 </View>
             </View>
             {list.map((item, index) => (
-                <TouchableOpacity
-                    activeOpacity={0.7}
-                    key={index}
-                    onPress={() => handleOnClickItem(item)}
-                >
+                <TouchableOpacity activeOpacity={0.7} key={index} onPress={() => handleOnClickItem(item)}>
                     <View style={styles.problem}>
                         <Text style={styles.textProblems}>{item.name}</Text>
                         <Icon style={styles.iconHandling} name='angle-right' size={15} />

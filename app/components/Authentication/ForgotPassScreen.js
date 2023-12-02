@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StatusBar, Alert } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, StatusBar, Alert, StyleSheet } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 import LinearGradient from 'react-native-linear-gradient'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
@@ -8,7 +8,6 @@ import { useTheme } from 'react-native-paper'
 
 import { useNavigation } from '@react-navigation/native'
 import { AuthContext } from '../../navigation/AuthProvider'
-import { StyleSheet } from 'react-native'
 
 const ForgotPassScreen = () => {
     const navigation = useNavigation()

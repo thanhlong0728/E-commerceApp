@@ -1,16 +1,4 @@
-import {
-    StyleSheet,
-    Text,
-    View,
-    TouchableOpacity,
-    Alert,
-    ToastAndroid,
-    Linking,
-    ScrollView,
-    Image,
-    TextInput,
-    LogBox
-} from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Alert, ToastAndroid, Linking, ScrollView, Image, TextInput, LogBox } from 'react-native'
 import React, { useContext, useState, useRef, useEffect } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import { Avatar } from 'react-native-elements'
@@ -27,7 +15,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import { AuthContext } from '../../navigation/AuthProvider'
 import Constant from '../../controller/Constant'
-
 
 LogBox.ignoreLogs(['Animated: `useNativeDriver`', 'componentWillReceiveProps'])
 
@@ -170,12 +157,7 @@ const ProfileEditScreen = () => {
                 <View style={styles.viewInformation}>
                     <TouchableOpacity onPress={onShowImageActionSheet} style={styles.view}>
                         <Image source={{ uri: avatarUser }} style={styles.avatar} />
-                        <Ionicons
-                            name='build-outline'
-                            size={20}
-                            color='black'
-                            style={styles.icEdit}
-                        />
+                        <Ionicons name='build-outline' size={20} color='black' style={styles.icEdit} />
                     </TouchableOpacity>
                 </View>
                 <View style={styles.viewProblems}>
@@ -193,14 +175,7 @@ const ProfileEditScreen = () => {
                     </View>
                     <View style={styles.barCode}>
                         <Text style={styles.textProblemsTitle}>Họ và tên</Text>
-                        <TextInput
-                            placeholder='Nhập họ tên'
-                            style={styles.textProblems1}
-                            value={userName}
-                            onChangeText={setUserName}
-                            placeholderTextColor='#A9A9A9'
-                            autoCapitalize='none'
-                        />
+                        <TextInput placeholder='Nhập họ tên' style={styles.textProblems1} value={userName} onChangeText={setUserName} placeholderTextColor='#A9A9A9' autoCapitalize='none' />
                     </View>
                     <View style={styles.barCode}>
                         <Text style={styles.textProblemsTitle}>Số điện thoại</Text>
@@ -216,14 +191,7 @@ const ProfileEditScreen = () => {
                     </View>
                     <View style={styles.barCode}>
                         <Text style={styles.textProblemsTitle}>Địa chỉ</Text>
-                        <TextInput
-                            placeholder='Nhập địa chỉ'
-                            style={styles.textProblems1}
-                            value={address}
-                            onChangeText={setAddress}
-                            placeholderTextColor='#A9A9A9'
-                            autoCapitalize='none'
-                        />
+                        <TextInput placeholder='Nhập địa chỉ' style={styles.textProblems1} value={address} onChangeText={setAddress} placeholderTextColor='#A9A9A9' autoCapitalize='none' />
                     </View>
                 </View>
                 <TouchableOpacity style={styles.button} onPress={handleUpdateProfile}>
@@ -231,13 +199,7 @@ const ProfileEditScreen = () => {
                 </TouchableOpacity>
             </ScrollView>
 
-            <ActionSheet
-                ref={_refActionSheet}
-                title={'Chọn ảnh'}
-                options={['Camera', 'Thư viện ảnh', 'Huỷ']}
-                cancelButtonIndex={2}
-                onPress={handlePickerImage}
-            />
+            <ActionSheet ref={_refActionSheet} title={'Chọn ảnh'} options={['Camera', 'Thư viện ảnh', 'Huỷ']} cancelButtonIndex={2} onPress={handlePickerImage} />
         </View>
     )
 }

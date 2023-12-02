@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { View, FlatList, RefreshControl, ScrollView, StyleSheet } from 'react-native'
-
-import { BoxSlider, Product } from '../components'
-import { fetchProduct } from '../../store/slices/products'
 import { useDispatch, useSelector } from 'react-redux'
 import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
+
+import BoxSlider from '../../components/common/Header/components/BoxSlider'
+import Product from '../../components/Product/components/Product'
+import { fetchProduct } from '../../redux/slices/products'
 
 import Constant from '../../controller/Constant'
 
@@ -73,10 +74,7 @@ const CategoryAllScreen = () => {
     }
 
     return (
-        <ScrollView
-            refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefreshing} />}
-            style={styles.container}
-        >
+        <ScrollView refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefreshing} />} style={styles.container}>
             <FlatList
                 showsVerticalScrollIndicator={false}
                 data={allProductList}

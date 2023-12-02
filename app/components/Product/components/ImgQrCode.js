@@ -1,23 +1,13 @@
 import React, { useState } from 'react'
-import {
-    View,
-    Text,
-    StyleSheet,
-    Image,
-    TouchableOpacity,
-    Platform,
-    ToastAndroid,
-    Linking,
-    Alert
-} from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity, Platform, ToastAndroid, Linking, Alert } from 'react-native'
 import QRCode from 'react-native-qrcode-svg'
 import RNFS from 'react-native-fs'
 import CameraRoll from '@react-native-community/cameraroll'
 import Clipboard from '@react-native-clipboard/clipboard'
 import RNProgressHud from 'progress-hud'
 import Modal from 'react-native-modal'
-import Constants from '../../../app/controller/Constant'
-import Util from '../../../app/controller/Util'
+import Util from '../../../controller/Util'
+import Constant from '../../../controller/Constant'
 
 //1. npm i react-native-svg react-native-qrcode-svg
 //2. thêm android:name="android.permission.CAMERA", android:name="android.permission.READ_EXTERNAL_STORAGE", android:name="android.permission.WRITE_EXTERNAL_STORAGE" vào AndroidManifest.xml
@@ -30,7 +20,7 @@ const ImgQrCode = ({ value, dataQR, isModalVisible, setModalVisible }) => {
     const [productQRref, setProductQRref] = useState()
 
     const downloadQRCode = async () => {
-        if (Platform.OS === 'android' && !(await Util.hasAndroidPermission)) {
+        if (Platform.OS === 'android' && !(await Util.hasAndroidPermission())) {
             Alert.alert('Notification', 'Please update your access rights')
             Linking.openSettings()
             return
@@ -69,7 +59,7 @@ const ImgQrCode = ({ value, dataQR, isModalVisible, setModalVisible }) => {
                     style={styles.imgQrCode}
                 />
                 <TouchableOpacity onPress={downloadQRCode}>
-                    <Image source={Constants.icons.download} style={{ marginVertical: 20 }} />
+                    <Image source={Constant.icons.download} style={{ marginVertical: 20 }} />
                 </TouchableOpacity>
                 <Text style={styles.textPhone}>{value}</Text>
                 <TouchableOpacity onPress={copyPhone} style={styles.buttonCopy}>
@@ -88,7 +78,7 @@ const styles = StyleSheet.create({
     },
     imgQrCode: {
         color: 'white',
-        backgroundColor: Constants.color.black
+        backgroundColor: Constant.COLORS.black
     },
     boxText: {
         marginTop: 20,
@@ -97,21 +87,21 @@ const styles = StyleSheet.create({
     },
     textTittle: {
         fontSize: 21,
-        color: Constants.color.black
+        color: Constant.COLORS.black
     },
     textPhone: {
         fontSize: 14,
-        color: Constants.color.black
+        color: Constant.COLORS.black
     },
     buttonCopy: {
-        backgroundColor: Constants.color.button,
+        backgroundColor: Constant.COLORS.button,
         borderRadius: 20,
         marginTop: 33,
         marginBottom: 26
     },
     textCopy: {
         fontSize: 14,
-        color: Constants.color.white,
+        color: Constant.COLORS.white,
         marginVertical: 9,
         marginHorizontal: 28
     }

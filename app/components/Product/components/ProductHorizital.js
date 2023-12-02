@@ -5,10 +5,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useDispatch, useSelector } from 'react-redux'
 
 import IconHeart from '../../common/Icon/IconHeart'
-import { Favorite } from '../../../store/slices/favorite'
-import { formatPriceNumber, SalePercent } from '../../../help'
-import { IMAGES } from '../../../contains'
+import { Favorite } from '../../../redux/slices/favorite'
 import Constant from '../../../controller/Constant'
+import Util from '../../../controller/Util'
 
 const ProductHorizital = ({ data, sale = true }) => {
     const navigation = useNavigation()
@@ -45,8 +44,8 @@ const ProductHorizital = ({ data, sale = true }) => {
                     <Text numberOfLines={1} style={styles.title}>
                         {data.summary}
                     </Text>
-                    {sale && <Text style={styles.oldPrice}>{formatPriceNumber(data.price)}</Text>}
-                    <Text style={styles.price}>{formatPriceNumber(data.price_sale_off)}</Text>
+                    {sale && <Text style={styles.oldPrice}>{Util.formatPriceNumber(data.price)}</Text>}
+                    <Text style={styles.price}>{Util.formatPriceNumber(data.price_sale_off)}</Text>
                 </View>
                 <View style={styles.iconLike}>
                     <TouchableOpacity onPress={onHeart}>
@@ -58,10 +57,8 @@ const ProductHorizital = ({ data, sale = true }) => {
                 </TouchableOpacity>
                 {sale && (
                     <View style={styles.sale}>
-                        <Image style={styles.saleImg} source={IMAGES.sale} />
-                        <Text style={styles.salePr}>
-                            {SalePercent(data.price, data.price_sale_off)}
-                        </Text>
+                        <Image style={styles.saleImg} source={Constant.IMAGES.sale} />
+                        <Text style={styles.salePr}>{Util.SalePercent(data.price, data.price_sale_off)}</Text>
                         <Text style={styles.saleOf}>GIẢM GIÁ</Text>
                     </View>
                 )}

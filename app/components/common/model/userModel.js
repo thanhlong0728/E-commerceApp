@@ -1,5 +1,4 @@
-import { ShowToast } from '../app/help/showToast'
-import firestore from '@react-native-firebase/firestore'
+import { ShowToast } from '../../common/ShowToast'
 import auth from '@react-native-firebase/auth'
 import RNProgressHud from 'progress-hud'
 

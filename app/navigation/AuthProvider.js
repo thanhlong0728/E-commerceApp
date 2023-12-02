@@ -1,15 +1,15 @@
 import { Alert, ToastAndroid } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import React, { createContext, useState } from 'react'
-import { ShowToast } from '../app/help/showToast'
 import 'react-native-gesture-handler'
 import RNProgressHud from 'progress-hud'
 import auth from '@react-native-firebase/auth'
 import { useDispatch } from 'react-redux'
 import firestore from '@react-native-firebase/firestore'
 
-import { getProfileUser } from '../firebase/user'   
+import { getProfileUser } from '../firebase/user'
 import { setInfoUser } from '../redux/slices/userSlice'
+import { ShowToast } from '../components/common/ShowToast'
 
 export const AuthContext = createContext({})
 

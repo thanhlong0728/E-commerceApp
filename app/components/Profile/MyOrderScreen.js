@@ -1,25 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react'
-import {
-    View,
-    Text,
-    FlatList,
-    Image,
-    TouchableOpacity,
-    Alert,
-    ScrollView,
-    RefreshControl,
-    StyleSheet,
-    Dimensions
-} from 'react-native'
+import { View, Text, FlatList, Image, TouchableOpacity, Alert, ScrollView, RefreshControl, StyleSheet, Dimensions } from 'react-native'
 import auth from '@react-native-firebase/auth'
-import storage from '@react-native-firebase/storage'
 import RNProgressHud from 'progress-hud'
 import { useNavigation } from '@react-navigation/native'
 import firestore from '@react-native-firebase/firestore'
 
-import { AuthContext } from '../../navigation/AuthProvider'
-import { orderModel } from '../../model'
-import { formatPriceNumber } from '../app/help'
+import Util from '../../controller/Util'
 
 const MyOderScreen = () => {
     const navigation = useNavigation()
@@ -112,21 +98,14 @@ const MyOderScreen = () => {
                         <View style={styles.productOrder}>
                             <View style={styles.infoOrder}>
                                 <View style={styles.boxImg}>
-                                    <Image
-                                        source={{ uri: e.photoProduct }}
-                                        style={styles.imgOrder}
-                                    />
+                                    <Image source={{ uri: e.photoProduct }} style={styles.imgOrder} />
                                 </View>
                                 <View style={styles.info}>
                                     <Text style={styles.textInfo}>{userName}</Text>
                                     <Text style={styles.textInfo}>{e.nameProduct}</Text>
-                                    <Text style={styles.textInfo}>
-                                        Giá: {formatPriceNumber(e.priceProduct)}
-                                    </Text>
+                                    <Text style={styles.textInfo}>Giá: {Util.formatPriceNumber(e.priceProduct)}</Text>
                                     <Text style={styles.textInfo}>Số lượng: {e.sum}</Text>
-                                    <Text style={[styles.textInfo, styles.textRed]}>
-                                        Tổng cộng: {formatPriceNumber(e.total)}
-                                    </Text>
+                                    <Text style={[styles.textInfo, styles.textRed]}>Tổng cộng: {Util.formatPriceNumber(e.total)}</Text>
                                 </View>
                             </View>
                             {index + 1 === row.length && (
@@ -145,20 +124,16 @@ const MyOderScreen = () => {
                                     )}
                                     <TouchableOpacity
                                         onPress={() => {
-                                            Alert.alert(
-                                                'Thông báo !',
-                                                'Bạn có muốn hủy đơn hàng không?',
-                                                [
-                                                    {
-                                                        text: 'Hủy',
-                                                        style: 'cancel'
-                                                    },
-                                                    {
-                                                        text: 'Đồng ý',
-                                                        onPress: deleteOrder
-                                                    }
-                                                ]
-                                            )
+                                            Alert.alert('Thông báo !', 'Bạn có muốn hủy đơn hàng không?', [
+                                                {
+                                                    text: 'Hủy',
+                                                    style: 'cancel'
+                                                },
+                                                {
+                                                    text: 'Đồng ý',
+                                                    onPress: deleteOrder
+                                                }
+                                            ])
                                         }}
                                     >
                                         <View style={styles.boxHuy}>
@@ -175,15 +150,8 @@ const MyOderScreen = () => {
     }
 
     return (
-        <ScrollView
-            style={styles.container}
-            refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefreshing} />}
-        >
-            <FlatList
-                data={dataOrder}
-                renderItem={showItems}
-                keyExtractor={(Orders, uid) => 'Orders+' + uid}
-            />
+        <ScrollView style={styles.container} refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefreshing} />}>
+            <FlatList data={dataOrder} renderItem={showItems} keyExtractor={(Orders, uid) => 'Orders+' + uid} />
         </ScrollView>
     )
 }

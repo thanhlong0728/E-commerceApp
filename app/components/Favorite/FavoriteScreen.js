@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
 
-import { Product } from '../components'
+import Product from '../../components/Product/components/Product'
 import Constant from '../../controller/Constant'
 
 const FavoriteScreen = () => {
@@ -57,19 +57,8 @@ const FavoriteScreen = () => {
 
     return (
         <View style={styles.container}>
-            <ScrollView
-                style={styles.aside}
-                refreshControl={
-                    <RefreshControl refreshing={isRefreshing} onRefresh={onRefreshing} />
-                }
-            >
-                <FlatList
-                    showsVerticalScrollIndicator={false}
-                    data={items}
-                    renderItem={showItems}
-                    keyExtractor={(item) => item.name.toString()}
-                    numColumns={2}
-                />
+            <ScrollView style={styles.aside} refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefreshing} />}>
+                <FlatList showsVerticalScrollIndicator={false} data={items} renderItem={showItems} keyExtractor={(item) => item.name.toString()} numColumns={2} />
             </ScrollView>
         </View>
     )

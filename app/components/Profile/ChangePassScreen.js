@@ -1,11 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import firestore from '@react-native-firebase/firestore'
-import auth from '@react-native-firebase/auth'
 
-import { InputStyle } from '../components'
-import { userModel } from '../../model'
+import InputStyle from '../../components/common/InputStyle'
+import userModel from '../../components/common/model/userModel'
 import Constant from '../../controller/Constant'
 
 const ChangePassScreen = () => {
@@ -20,28 +18,13 @@ const ChangePassScreen = () => {
     return (
         <KeyboardAwareScrollView enableOnAndroid={true} style={styles.container}>
             <View style={styles.formInput}>
-                <InputStyle
-                    name='Mật khẩu hiện tại'
-                    placeholder='Nhập mật khẩu hiện tại'
-                    value={oldPass}
-                    onChange={(value) => setOldPass(value)}
-                />
+                <InputStyle name='Mật khẩu hiện tại' placeholder='Nhập mật khẩu hiện tại' value={oldPass} onChange={(value) => setOldPass(value)} />
             </View>
             <View style={styles.formInput}>
-                <InputStyle
-                    name='Mật khẩu mới'
-                    placeholder='Nhập mật khẩu mới'
-                    value={newPass}
-                    onChange={(value) => setNewPass(value)}
-                />
+                <InputStyle name='Mật khẩu mới' placeholder='Nhập mật khẩu mới' value={newPass} onChange={(value) => setNewPass(value)} />
             </View>
             <View style={styles.formInput}>
-                <InputStyle
-                    name='Xác nhận mật khẩu mới'
-                    placeholder='Nhập xác nhận mật khẩu mới'
-                    value={confirmPass}
-                    onChange={(value) => setConfirmPass(value)}
-                />
+                <InputStyle name='Xác nhận mật khẩu mới' placeholder='Nhập xác nhận mật khẩu mới' value={confirmPass} onChange={(value) => setConfirmPass(value)} />
             </View>
             <TouchableOpacity style={styles.footterSubmit} onPress={updatePass}>
                 <Text style={styles.textFootterSubmit}>Cập nhật</Text>

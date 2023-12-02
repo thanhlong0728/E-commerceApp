@@ -5,8 +5,6 @@ import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
 import RNProgressHud from 'progress-hud'
 
-import { commentModel } from '../../model'
-
 const MyCommentScreen = () => {
     const navigation = useNavigation()
     const { uid } = auth().currentUser
@@ -76,11 +74,7 @@ const MyCommentScreen = () => {
     }
     return (
         <View style={styles.container}>
-            <FlatList
-                data={dataAllComment}
-                renderItem={showItems}
-                keyExtractor={(comment, uid) => 'comment+' + uid}
-            />
+            <FlatList data={dataAllComment} renderItem={showItems} keyExtractor={(comment, uid) => 'comment+' + uid} />
         </View>
     )
 }

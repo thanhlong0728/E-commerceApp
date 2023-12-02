@@ -4,8 +4,8 @@ import RangeSlider from 'react-native-range-slider'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 
-import { Fillter } from '../../store/slices/fillter'
-import { ButtonFillter } from '../components'
+import { Fillter } from '../../redux/slices/fillter'
+import ButtonFillter from '../../components/Fillter/components/ButtonFillter'
 import Constant from '../../controller/Constant'
 
 const FillterScreen = () => {
@@ -31,33 +31,13 @@ const FillterScreen = () => {
                     <Text style={styles.fillTitle}>Lọc theo sản phẩm</Text>
                     <View style={styles.fillProduct}>
                         <View style={styles.fillProductCol}>
-                            <ButtonFillter
-                                active={active}
-                                onPress={activeButton}
-                                title={'Mới nhất'}
-                            />
-                            <ButtonFillter
-                                active={active}
-                                onPress={activeButton}
-                                title={'Giá giảm'}
-                            />
-                            <ButtonFillter
-                                active={active}
-                                onPress={activeButton}
-                                title={'Giá tăng'}
-                            />
+                            <ButtonFillter active={active} onPress={activeButton} title={'Mới nhất'} />
+                            <ButtonFillter active={active} onPress={activeButton} title={'Giá giảm'} />
+                            <ButtonFillter active={active} onPress={activeButton} title={'Giá tăng'} />
                         </View>
                         <View style={styles.fillProductCol}>
-                            <ButtonFillter
-                                active={active}
-                                onPress={activeButton}
-                                title={'Cũ nhất'}
-                            />
-                            <ButtonFillter
-                                active={active}
-                                onPress={activeButton}
-                                title={'Đang giảm giá'}
-                            />
+                            <ButtonFillter active={active} onPress={activeButton} title={'Cũ nhất'} />
+                            <ButtonFillter active={active} onPress={activeButton} title={'Đang giảm giá'} />
                         </View>
                     </View>
                 </View>
@@ -73,9 +53,7 @@ const FillterScreen = () => {
                             initialToValue={toValue}
                         />
                         <View style={styles.viewPrice}>
-                            <Text style={styles.price}>
-                                Giá từ : {formatPriceNumber(fromValue)}
-                            </Text>
+                            <Text style={styles.price}>Giá từ : {formatPriceNumber(fromValue)}</Text>
                             <Text style={styles.price}>Giá đến : {formatPriceNumber(toValue)}</Text>
                         </View>
                     </View>

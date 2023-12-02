@@ -4,7 +4,9 @@ import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { BoxSlider, Category, CategorySpecial } from '../components'
+import BoxSlider from '../../components/common/Header/components/BoxSlider'
+import Category from './Components/Category'
+import CategorySpecial from './Components/CategorySpecial'
 import Constant from '../../controller/Constant'
 
 const HomeScreen = () => {
@@ -74,20 +76,12 @@ const HomeScreen = () => {
 
     return (
         <View style={styles.container}>
-            <ScrollView
-                showsVerticalScrollIndicator={false}
-                refreshControl={
-                    <RefreshControl refreshing={isRefreshing} onRefresh={onRefreshing} />
-                }
-            >
+            <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefreshing} />}>
                 <BoxSlider />
                 <View style={styles.aside}>
                     <Category items={categoryList} />
                     <CategorySpecial nameCategory={'Danh mục nổi bật'} items={productSpecList} />
-                    <CategorySpecial
-                        nameCategory={'Danh mục sản phẩm mới'}
-                        items={productIsNewList}
-                    />
+                    <CategorySpecial nameCategory={'Danh mục sản phẩm mới'} items={productIsNewList} />
                 </View>
             </ScrollView>
         </View>

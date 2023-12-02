@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { View, Text, TouchableOpacity, Image, StyleSheet, Dimensions } from 'react-native'
-
-import IconHeart from '../../common/Icon/IconHeart'
-import { formatPriceNumber } from '../../../help'
-import Quantify from './Quantify'
-import { AddCart, RemoveCart } from '../../../store/slices/cart'
-import { fetchSingleProduct } from '../../../store/slices/products'
 import { useDispatch, useSelector } from 'react-redux'
-import { ShowToast } from '../../../help/showToast'
+
+import Quantify from '../../Product/components/Quantify'
+import { AddCart, RemoveCart } from '../../../redux/slices/cart'
+import { ShowToast } from '../../common/ShowToast'
 import Constant from '../../../controller/Constant'
+import Util from '../../../controller/Util'
 
 const ProductList = ({ item, cart, check }) => {
     const dispatch = useDispatch()
@@ -79,19 +77,12 @@ const ProductList = ({ item, cart, check }) => {
                     <Text numberOfLines={1}>{item.description}</Text>
                     {!cart && <Text numberOfLines={1}>Số lượng : {number}</Text>}
                     <Text numberOfLines={1} style={styles.contentPrice}>
-                        Giá tiền :{' '}
-                        {cart
-                            ? formatPriceNumber(number * item?.priceProduct)
-                            : formatPriceNumber(item?.priceProduct)}
+                        Giá tiền : {cart ? Util.formatPriceNumber(number * item?.priceProduct) : Util.formatPriceNumber(item?.priceProduct)}
                     </Text>
                 </View>
                 {cart && (
                     <View style={styles.contentMore}>
-                        <Quantify
-                            quantity={number}
-                            handleChangeNumber={(val) => handleChangeNumber(val)}
-                            small
-                        />
+                        <Quantify quantity={number} handleChangeNumber={(val) => handleChangeNumber(val)} small />
                     </View>
                 )}
             </View>

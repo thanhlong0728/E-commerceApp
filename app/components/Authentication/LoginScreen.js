@@ -108,11 +108,7 @@ const LoginScreen = () => {
                         onChangeText={setPassword}
                     />
                     <TouchableOpacity onPress={updateSecureTextEntry}>
-                        {secureTextEntry ? (
-                            <Feather name='eye-off' color='grey' size={20} />
-                        ) : (
-                            <Feather name='eye' color='grey' size={20} />
-                        )}
+                        {secureTextEntry ? <Feather name='eye-off' color='grey' size={20} /> : <Feather name='eye' color='grey' size={20} />}
                     </TouchableOpacity>
                 </View>
 

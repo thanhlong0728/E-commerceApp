@@ -1,33 +1,14 @@
-import {
-    StyleSheet,
-    Text,
-    View,
-    TouchableOpacity,
-    Alert,
-    ToastAndroid,
-    Linking,
-    ScrollView,
-    Image,
-    TextInput,
-    LogBox
-} from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Alert, ToastAndroid, Linking, ScrollView, Image, TextInput, LogBox } from 'react-native'
 import React, { useContext, useState, useRef, useEffect } from 'react'
-import Icon from 'react-native-vector-icons/FontAwesome5'
-import { Avatar } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
 import firestore from '@react-native-firebase/firestore'
 import auth from '@react-native-firebase/auth'
 import { useDispatch, useSelector } from 'react-redux'
-import FastImage from 'react-native-fast-image'
-import ActionSheet from 'react-native-actionsheet'
-import ImagePicker from 'react-native-image-crop-picker'
-import storage from '@react-native-firebase/storage'
 import RNProgressHud from 'progress-hud'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import { AuthContext } from '../../navigation/AuthProvider'
 import Constant from '../../controller/Constant'
-
 
 LogBox.ignoreLogs(['Animated: `useNativeDriver`', 'componentWillReceiveProps'])
 
@@ -74,12 +55,7 @@ const ProfileInfoScreen = () => {
                 <View style={styles.viewInformation}>
                     <View style={styles.view}>
                         <Image source={{ uri: avatarUser }} style={styles.avatar} />
-                        <Ionicons
-                            name='build-outline'
-                            size={20}
-                            color='black'
-                            style={styles.icEdit}
-                        />
+                        <Ionicons name='build-outline' size={20} color='black' style={styles.icEdit} />
                     </View>
                 </View>
                 <View style={styles.viewProblems}>

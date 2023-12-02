@@ -1,16 +1,15 @@
 import React from 'react'
-import { ScrollView, View , Text ,  Image } from 'react-native'
-import { IMAGES } from '../../contains'
+import { ScrollView, View, Text, Image } from 'react-native'
 
 import styles from './styles'
+import Constant from '../../../controller/Constant'
 
 const EmptyData = () => {
-
     return (
         <>
-           <View style={styles.container} >
-                <Image source={(IMAGES.nodata)} style={styles.img}  />
-           </View>
+            <View style={styles.container}>
+                <Image source={Constant.IMAGES.nodata} style={styles.img} />
+            </View>
         </>
     )
 }

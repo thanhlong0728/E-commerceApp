@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { RemoveFavorite } from '../store/slices/favorite'
+import { RemoveFavorite } from '../../../redux/slices/favorite'
 import Constant from '../../../controller/Constant'
 
 const IconHeader = ({ name = 'menu', product = false, right = true }) => {
@@ -58,22 +58,14 @@ const IconHeader = ({ name = 'menu', product = false, right = true }) => {
         case 'cart':
             icon = (
                 <TouchableOpacity onPress={openCart} style={styles.cart}>
-                    <Ionicons
-                        name='cart-outline'
-                        size={24}
-                        color={product ? Constant.COLORS.white : Constant.COLORS.main}
-                    />
+                    <Ionicons name='cart-outline' size={24} color={product ? Constant.COLORS.white : Constant.COLORS.main} />
                 </TouchableOpacity>
             )
             break
         case 'back':
             icon = (
                 <TouchableOpacity onPress={goBackHome} style={styles.container}>
-                    <Ionicons
-                        name='arrow-back'
-                        size={24}
-                        color={product ? Constant.COLORS.white : Constant.COLORS.main}
-                    />
+                    <Ionicons name='arrow-back' size={24} color={product ? Constant.COLORS.white : Constant.COLORS.main} />
                 </TouchableOpacity>
             )
             break

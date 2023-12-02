@@ -1,13 +1,14 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useState, useEffect } from 'react'
 import { View, FlatList, StyleSheet } from 'react-native'
-import { Loading, Product } from '../components'
-import { fetchProduct } from '../../store/slices/products'
 import { useDispatch, useSelector } from 'react-redux'
-import { EmptyData } from '../common'
 import HighlightText from '@sanar/react-native-highlight-text'
 import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
+
+import Loading from '../common/Loading'
+import Product from '../Product/components/Product'
+import { EmptyData } from '../common/EmptyData'
 
 const InfoCartScreen = () => {
     const route = useRoute()
@@ -39,13 +40,7 @@ const InfoCartScreen = () => {
     }, [search])
 
     const highlightName = (string) => {
-        return (
-            <HighlightText
-                highlightStyle={{ backgroundColor: 'yellow' }}
-                searchWords={[search]}
-                textToHighlight={string}
-            />
-        )
+        return <HighlightText highlightStyle={{ backgroundColor: 'yellow' }} searchWords={[search]} textToHighlight={string} />
     }
 
     const showItems = ({ item }) => {
@@ -61,13 +56,7 @@ const InfoCartScreen = () => {
             {items.length > 0 ? (
                 <View style={styles.container}>
                     <View style={styles.aside}>
-                        <FlatList
-                            showsVerticalScrollIndicator={false}
-                            data={items}
-                            renderItem={showItems}
-                            keyExtractor={(item) => item.name.toString()}
-                            numColumns={2}
-                        />
+                        <FlatList showsVerticalScrollIndicator={false} data={items} renderItem={showItems} keyExtractor={(item) => item.name.toString()} numColumns={2} />
                     </View>
                 </View>
             ) : (

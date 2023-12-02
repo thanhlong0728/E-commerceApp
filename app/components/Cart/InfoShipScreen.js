@@ -3,8 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import { AuthContext } from '../../navigation/AuthProvider'
-import { InputStyle } from '../components'
-
+import InputStyle from '../../components/common/InputStyle'
 import Constant from '../../controller/Constant'
 
 const InfoShipScreen = () => {
@@ -20,19 +19,10 @@ const InfoShipScreen = () => {
     return (
         <KeyboardAwareScrollView enableOnAndroid={true} style={styles.container}>
             <View style={styles.formInput}>
-                <InputStyle
-                    name={'Họ tên'}
-                    value={nickName}
-                    onChange={(value) => setNickName(value)}
-                />
+                <InputStyle name={'Họ tên'} value={nickName} onChange={(value) => setNickName(value)} />
             </View>
             <View style={styles.formInput}>
-                <InputStyle
-                    name={'Email'}
-                    value={emailInfo}
-                    onChange={(value) => setEmail(value)}
-                    editable={false}
-                />
+                <InputStyle name={'Email'} value={emailInfo} onChange={(value) => setEmail(value)} editable={false} />
             </View>
 
             <TouchableOpacity style={styles.footterSubmit} onPress={updateIF}>
