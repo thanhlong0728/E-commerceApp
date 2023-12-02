@@ -10,7 +10,7 @@ import { AddCart } from '../../../store/slices/cart'
 import { formatPriceNumber, SalePercent } from '../../../help'
 import { IMAGES } from '../../../contains'
 import { ShowToast } from '../../../help/showToast'
-import { COLORS } from '../../../contains'
+import Constant from '../../../controller/Constant'
 
 const Product = ({ data, sale = true }) => {
     const navigation = useNavigation()
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     product: {
-        backgroundColor: COLORS.second,
+        backgroundColor: Constant.COLORS.second,
         width: '100%',
         height: '100%',
         borderRadius: 15,
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
         color: '#8B8080'
     },
     price: {
-        color: COLORS.red
+        color: Constant.COLORS.red
     },
     sale: {
         position: 'absolute',
@@ -178,12 +178,12 @@ const styles = StyleSheet.create({
     },
     salePr: {
         fontSize: 12,
-        color: COLORS.red,
+        color: Constant.COLORS.red,
         marginTop: 2
     },
     saleOf: {
         fontSize: 8,
-        color: COLORS.red,
+        color: Constant.COLORS.red,
         marginTop: 2
     }
 })

@@ -20,8 +20,8 @@ import { ShowToast } from '../../app/help/showToast'
 import { AddCart } from '../../store/slices/cart'
 import Constants from '../../app/controller/Constant'
 import ImgQrCode from './components/ImgQrCode'
+import Constant from '../../controller/Constant'
 
-import { COLORS } from '../../contains'
 
 const ProductScreen = () => {
     const route = useRoute()
@@ -201,7 +201,7 @@ export default ProductScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: COLORS.pink,
+        backgroundColor: Constant.COLORS.pink,
         marginBottom: 60
     },
     product: {
@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 45,
         borderTopRightRadius: 45,
         flex: 1,
-        backgroundColor: COLORS.white,
+        backgroundColor: Constant.COLORS.white,
         paddingTop: 50,
         paddingHorizontal: 20
     },
@@ -236,23 +236,23 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 22,
         fontWeight: 'bold',
-        color: COLORS.white
+        color: Constant.COLORS.white
     },
     oldPrice: {
         textDecorationLine: 'line-through',
-        color: COLORS.white,
+        color: Constant.COLORS.white,
         fontSize: 16
     },
     price: {
         width: 180,
         height: 45,
-        backgroundColor: COLORS.main,
+        backgroundColor: Constant.COLORS.main,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 15
     },
     priceText: {
-        color: COLORS.white,
+        color: Constant.COLORS.white,
         fontSize: 16,
         fontWeight: 'bold'
     },
@@ -276,7 +276,7 @@ const styles = StyleSheet.create({
     quantity_button: {
         width: 50,
         height: 30,
-        backgroundColor: COLORS.main,
+        backgroundColor: Constant.COLORS.main,
         borderRadius: 15,
         justifyContent: 'center',
         alignItems: 'center'
@@ -296,7 +296,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#979797'
     },
     addItem: {
-        color: COLORS.white,
+        color: Constant.COLORS.white,
         fontSize: 20
     },
     addBuy: {
@@ -307,13 +307,13 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     addBuyText: {
-        color: COLORS.white,
+        color: Constant.COLORS.white,
         fontSize: 16,
         marginBottom: 10
     },
     addBuyPrice: {
         fontSize: 20,
-        color: COLORS.white,
+        color: Constant.COLORS.white,
         fontWeight: 'bold'
     },
     buttonQr: {

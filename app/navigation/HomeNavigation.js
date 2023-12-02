@@ -1,8 +1,10 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import { COLORS } from '../contains'
-import { HomeScreen, CategoryScreen } from '../screens'
-import { Header, HeaderNameScreen } from '../components'
+import Constant from '../controller/Constant'
+import  HomeScreen from '../components/Home/HomeScreen'
+import  CategoryScreen from '../components/Home/CategoryScreen'
+import  Header  from '../components/common/Header/Header'
+import  HeaderNameScreen  from '../components/common/Header/HeaderName'
 import 'react-native-gesture-handler'
 
 const HomeStack = createStackNavigator()
@@ -11,7 +13,7 @@ const HomeStackScreen = (props) => {
     return (
         <HomeStack.Navigator
             screenOptions={{
-                headerTintColor: COLORS.main,
+                headerTintColor: Constant.COLORS.main,
                 headerStyle: {
                     height: 120
                 },

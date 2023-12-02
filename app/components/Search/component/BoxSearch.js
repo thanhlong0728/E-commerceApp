@@ -2,8 +2,8 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { SearchBar } from 'react-native-elements'
+import Constant from '../../../controller/Constant'
 
-import { COLORS } from '../../../contains'
 
 const BoxSearch = () => {
     const navigation = useNavigation()
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         borderRadius: 20
     },
     input: {
-        backgroundColor: COLORS.inputSearch,
+        backgroundColor: Constant.COLORS.inputSearch,
         borderRadius: 20,
         paddingHorizontal: 8
     }

@@ -1,8 +1,10 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import 'react-native-gesture-handler';
+import LoginScreen from '../components/Authentication/LoginScreen';
+import RegisterScreen from '../components/Authentication/RegisterScreen';
+import ForgotPassScreen from '../components/Authentication/ForgotPassScreen';
 
-import { RegisterScreen , LoginScreen, ForgotPassScreen } from '../screens'
 
 const Stack = createStackNavigator();
 

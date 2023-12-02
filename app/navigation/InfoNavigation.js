@@ -1,17 +1,12 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import { COLORS } from '../contains'
-
-import {
-    ProfileScreen,
-    InfoShipScreen,
-    InfoCartScreen,
-    MyOderScreen,
-    ChangePassScreen,
-    MyCommentScreen
-} from '../screens'
-import { Header, HeaderScreen } from '../components'
-import { HeaderMini } from '../components'
+import Constant from '../controller/Constant'
+import ProfileScreen from '../components/Profile/ProfileScreen'
+import InfoCartScreen from '../components/Cart/InfoCartScreen'
+import MyOderScreen from '../components/Profile/MyOrderScreen'
+import ChangePassScreen from '../components/Profile/ChangePassScreen'
+import MyCommentScreen from '../components/Profile/MyCommentScreen'
+import  HeaderMini  from '../components/common/Header/HeaderMini'
 import 'react-native-gesture-handler'
 
 const InfoStack = createStackNavigator()
@@ -21,9 +16,9 @@ const InfoStackScreen = (props) => {
         <InfoStack.Navigator
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: COLORS.primary
+                    backgroundColor: Constant.COLORS.primary
                 },
-                headerTintColor: COLORS.second
+                headerTintColor: Constant.COLORS.second
             }}
         >
             <InfoStack.Screen

@@ -4,9 +4,9 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import firestore from '@react-native-firebase/firestore'
 import auth from '@react-native-firebase/auth'
 
-import { COLORS } from '../../contains'
 import { InputStyle } from '../components'
 import { userModel } from '../../model'
+import Constant from '../../controller/Constant'
 
 const ChangePassScreen = () => {
     const [oldPass, setOldPass] = useState('')
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     footterSubmit: {
         flex: 1,
         flexDirection: 'row',
-        backgroundColor: COLORS.main,
+        backgroundColor: Constant.COLORS.main,
         alignItems: 'center',
         justifyContent: 'center',
         padding: 15,

@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useDispatch } from 'react-redux'
 import { addAddress } from '../../store/slices/address'
 import { ShowToast } from '../app/help/showToast'
-import { COLORS } from '../../contains'
+import Constant from '../../controller/Constant'
 
 const AddressScreen = () => {
     const dispatch = useDispatch()
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     footterSubmit: {
         flex: 1,
         flexDirection: 'row',
-        backgroundColor: COLORS.main,
+        backgroundColor: Constant.COLORS.main,
         alignItems: 'center',
         justifyContent: 'center',
         padding: 15,

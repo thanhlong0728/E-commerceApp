@@ -4,7 +4,7 @@ import { useRoute } from '@react-navigation/native'
 
 import IconHeader from '../../../componentssss/IconHeader'
 import BoxSearch from './boxSearch'
-import { COLORS } from '../../../contains'
+import Constant from '../../../controller/Constant'
 
 const HeaderNameScreen = ({ product = false }) => {
     const route = useRoute()
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 30,
-        color: COLORS.main,
+        color: Constant.COLORS.main,
         width: '60%'
     },
     bottom: {

@@ -8,8 +8,8 @@ import auth from '@react-native-firebase/auth'
 import { useDispatch } from 'react-redux'
 import firestore from '@react-native-firebase/firestore'
 
-import { getProfileUser } from '../app/firebase/user'
-import { setInfoUser } from '../store/slices/userSlice'
+import { getProfileUser } from '../firebase/user'   
+import { setInfoUser } from '../redux/slices/userSlice'
 
 export const AuthContext = createContext({})
 

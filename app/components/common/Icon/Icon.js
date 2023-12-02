@@ -1,13 +1,12 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import Ionicons from 'react-native-vector-icons/Ionicons'
 
-import { COLORS } from '../../../contains'
+import Constant from '../../../controller/Constant'
 
 const Icon = () => {
     return (
         <View style={styles.container}>
-            <FontAwesome name='ios-home-outline' size={18} color={COLORS.icon} />
+            <FontAwesome name='ios-home-outline' size={18} color={Constant.COLORS.icon} />
         </View>
     )
 }

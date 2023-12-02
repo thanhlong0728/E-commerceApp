@@ -15,18 +15,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import firestore from '@react-native-firebase/firestore'
 import auth from '@react-native-firebase/auth'
-import storage from '@react-native-firebase/storage'
 import RNProgressHud from 'progress-hud'
 
-import { EmptyData } from '../common'
 import IconRight from 'react-native-vector-icons/AntDesign'
 import { ProductList } from '../components'
 import { formatPriceNumber } from '../app/help'
 import { orderModel } from '../../model'
-import { ShowToast } from '../app/help/showToast'
-import { AuthContext } from '../../navigation/AuthProvider'
 import { RemoveAll } from '../../store/slices/cart'
-import { COLORS } from '../../contains'
+import Constant from '../../controller/Constant'
 
 LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
 
@@ -172,11 +168,11 @@ const height = Dimensions.get('window').height
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: COLORS.background,
+        backgroundColor: Constant.COLORS.background,
         paddingTop: 10
     },
     boxAddress: {
-        backgroundColor: COLORS.main,
+        backgroundColor: Constant.COLORS.main,
         flexDirection: 'row',
         width: width,
         alignItems: 'center',
@@ -199,7 +195,7 @@ const styles = StyleSheet.create({
     },
     applyButton: {
         width: '90%',
-        backgroundColor: COLORS.main,
+        backgroundColor: Constant.COLORS.main,
         justifyContent: 'center',
         alignItems: 'center',
         paddingVertical: 20,
@@ -207,7 +203,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     applyButtonText: {
-        color: COLORS.white,
+        color: Constant.COLORS.white,
         fontSize: 20
     },
     viewPrice: {

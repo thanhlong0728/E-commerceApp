@@ -5,8 +5,7 @@ import firestore from '@react-native-firebase/firestore'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { BoxSlider, Category, CategorySpecial } from '../components'
-import { fetchProductSpec, fetchProductIsNew } from '../../store/slices/products'
-import { COLORS } from '../../contains'
+import Constant from '../../controller/Constant'
 
 const HomeScreen = () => {
     const dispatch = useDispatch()
@@ -101,7 +100,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 20,
-        backgroundColor: COLORS.background,
+        backgroundColor: Constant.COLORS.background,
         paddingTop: 10
     },
     aside: {

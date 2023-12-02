@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { TextInput, Text, View, StyleSheet } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
-import { COLORS } from '../../contains'
+import Constant from '../../controller/Constant'
 
 const InputStyle = ({ name, style, editable = true, value, onChange, placeholder }) => {
     const [showPass, setShowPass] = useState(false)
@@ -29,7 +29,7 @@ const InputStyle = ({ name, style, editable = true, value, onChange, placeholder
             obj.icon = (
                 <Ionicons
                     size={18}
-                    color={COLORS.icon}
+                    color={Constant.COLORS.icon}
                     name={showPass ? 'ios-eye' : 'ios-eye-off'}
                     onPress={() => setShowPass(!showPass)}
                 />

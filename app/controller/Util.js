@@ -1,6 +1,6 @@
 import { PermissionsAndroid, Alert, Platform } from 'react-native'
 import Toast from 'react-native-root-toast'
-import { COLORS } from '../contains'
+import Constant from './Constant'
 
 export default class Util {
     static async hasAndroidPermission() {
@@ -35,7 +35,7 @@ export default class Util {
             shadow: true,
             animation: true,
             delay: 0,
-            backgroundColor: COLORS.main
+            backgroundColor: Constant.COLORS.main
         })
     }
 }

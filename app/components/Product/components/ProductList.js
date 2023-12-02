@@ -9,8 +9,7 @@ import { AddCart, RemoveCart } from '../../../store/slices/cart'
 import { fetchSingleProduct } from '../../../store/slices/products'
 import { useDispatch, useSelector } from 'react-redux'
 import { ShowToast } from '../../../help/showToast'
-import { IMAGES, MESSAGE } from '../../../contains'
-import { COLORS } from '../../../contains'
+import Constant from '../../../controller/Constant'
 
 const ProductList = ({ item, cart, check }) => {
     const dispatch = useDispatch()
@@ -122,8 +121,8 @@ const styles = StyleSheet.create({
         height: '100%',
         paddingHorizontal: 20,
         paddingVertical: 5,
-        backgroundColor: COLORS.second,
-        shadowColor: COLORS.main,
+        backgroundColor: Constant.COLORS.second,
+        shadowColor: Constant.COLORS.main,
         shadowOffset: {
             width: 0,
             height: 2
@@ -141,14 +140,14 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     contentPrice: {
-        color: COLORS.red
+        color: Constant.COLORS.red
     },
     iconLike: {
         position: 'absolute',
         top: 0,
         left: 0,
         zIndex: 1,
-        backgroundColor: COLORS.background,
+        backgroundColor: Constant.COLORS.background,
         borderRadius: 8
     },
     contentInfo: {
@@ -168,7 +167,7 @@ const styles = StyleSheet.create({
     quantity_button: {
         width: 35,
         height: 40,
-        backgroundColor: COLORS.button,
+        backgroundColor: Constant.COLORS.button,
         borderRadius: 15,
         justifyContent: 'center',
         alignItems: 'center'

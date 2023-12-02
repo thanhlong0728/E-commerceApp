@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Rating } from 'react-native-elements'
-import { COLORS } from '../../../contains'
+import Constant from '../../../controller/Constant'
 
 const RatingComponent = ({ product = false }) => {
     const [rating, setRating] = useState(3)
@@ -9,7 +9,7 @@ const RatingComponent = ({ product = false }) => {
         console.log(rating)
     }
 
-    const color = product ? COLORS.pink : 'white'
+    const color = product ? Constant.COLORS.pink : 'white'
 
     return (
         <Rating

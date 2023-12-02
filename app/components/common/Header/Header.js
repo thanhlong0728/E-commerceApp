@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 
 import IconHeader from '../../../componentssss/IconHeader'
 import BoxSearch from './boxSearch'
-import { COLORS } from '../../../contains'
+import Constant from '../../../controller/Constant'
 
 const Header = ({ icon, name }) => {
     let iconRight = 'cart'
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 30,
-        color: COLORS.main
+        color: Constant.COLORS.main
     },
     bottom: {
         flex: 1,

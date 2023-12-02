@@ -1,7 +1,7 @@
 import React from 'react'
 import { TouchableOpacity, Text, StyleSheet } from 'react-native'
 
-import { COLORS } from '../../../contains'
+import Constant from '../../../controller/Constant'
 
 const ButtonFillter = ({ title, onPress, active }) => {
     const choseButton = () => {
@@ -22,10 +22,10 @@ export default ButtonFillter
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: COLORS.second,
+        backgroundColor: Constant.COLORS.second,
         padding: 20,
         borderRadius: 10,
-        shadowColor: COLORS.main,
+        shadowColor: Constant.COLORS.main,
         shadowOffset: {
             width: 0,
             height: 2
@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
         elevation: 5
     },
     active: {
-        backgroundColor: COLORS.red
+        backgroundColor: Constant.COLORS.red
     }
 })

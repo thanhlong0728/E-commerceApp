@@ -4,10 +4,9 @@ import RangeSlider from 'react-native-range-slider'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 
-import { COLORS } from '../../contains'
-import { FormatPrice } from '../app/help'
 import { Fillter } from '../../store/slices/fillter'
 import { ButtonFillter } from '../components'
+import Constant from '../../controller/Constant'
 
 const FillterScreen = () => {
     const navigation = useNavigation()
@@ -119,7 +118,7 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     applyButton: {
-        backgroundColor: COLORS.main,
+        backgroundColor: Constant.COLORS.main,
         justifyContent: 'center',
         alignItems: 'center',
         paddingHorizontal: 120,
@@ -128,7 +127,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     applyButtonText: {
-        color: COLORS.white,
+        color: Constant.COLORS.white,
         fontSize: 20
     },
     viewPrice: {
@@ -136,7 +135,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     price: {
-        color: COLORS.button,
+        color: Constant.COLORS.button,
         fontSize: 16
     }
 })

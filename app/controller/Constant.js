@@ -1,6 +1,6 @@
 import { Dimensions } from 'react-native'
 
-export default Constants = {
+export default  {
     screen: {
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height

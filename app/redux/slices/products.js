@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import ProductService from '../../app/services/products'
+import ProductService from '../../services/products'
+
 
 export const fetchProduct = createAsyncThunk('product/fetchProduct', async (data, thunkAPI) => {
     const respone = await ProductService.list(data)

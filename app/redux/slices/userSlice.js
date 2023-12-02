@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import StorageManager from '../../StorageManager/StorageManager'
+import StorageManager from '../../controller/StorageManager'
 
 //  lấy thông tin user từ local
 export const didGetInfoUser = createAsyncThunk('user/didGetInfoUser', async () => {

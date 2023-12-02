@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-import { COLORS } from '../../../contains'
 import IconHeader from '../../../componentssss/IconHeader'
 import BoxSearch from './boxSearch'
+import Constant from '../../../controller/Constant'
 
 const HeaderScreen = ({ product = false, right = true, name = false }) => {
     let iconRight = product ? 'cart' : 'sort'
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         height: 100
     },
     background: {
-        backgroundColor: COLORS.pink
+        backgroundColor: Constant.COLORS.pink
     },
     top: {
         flex: 1,
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 30,
-        color: COLORS.main
+        color: Constant.COLORS.main
     },
     bottom: {
         flex: 1,
@@ -47,6 +47,6 @@ const styles = StyleSheet.create({
     },
     textMidle: {
         fontSize: 20,
-        color: COLORS.white
+        color: Constant.COLORS.white
     }
 })

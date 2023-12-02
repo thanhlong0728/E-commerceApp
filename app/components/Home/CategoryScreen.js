@@ -3,12 +3,11 @@ import React, { useEffect, useState } from 'react'
 import { View, FlatList, StyleSheet } from 'react-native'
 
 import { Product } from '../components'
-import { fetchProductInCategories } from '../../store/slices/category'
 import { useDispatch, useSelector } from 'react-redux'
 import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
+import Constant from '../../controller/Constant'
 
-import { COLORS } from '../../contains'
 
 const CategoryScreen = () => {
     const dispatch = useDispatch()
@@ -90,7 +89,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 20,
-        backgroundColor: COLORS.background,
+        backgroundColor: Constant.COLORS.background,
         paddingTop: 10
     },
     contentContainerStyle: {},

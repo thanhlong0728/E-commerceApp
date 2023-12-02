@@ -1,11 +1,11 @@
 import React from 'react'
 import { ActivityIndicator, View, StyleSheet } from 'react-native'
 
-import { COLORS } from '../../contains'
+import Constant from '../../controller/Constant'
 
 const Loading = () => (
     <View style={[styles.container, styles.horizontal]}>
-        <ActivityIndicator size='large' color={COLORS.main} />
+        <ActivityIndicator size='large' color={Constant.COLORS.main} />
     </View>
 )
 export default Loading

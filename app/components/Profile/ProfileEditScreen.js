@@ -26,8 +26,8 @@ import RNProgressHud from 'progress-hud'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import { AuthContext } from '../../navigation/AuthProvider'
+import Constant from '../../controller/Constant'
 
-import { COLORS } from '../../contains'
 
 LogBox.ignoreLogs(['Animated: `useNativeDriver`', 'componentWillReceiveProps'])
 
@@ -347,7 +347,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     button: {
-        backgroundColor: COLORS.pink,
+        backgroundColor: Constant.COLORS.pink,
         marginHorizontal: 16,
         borderRadius: 15,
         height: 51,

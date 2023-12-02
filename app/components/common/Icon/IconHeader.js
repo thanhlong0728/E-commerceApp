@@ -4,8 +4,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { COLORS } from '../contains'
 import { RemoveFavorite } from '../store/slices/favorite'
+import Constant from '../../../controller/Constant'
 
 const IconHeader = ({ name = 'menu', product = false, right = true }) => {
     const dispatch = useDispatch()
@@ -51,7 +51,7 @@ const IconHeader = ({ name = 'menu', product = false, right = true }) => {
         case 'menu':
             icon = (
                 <View onPress={openDrawer} style={styles.container}>
-                    <Ionicons name='menu-outline' size={24} color={COLORS.main} />
+                    <Ionicons name='menu-outline' size={24} color={Constant.COLORS.main} />
                 </View>
             )
             break
@@ -61,7 +61,7 @@ const IconHeader = ({ name = 'menu', product = false, right = true }) => {
                     <Ionicons
                         name='cart-outline'
                         size={24}
-                        color={product ? COLORS.white : COLORS.main}
+                        color={product ? Constant.COLORS.white : Constant.COLORS.main}
                     />
                 </TouchableOpacity>
             )
@@ -72,7 +72,7 @@ const IconHeader = ({ name = 'menu', product = false, right = true }) => {
                     <Ionicons
                         name='arrow-back'
                         size={24}
-                        color={product ? COLORS.white : COLORS.main}
+                        color={product ? Constant.COLORS.white : Constant.COLORS.main}
                     />
                 </TouchableOpacity>
             )
@@ -80,14 +80,14 @@ const IconHeader = ({ name = 'menu', product = false, right = true }) => {
         case 'sort':
             icon = (
                 <TouchableOpacity onPress={goFillter} style={styles.cart}>
-                    <Ionicons name='funnel-outline' size={24} color={COLORS.main} />
+                    <Ionicons name='funnel-outline' size={24} color={Constant.COLORS.main} />
                 </TouchableOpacity>
             )
             break
         case 'delete':
             icon = (
                 <TouchableOpacity onPress={goDelete} style={styles.cart}>
-                    <Ionicons name='trash-bin-outline' size={24} color={COLORS.main} />
+                    <Ionicons name='trash-bin-outline' size={24} color={Constant.COLORS.main} />
                 </TouchableOpacity>
             )
             break

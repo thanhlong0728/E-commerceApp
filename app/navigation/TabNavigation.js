@@ -1,19 +1,15 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import { COLORS } from '../contains'
+import Constant from '../controller/Constant'
 import MyTabs from './MyTab'
-import {
-    CartScreen,
-    FillterScreen,
-    ProductScreen,
-    SearchScreen,
-    InfoShipScreen,
-    AddressScreen
-} from '../screens'
-import { HeaderScreen } from '../components'
+import CartScreen from '../components/Cart/CartScreen'
+import FillterScreen from '../components/Fillter/FillterScreen'
+import ProductScreen from '../components/Product/ProductScreen'
+import SearchScreen from '../components/Search/SearchScreen'
+import HeaderScreen from '../components/common/Header/HeaderScreen'
 import 'react-native-gesture-handler'
-import ProfileEditScreen from '../screens/ProfileEdit'
-import ProfileInfoScreen from '../screens/ProfileInfo'
+import ProfileEditScreen from '../components/Profile/ProfileEditScreen'
+import ProfileInfoScreen from '../components/Profile/ProfileInfoScreen'
 
 const Stack = createStackNavigator()
 
@@ -22,9 +18,9 @@ const TabStackScreen = (props) => {
         <Stack.Navigator
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: COLORS.primary
+                    backgroundColor: Constant.COLORS.primary
                 },
-                headerTintColor: COLORS.second
+                headerTintColor: Constant.COLORS.second
             }}
         >
             <Stack.Screen name='MyTabs' component={MyTabs} options={{ headerShown: false }} />

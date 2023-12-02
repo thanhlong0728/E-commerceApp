@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
 
-import { COLORS } from '../../contains'
+import Constant from '../../controller/Constant'
 
 const CategoryAllScreen = () => {
     const dispatch = useDispatch()
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 20,
-        backgroundColor: COLORS.background,
+        backgroundColor: Constant.COLORS.background,
         paddingTop: 10
     }
 })

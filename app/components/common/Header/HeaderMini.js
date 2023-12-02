@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-nati
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native'
 
-import { COLORS } from '../../../contains'
+import Constant from '../../../controller/Constant'
 
 const HeaderMini = ({ name }) => {
     const navigation = useNavigation()
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     container: {
         width: width,
         height: height / 10,
-        backgroundColor: COLORS.pink
+        backgroundColor: Constant.COLORS.pink
     },
     top: {
         flex: 1,

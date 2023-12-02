@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import Constant from '../../../controller/Constant'
 
-import { COLORS } from '../../../contains'
 
 const Quantify = ({ handleChangeNumber, quantity, small }) => {
     const handleChange = (type) => {
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     quantity_button: {
         width: 50,
         height: 30,
-        backgroundColor: COLORS.main,
+        backgroundColor: Constant.COLORS.main,
         borderRadius: 15,
         justifyContent: 'center',
         alignItems: 'center'
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     quantity_button_small: {
         width: 35,
         height: 40,
-        backgroundColor: COLORS.button,
+        backgroundColor: Constant.COLORS.button,
         borderRadius: 15,
         justifyContent: 'center',
         alignItems: 'center'

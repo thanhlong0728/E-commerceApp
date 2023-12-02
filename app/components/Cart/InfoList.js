@@ -2,21 +2,21 @@ import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
-import { COLORS } from '../../contains'
+import Constant from '../../controller/Constant'
 
 const InfoList = ({ name, onPress }) => {
     let icon, text
     switch (name) {
         case 'info':
-            icon = <Ionicons name='ios-home-outline' size={24} color={COLORS.main} />
+            icon = <Ionicons name='ios-home-outline' size={24} color={Constant.COLORS.main} />
             text = 'Quản lí tài khoản'
             break
         case 'cart':
-            icon = <Ionicons name='ios-home-outline' size={24} color={COLORS.main} />
+            icon = <Ionicons name='ios-home-outline' size={24} color={Constant.COLORS.main} />
             text = 'Thông tin đơn hàng'
             break
         case 'ship':
-            icon = <Ionicons name='ios-home-outline' size={24} color={COLORS.main} />
+            icon = <Ionicons name='ios-home-outline' size={24} color={Constant.COLORS.main} />
             text = 'Thông tin giao hàng'
             break
 
@@ -30,7 +30,7 @@ const InfoList = ({ name, onPress }) => {
                 {icon}
                 <Text style={styles.areaTextName}>{text}</Text>
             </View>
-            <Ionicons name='ios-home-outline' size={24} color={COLORS.main} />
+            <Ionicons name='ios-home-outline' size={24} color={Constant.COLORS.main} />
         </TouchableOpacity>
     )
 }
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         height: 60,
         alignItems: 'center',
         borderBottomWidth: 0.3,
-        borderColor: COLORS.main,
+        borderColor: Constant.COLORS.main,
         marginBottom: 40
     },
     areaText: {

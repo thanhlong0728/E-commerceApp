@@ -5,7 +5,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { AuthContext } from '../../navigation/AuthProvider'
 import { InputStyle } from '../components'
 
-import { COLORS } from '../../contains'
+import Constant from '../../controller/Constant'
 
 const InfoShipScreen = () => {
     const { user, updateInfo } = useContext(AuthContext)
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     footterSubmit: {
         flex: 1,
         flexDirection: 'row',
-        backgroundColor: COLORS.main,
+        backgroundColor: Constant.COLORS.main,
         alignItems: 'center',
         justifyContent: 'center',
         padding: 15,

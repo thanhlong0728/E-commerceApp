@@ -19,7 +19,7 @@ import auth from '@react-native-firebase/auth'
 
 import { AuthContext } from '../../../navigation/AuthProvider'
 import { commentModel } from '../../../model'
-import { COLORS } from '../../../contains'
+import Constant from '../../../controller/Constant'
 
 LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
 
@@ -281,7 +281,7 @@ const styles = StyleSheet.create({
     },
     button: {
         flexDirection: 'row',
-        backgroundColor: COLORS.main,
+        backgroundColor: Constant.COLORS.main,
         width: 120,
         height: 50,
         justifyContent: 'center',

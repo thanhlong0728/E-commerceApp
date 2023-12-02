@@ -3,7 +3,7 @@ import { View, Text, TextInput, StyleSheet, Dimensions } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import IconLogin from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import { COLORS } from '../../contains'
+import Constant from '../../controller/Constant'
 
 const TextBox = ({ name, iconName, style, editable = true, value, onChange }) => {
     const [showPass, setShowPass] = useState(false)
@@ -26,7 +26,7 @@ const TextBox = ({ name, iconName, style, editable = true, value, onChange }) =>
                     name={showPass ? 'eye' : 'eye-slash'}
                     onPress={() => setShowPass(!showPass)}
                     size={15}
-                    color={COLORS.icon}
+                    color={Constant.COLORS.icon}
                 />
             )
             break
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         width: width / 1.1
     },
     textInputLabel: {
-        color: COLORS.title
+        color: Constant.COLORS.title
     },
     textInput: {
         marginBottom: 10,

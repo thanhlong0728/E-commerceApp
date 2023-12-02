@@ -20,8 +20,8 @@ import auth from '@react-native-firebase/auth'
 import storage from '@react-native-firebase/storage'
 
 import { AuthContext } from '../../navigation/AuthProvider'
+import Constant from '../../controller/Constant'
 
-import { COLORS } from '../../contains'
 
 const list = [
     {
@@ -119,7 +119,7 @@ const ProfileScreen = () => {
             <View
                 style={{
                     padding: 30,
-                    backgroundColor: COLORS.pink
+                    backgroundColor: Constant.COLORS.pink
                 }}
             >
                 <Text style={styles.text}>Thông tin cá nhân</Text>

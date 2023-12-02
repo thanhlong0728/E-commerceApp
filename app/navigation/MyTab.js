@@ -2,15 +2,14 @@ import React from 'react'
 import { TouchableOpacity, Image } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { COLORS } from '../contains'
 
 import HomeStackScreen from './HomeNavigation'
 import CategoryStackScreen from './CategoryNavigation'
 import FavoriteStackScreen from './FavoriteNavigation'
 import InfoStackScreen from './InfoNavigation'
-import ScanScreen from './../screens/Scan/Scan'
+import ScanScreen from '../components/Scan/ScanScreen'
 import { useNavigation } from '@react-navigation/native'
-import Constants from './../controller/Constant'
+import Constant from './../controller/Constant'
 
 const Tab = createBottomTabNavigator()
 
@@ -70,7 +69,7 @@ const MyTabs = () => {
                     tabBarIcon: () => (
                         <TouchableOpacity onPress={() => navigation.navigate('ScanScreen')}>
                             <Image
-                                source={Constants.icons.scan}
+                                source={Constant.icons.scan}
                                 resizeMode='contain'
                                 style={{
                                     width: 70,

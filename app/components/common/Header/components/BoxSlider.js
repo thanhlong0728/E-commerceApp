@@ -5,8 +5,7 @@ import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
 import { useNavigation } from '@react-navigation/native'
 
-import { COLORS } from '../../../../contains'
-import { Ionicons } from 'react-native-vector-icons/Ionicons'
+import Constant from '../../../../controller/Constant'
 
 const BoxSlider = () => {
     const [activeSlide, setActiveSlide] = useState(0)
@@ -88,7 +87,7 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
     input: {
-        backgroundColor: COLORS.inputSearch,
+        backgroundColor: Constant.COLORS.inputSearch,
         borderRadius: 20
     },
     pagination: {

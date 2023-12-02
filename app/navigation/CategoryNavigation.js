@@ -1,8 +1,8 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import { CategoryAllScreen } from '../screens'
-import { COLORS } from '../contains'
-import { Header } from '../components'
+import  CategoryAllScreen from '../components/CategoryAll/CategoryAllScreen'
+import  Constants  from '../controller/Constant'
+import  Header  from '../components/common/Header/Header'
 import 'react-native-gesture-handler'
 
 const Stack = createStackNavigator()
@@ -12,9 +12,9 @@ const CategoryStackScreen = (props) => {
         <Stack.Navigator
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: COLORS.primary
+                    backgroundColor: Constants.COLORS.primary
                 },
-                headerTintColor: COLORS.second
+                headerTintColor: Constants.COLORS.second
             }}
         >
             <Stack.Screen

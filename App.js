@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import { LogBox, StatusBar } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { Provider } from 'react-redux'
-import store from './store'
-import MyNavigation from './navigation'
 import { RootSiblingParent } from 'react-native-root-siblings'
+import store from './app/redux/store'
+import RouteNavigation from './app/navigation/RouteNavigation'
 
 export default function App(props) {
     useEffect(() => {
@@ -15,7 +15,7 @@ export default function App(props) {
             <RootSiblingParent>
                 <NavigationContainer>
                     <StatusBar hidden={true} />
-                    <MyNavigation />
+                    <RouteNavigation />
                 </NavigationContainer>
             </RootSiblingParent>
         </Provider>
