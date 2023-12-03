@@ -4,7 +4,7 @@ import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
 import { useDispatch, useSelector } from 'react-redux'
 
-import BoxSlider from '../../components/common/Header/components/BoxSlider'
+import BoxSlider from '../common/Header/components/BoxSlider'
 import Category from './Components/Category'
 import CategorySpecial from './Components/CategorySpecial'
 import Constant from '../../controller/Constant'
@@ -26,7 +26,7 @@ const HomeScreen = () => {
             list.push({
                 id: doc.id,
                 ...doc.data()
-            })
+            } as never )
         })
         setCategoryList(list)
         RNProgressHud.dismiss()
@@ -41,7 +41,7 @@ const HomeScreen = () => {
             list.push({
                 id: doc.id,
                 ...doc.data()
-            })
+            } as never)
         })
         setProductSpecList(list)
         RNProgressHud.dismiss()
@@ -56,7 +56,7 @@ const HomeScreen = () => {
             list.push({
                 id: doc.id,
                 ...doc.data()
-            })
+            } as never ) 
         })
         setProductIsNewList(list)
         RNProgressHud.dismiss()

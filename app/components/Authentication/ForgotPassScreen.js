@@ -34,7 +34,7 @@ const ForgotPassScreen = () => {
                 style={[
                     styles.footer,
                     {
-                        backgroundColor: Constant.COLORSbackground
+                        backgroundColor: Constant.COLORS.background
                     }
                 ]}
             >
@@ -42,14 +42,14 @@ const ForgotPassScreen = () => {
                     style={[
                         styles.text_footer,
                         {
-                            color: Constant.COLORStext
+                            color: Constant.COLORS.text
                         }
                     ]}
                 >
                     Email
                 </Text>
                 <View style={styles.action}>
-                    <FontAwesome name='envelope-o' color={Constant.COLORStext} size={20} />
+                    <FontAwesome name='envelope-o' color={Constant.COLORS.text} size={20} />
                     <TextInput
                         value={email}
                         placeholder='Your Email'
@@ -57,7 +57,7 @@ const ForgotPassScreen = () => {
                         style={[
                             styles.textInput,
                             {
-                                color: Constant.COLORStext
+                                color: Constant.COLORS.text
                             }
                         ]}
                         autoCapitalize='none'

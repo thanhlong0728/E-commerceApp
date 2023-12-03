@@ -8,12 +8,12 @@ import Feather from 'react-native-vector-icons/Feather'
 import { useTheme } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
 import { AuthContext } from '../../navigation/AuthProvider'
+import Constant from '../../controller/Constant'
 
 const LoginScreen = () => {
     const navigation = useNavigation()
     const { colors } = useTheme()
     const { login } = useContext(AuthContext)
-    console.log('login::', login)
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -50,7 +50,7 @@ const LoginScreen = () => {
                 style={[
                     styles.footer,
                     {
-                        backgroundColor: Constant.COLORSbackground
+                        backgroundColor: Constant.COLORS.background
                     }
                 ]}
             >
@@ -58,14 +58,14 @@ const LoginScreen = () => {
                     style={[
                         styles.text_footer,
                         {
-                            color: Constant.COLORStext
+                            color: Constant.COLORS.text
                         }
                     ]}
                 >
                     Email
                 </Text>
                 <View style={styles.action}>
-                    <FontAwesome name='envelope-o' color={Constant.COLORStext} size={20} />
+                    <FontAwesome name='envelope-o' color={Constant.COLORS.text} size={20} />
                     <TextInput
                         value={email}
                         placeholder='Your Email'
@@ -73,7 +73,7 @@ const LoginScreen = () => {
                         style={[
                             styles.textInput,
                             {
-                                color: Constant.COLORStext
+                                color: Constant.COLORS.text
                             }
                         ]}
                         autoCapitalize='none'
@@ -85,7 +85,7 @@ const LoginScreen = () => {
                     style={[
                         styles.text_footer,
                         {
-                            color: Constant.COLORStext,
+                            color: Constant.COLORS.text,
                             marginTop: 35
                         }
                     ]}
@@ -93,7 +93,7 @@ const LoginScreen = () => {
                     Password
                 </Text>
                 <View style={styles.action}>
-                    <Feather name='lock' color={Constant.COLORStext} size={20} />
+                    <Feather name='lock' color={Constant.COLORS.text} size={20} />
                     <TextInput
                         value={password}
                         placeholder='Your Password'
@@ -102,7 +102,7 @@ const LoginScreen = () => {
                         style={[
                             styles.textInput,
                             {
-                                color: Constant.COLORStext
+                                color: Constant.COLORS.text
                             }
                         ]}
                         autoCapitalize='none'

@@ -6,12 +6,12 @@ import { RootSiblingParent } from 'react-native-root-siblings'
 import store from './app/redux/store'
 import MyNavigation from './app/navigation'
 
-export default function App(props) {
+export default function App() {
     useEffect(() => {
         LogBox.ignoreLogs(['Warning: Async Storage has been extracted from react-native core'])
     }, [])
     return (
-        <Provider store={store}>
+        <Provider store={store} >
             <RootSiblingParent>
                 <NavigationContainer>
                     <StatusBar hidden={true} />
