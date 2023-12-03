@@ -17,7 +17,7 @@ const AddressScreen = () => {
 
     const changeCart = () => {
         dispatch(addAddress({ phone, address }))
-        navigation.navigate('CartScreen')
+        navigation.navigate('CartScreen' as never)
         ShowToast('Thêm địa chỉ thành công')
     }
 

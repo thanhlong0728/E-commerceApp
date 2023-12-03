@@ -23,7 +23,6 @@ export const AuthProvider = ({ children }) => {
             value={{
                 loading,
                 login: async (email, password) => {
-                    console.log('fdfdfdfd')
                     RNProgressHud.show()
                     auth()
                         .signInWithEmailAndPassword(email, password)

@@ -31,7 +31,6 @@ const Scan = () => {
             .then((response) => {
                 const { values } = response
                 const dataValues = JSON.parse(values)
-                console.log(dataValues)
                 if (dataValues.app == Constant.QRCodeType.app) {
                     navigation.navigate('ProductScreen', {
                         id: dataValues.id
@@ -79,7 +78,6 @@ const Scan = () => {
     }
 
     const handleCheckType = (data) => {
-        console.log('dataaaaa:::', data)
         if (data.app == Constant.QRCodeType.app) {
             navigation.navigate('ProductScreen', {
                 id: data.id

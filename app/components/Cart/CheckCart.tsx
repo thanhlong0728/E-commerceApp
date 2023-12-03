@@ -7,11 +7,11 @@ import ProgessBarShip from './components/ProgessBarShip'
 const CheckCart = () => {
     return (
         <View style={styles.container}>
-            <View style={styles.yourCart}>
+            <View>
                 <Text style={styles.title}>Đơn hàng của bạn</Text>
                 <ProductList />
             </View>
-            <View style={styles.yourShip}>
+            <View>
                 <Text style={styles.titleShip}>Tình trạng đơn hàng</Text>
                 <ProgessBarShip />
             </View>

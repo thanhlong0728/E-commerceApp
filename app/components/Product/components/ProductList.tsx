@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { View, Text, TouchableOpacity, Image, StyleSheet, Dimensions } from 'react-native'
+import { View, Text, TouchableOpacity, Image, StyleSheet, Dimensions, LogBox } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 
-import Quantify from '../../Product/components/Quantify'
+import Quantify from './Quantify'
 import { AddCart, RemoveCart } from '../../../redux/slices/cart'
 import { ShowToast } from '../../common/ShowToast'
 import Constant from '../../../controller/Constant'
 import Util from '../../../controller/Util'
+import { ProductItem } from 'types/Product'
 
-const ProductList = ({ item, cart, check }) => {
+type Props = {
+    item?: ProductItem
+    cart?: Boolean
+    check?: Boolean
+}
+
+const ProductList = (props: Props) => {
+    const { item, cart, check } = props
+
     const dispatch = useDispatch()
     const navigation = useNavigation()
     const [heart, setHeart] = useState(false)
@@ -43,7 +52,6 @@ const ProductList = ({ item, cart, check }) => {
     }
 
     const handleChangeNumber = (val) => {
-        console.log(val)
         val === 0
             ? dispatch(RemoveCart({ id: item?.id }))
             : dispatch(

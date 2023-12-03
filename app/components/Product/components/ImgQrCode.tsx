@@ -16,8 +16,16 @@ import Constant from '../../../controller/Constant'
 //5 . npm i react-native-modal @react-native-community/cameraroll '@react-native-clipboard/clipboard
 // 6. npm install --save fbjs
 
-const ImgQrCode = ({ value, dataQR, isModalVisible, setModalVisible }) => {
-    const [productQRref, setProductQRref] = useState()
+type Props = {
+    value: any
+    dataQR: string
+    isModalVisible: boolean
+    setModalVisible: (value: boolean) => void
+}
+
+const ImgQrCode = (props: Props) => {
+    const { value, dataQR, isModalVisible, setModalVisible } = props
+    const [productQRref, setProductQRref] = useState<any>()
 
     const downloadQRCode = async () => {
         if (Platform.OS === 'android' && !(await Util.hasAndroidPermission())) {
@@ -31,7 +39,7 @@ const ImgQrCode = ({ value, dataQR, isModalVisible, setModalVisible }) => {
                 let filePath = RNFS.CachesDirectoryPath + `/${value}.png`
                 RNFS.writeFile(filePath, data, 'base64')
                     .then((success) => {
-                        return CameraRoll.save(filePath, 'photo')
+                        return CameraRoll.save(filePath, 'photo' as never)
                     })
                     .then(() => {
                         ToastAndroid.show('Save QR Code successful', ToastAndroid.LONG)
@@ -42,7 +50,7 @@ const ImgQrCode = ({ value, dataQR, isModalVisible, setModalVisible }) => {
 
     const copyPhone = () => {
         Clipboard.setString(value)
-        RNProgressHud.showSuccessWithStatus('Copy successful')
+        RNProgressHud.showSuccessWithStatus('Copy successful', null)
     }
 
     return (

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { View, Text, TouchableOpacity, TextInput, ScrollView, StatusBar, Alert, StyleSheet, Dimensions } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, ScrollView, StatusBar, Alert, StyleSheet, Dimensions, Platform } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 import LinearGradient from 'react-native-linear-gradient'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
@@ -17,7 +17,7 @@ const SignInScreen = () => {
     const [secureTextEntry, setSecureTextEntry] = useState(true)
     const [confirmSecureTextEntry, setConfirmSecureTextEntry] = useState(true)
 
-    const { register } = useContext(AuthContext)
+    const { register }: any = useContext(AuthContext)
 
     const handleRegister = () => {
         if (!userName) {

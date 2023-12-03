@@ -4,7 +4,17 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import Constant from '../../controller/Constant'
 
-const InputStyle = ({ name, style, editable = true, value, onChange, placeholder }) => {
+type Props = {
+    name: String
+    style?: any
+    editable?: Boolean
+    value: any
+    onChange: (value: any) => void
+    placeholder?: String
+}
+
+const InputStyle = (props: Props) => {
+    const { name, style, editable = true, value, onChange, placeholder } = props
     const [showPass, setShowPass] = useState(false)
 
     let obj = {

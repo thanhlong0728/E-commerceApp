@@ -21,7 +21,6 @@ const CartScreen = () => {
     const { uid } = auth().currentUser
     const navigation = useNavigation()
     const cartItems = useSelector((state) => state.Cart.cart)
-    // console.log('cartItems:alalal', cartItems)
     const createdAt = new Date()
     const cartID = uid.toString() + createdAt.toString()
     const [total, setTotal] = useState(0)
@@ -43,12 +42,12 @@ const CartScreen = () => {
         return <ProductList item={item} cart />
     }
     const changeAddress = () => {
-        navigation.navigate('ProfileEditScreen')
+        navigation.navigate('ProfileEditScreen' as never)
     }
     const handleBuy = () => {
         if (phone == '' || address == '') {
-            navigation.navigate('ProfileEditScreen')
-            alert('Vui lòng nhập địa chỉ')
+            navigation.navigate('ProfileEditScreen' as never)
+            Alert.alert('Thông báo ', 'Vui lòng nhập địa chỉ')
         } else {
             Alert.alert('Thông báo', 'Bạn có chắc chắn muốn đặt đơn hàng？', [
                 {
@@ -69,11 +68,11 @@ const CartScreen = () => {
                                 cartItems
                             })
                             .then(() => {
-                                navigation.navigate('HomeScreen')
+                                navigation.navigate('HomeScreen' as never)
                                 dispatch(RemoveAll())
                             })
                             .catch((err) => {
-                                console.log(err)
+                                console.log('err::', err)
                             })
                     }
                 }

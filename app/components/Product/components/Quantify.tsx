@@ -2,8 +2,14 @@ import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import Constant from '../../../controller/Constant'
 
+type Props = {
+    handleChangeNumber: any
+    quantity: number
+    small: number
+}
 
-const Quantify = ({ handleChangeNumber, quantity, small }) => {
+const Quantify = (props: Props) => {
+    const { handleChangeNumber, quantity, small } = props
     const handleChange = (type) => {
         switch (type) {
             case 'add':
@@ -26,33 +32,21 @@ const Quantify = ({ handleChangeNumber, quantity, small }) => {
         <>
             {!small ? (
                 <View style={styles.quantity}>
-                    <TouchableOpacity
-                        style={styles.quantity_button}
-                        onPress={() => handleChange('minus')}
-                    >
+                    <TouchableOpacity style={styles.quantity_button} onPress={() => handleChange('minus')}>
                         <Text style={styles.quantity_buttonText}>-</Text>
                     </TouchableOpacity>
                     <Text style={styles.quantity_buttonText}>{quantity}</Text>
-                    <TouchableOpacity
-                        style={styles.quantity_button}
-                        onPress={() => handleChange('add')}
-                    >
+                    <TouchableOpacity style={styles.quantity_button} onPress={() => handleChange('add')}>
                         <Text style={styles.quantity_buttonText}>+</Text>
                     </TouchableOpacity>
                 </View>
             ) : (
                 <View style={styles.quantity_small}>
-                    <TouchableOpacity
-                        style={styles.quantity_button_small}
-                        onPress={() => handleChange('minus')}
-                    >
+                    <TouchableOpacity style={styles.quantity_button_small} onPress={() => handleChange('minus')}>
                         <Text style={styles.quantity_buttonText_small}>-</Text>
                     </TouchableOpacity>
                     <Text style={styles.quantity_buttonText_small}>{quantity}</Text>
-                    <TouchableOpacity
-                        style={styles.quantity_button_small}
-                        onPress={() => handleChange('add')}
-                    >
+                    <TouchableOpacity style={styles.quantity_button_small} onPress={() => handleChange('add')}>
                         <Text style={styles.quantity_buttonText_small}>+</Text>
                     </TouchableOpacity>
                 </View>

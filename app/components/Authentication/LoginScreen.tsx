@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StatusBar, Alert, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, StatusBar, Alert, StyleSheet, Platform } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 import LinearGradient from 'react-native-linear-gradient'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
@@ -13,7 +13,7 @@ import Constant from '../../controller/Constant'
 const LoginScreen = () => {
     const navigation = useNavigation()
     const { colors } = useTheme()
-    const { login } = useContext(AuthContext)
+    const { login }: any = useContext(AuthContext)
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -112,8 +112,7 @@ const LoginScreen = () => {
                         {secureTextEntry ? <Feather name='eye-off' color='grey' size={20} /> : <Feather name='eye' color='grey' size={20} />}
                     </TouchableOpacity>
                 </View>
-
-                <TouchableOpacity onPress={() => navigation.navigate('ForgotPassScreen')}>
+                <TouchableOpacity>
                     <Text style={{ color: '#009387', marginTop: 15 }}>Forget Password?</Text>
                 </TouchableOpacity>
                 <View style={styles.button}>
@@ -133,7 +132,7 @@ const LoginScreen = () => {
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                        onPress={() => navigation.navigate('RegisterScreen')}
+                        onPress={() => navigation.navigate('RegisterScreen ' as never)}
                         style={[
                             styles.signIn,
                             {

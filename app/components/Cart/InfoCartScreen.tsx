@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-import InputStyle from '../../components/common/InputStyle'
-import CheckCart from '../../components/Cart/CheckCart'
+import InputStyle from '../common/InputStyle'
+import CheckCart from './CheckCart'
 
 const InfoCartScreen = () => {
     const [nickName, setNickName] = useState('')

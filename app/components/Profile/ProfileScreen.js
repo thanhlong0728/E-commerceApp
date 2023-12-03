@@ -38,8 +38,6 @@ const ProfileScreen = () => {
     const [userName, setUserName] = useState('')
     const [phone, setPhone] = useState('')
 
-    console.log('ahjsdhajs', auth().currentUser)
-
     const handleOnClickLogout = () => {
         Alert.alert('Thông báo', 'Bạn có chắc chắn muốn đăng xuất?', [
             {

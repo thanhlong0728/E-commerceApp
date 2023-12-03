@@ -6,44 +6,36 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import IconHeart from '../../common/Icon/IconHeart'
 import { Favorite } from '../../../redux/slices/favorite'
-import { AddCart } from '../../../redux/slices/cart'
-import { ShowToast } from '../../common/ShowToast'
 import Constant from '../../../controller/Constant'
 import Util from '../../../controller/Util'
+import { ProductDetail } from 'types/Product'
 
-const Product = ({ data, sale = true }) => {
+type Props = {
+    data: ProductDetail
+    sale: boolean
+}
+
+const ProductHorizital = (props: Props) => {
+    const { data, sale = true } = props
     const navigation = useNavigation()
-    const dispatch = useDispatch()
     const [heart, setHeart] = useState(false)
+    const dispatch = useDispatch()
 
-    const favoriteData = useSelector((state) => state.Favorite.items)
+    const favoriteData = useSelector((state: any) => state.Favorite.items)
+
+    const showProduct = () => {
+        navigation.setParams({
+            id: data?.id
+        } as never)
+    }
 
     useEffect(() => {
         favoriteData.indexOf(data.id) !== -1 ? setHeart(true) : setHeart(false)
     }, [favoriteData])
 
-    const showProduct = () => {
-        navigation.navigate('ProductScreen', {
-            id: data?.id,
-            categoryID: data?.categoryID
-        })
-    }
-
     const onHeart = () => {
         setHeart(!heart)
-        dispatch(Favorite({ id: data?.id }))
-    }
-    const handleCart = () => {
-        dispatch(
-            AddCart({
-                id: data?.id,
-                photoProduct: data?.image,
-                nameProduct: data?.name,
-                priceProduct: data?.price_sale_off,
-                description: data?.description
-            })
-        )
-        ShowToast('Đã thêm sản phẩm vào giỏ hàng')
+        dispatch(Favorite({ id: data.id }))
     }
 
     return (
@@ -56,9 +48,7 @@ const Product = ({ data, sale = true }) => {
                     <Text numberOfLines={1} style={styles.name}>
                         {data.name}
                     </Text>
-                    <Text numberOfLines={1} style={styles.title}>
-                        {data.summary}
-                    </Text>
+                    <Text numberOfLines={1}>{data.summary}</Text>
                     {sale && <Text style={styles.oldPrice}>{Util.formatPriceNumber(data.price)}</Text>}
                     <Text style={styles.price}>{Util.formatPriceNumber(data.price_sale_off)}</Text>
                 </View>
@@ -67,7 +57,7 @@ const Product = ({ data, sale = true }) => {
                         <IconHeart heart={heart} />
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.iconShoping} onPress={handleCart}>
+                <TouchableOpacity style={styles.iconShoping}>
                     <Ionicons name={'ios-cart'} size={24} color={'red'} />
                 </TouchableOpacity>
                 {sale && (
@@ -82,19 +72,19 @@ const Product = ({ data, sale = true }) => {
     )
 }
 
-export default Product
+export default ProductHorizital
 
 const height = Dimensions.get('window').height
 
 const styles = StyleSheet.create({
     container: {
-        width: '50%',
+        width: 200,
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 10,
         paddingHorizontal: 5,
         height: 250,
-        marginBottom: 10
+        marginRight: 10
     },
     product: {
         backgroundColor: Constant.COLORS.second,
@@ -114,11 +104,10 @@ const styles = StyleSheet.create({
     boxImg: {
         width: '100%',
         height: '65%',
-        borderRadius: 10,
-        alignItems: 'center'
+        borderRadius: 10
     },
     imgItem: {
-        width: '60%',
+        width: '100%',
         height: '100%',
         borderRadius: 10,
         resizeMode: 'contain'

@@ -11,7 +11,13 @@ import Constant from '../../../controller/Constant'
 
 LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
 
-const Comment = ({ productId, productImg }) => {
+type Props = {
+    productId: string
+    productImg: string
+}
+
+const Comment = (props: Props) => {
+    const { productId, productImg } = props
     const navigation = useNavigation()
     const { photoURL, uid } = auth().currentUser
     const createdAt = new Date()
@@ -86,7 +92,7 @@ const Comment = ({ productId, productImg }) => {
                 .then((snapshot) => {
                     snapshot.forEach((doc) => {
                         var deleteDoc = firestore().collection('comment').doc(doc.id).delete()
-                        RNProgressHud.showSuccessWithStatus('Xóa nhận xét thành công')
+                        RNProgressHud.showSuccessWithStatus('Xóa nhận xét thành công', null)
                         setRefresh(!isRefresh)
                     })
                 })
@@ -105,7 +111,7 @@ const Comment = ({ productId, productImg }) => {
                     <Image style={styles.conment_avatar_img} source={{ uri: item.photoURL }} />
                 </View>
                 <View style={styles.content}>
-                    <View style={styles.nameComment}>
+                    <View>
                         <Text numberOfLines={1} style={styles.name}>
                             {item.userName}
                         </Text>
@@ -148,9 +154,9 @@ const Comment = ({ productId, productImg }) => {
         <>
             <View style={styles.container}>
                 <Text style={styles.title}>Nhận xét sản phẩm</Text>
-                <View style={styles.boxComment}>
+                <View>
                     <View style={styles.box}>
-                        <TouchableOpacity onPress={() => navigation.navigate('ProfileScreen')}>
+                        <TouchableOpacity onPress={() => navigation.navigate('ProfileScreen' as never)}>
                             <View style={styles.boxImg}>
                                 <Image source={{ uri: photoURL }} style={styles.img} />
                             </View>
@@ -169,7 +175,7 @@ const Comment = ({ productId, productImg }) => {
                     </View>
                 </View>
                 {commentList.length === 0 && (
-                    <View style={styles.noData}>
+                    <View>
                         <Text style={styles.textNodata}>Chưa có comment nào</Text>
                     </View>
                 )}

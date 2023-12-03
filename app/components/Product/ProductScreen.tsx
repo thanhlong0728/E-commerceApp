@@ -6,9 +6,9 @@ import { useRoute } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
 
 import RatingComponent from '../Home/Components/Rating'
-import ProductHorizital from '../Product/components/ProductHorizital'
-import Comment from '../Product/components/Comment'
-import Quantify from '../Product/components/Quantify'
+import ProductHorizital from './components/ProductHorizital'
+import Comment from './components/Comment'
+import Quantify from './components/Quantify'
 import { ShowToast } from '../common/ShowToast'
 import { AddCart } from '../../redux/slices/cart'
 import ImgQrCode from './components/ImgQrCode'
@@ -16,7 +16,7 @@ import Util from '../../controller/Util'
 import Constant from '../../controller/Constant'
 
 const ProductScreen = () => {
-    const route = useRoute()
+    const route: any = useRoute()
     const dispatch = useDispatch()
     const [number, setNumber] = useState(1)
     const { id, categoryID } = route.params
@@ -92,8 +92,6 @@ const ProductScreen = () => {
         setModalVisible(true)
     }
 
-    console.log(productInCategoryList)
-
     return (
         <>
             <ScrollView style={styles.container} refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />}>
@@ -128,7 +126,7 @@ const ProductScreen = () => {
                     </TouchableOpacity>
                     <View style={styles.view_main}>
                         <Text style={styles.title}> Thông tin sản phẩm </Text>
-                        <Text style={styles.title_source}>{`${product?.description}`}</Text>
+                        <Text>{`${product?.description}`}</Text>
                     </View>
 
                     <View style={styles.view_main}>

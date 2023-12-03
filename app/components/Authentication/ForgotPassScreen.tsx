@@ -1,19 +1,19 @@
 import React, { useState, useContext } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StatusBar, Alert, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, StatusBar, Alert, StyleSheet, Platform } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 import LinearGradient from 'react-native-linear-gradient'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import Feather from 'react-native-vector-icons/Feather'
 import { useTheme } from 'react-native-paper'
 
 import { useNavigation } from '@react-navigation/native'
 import { AuthContext } from '../../navigation/AuthProvider'
+import Constant from 'controller/Constant'
 
 const ForgotPassScreen = () => {
     const navigation = useNavigation()
     const { colors } = useTheme()
     const [email, setEmail] = useState('')
-    const { forgotPassword } = useContext(AuthContext)
+    const { forgotPassword }: any = useContext(AuthContext)
 
     const handleForgot = () => {
         if (!email) {

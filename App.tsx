@@ -8,10 +8,10 @@ import MyNavigation from './app/navigation'
 
 export default function App() {
     useEffect(() => {
-        LogBox.ignoreLogs(['Warning: Async Storage has been extracted from react-native core'])
+        LogBox.ignoreLogs(['Warning: Async Storage has been extracted from react-native core', 'VirtualizedLists should never be nested inside plain ScrollViews'])
     }, [])
     return (
-        <Provider store={store} >
+        <Provider store={store}>
             <RootSiblingParent>
                 <NavigationContainer>
                     <StatusBar hidden={true} />

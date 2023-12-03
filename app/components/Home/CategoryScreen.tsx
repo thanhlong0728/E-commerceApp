@@ -5,14 +5,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
 
-import Product from '../../components/Product/components/Product'
+import Product from '../Product/components/Product'
 import Constant from '../../controller/Constant'
 
 const CategoryScreen = () => {
     const dispatch = useDispatch()
-    const route = useRoute()
+    const route: any = useRoute()
     const { id } = route.params
-
     const [items, setItems] = useState([])
 
     const getProductCategory = async () => {

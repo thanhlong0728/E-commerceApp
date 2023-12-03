@@ -6,29 +6,51 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import IconHeart from '../../common/Icon/IconHeart'
 import { Favorite } from '../../../redux/slices/favorite'
+import { AddCart } from '../../../redux/slices/cart'
+import { ShowToast } from '../../common/ShowToast'
 import Constant from '../../../controller/Constant'
 import Util from '../../../controller/Util'
+import { ProductDetail } from 'types/Product'
 
-const ProductHorizital = ({ data, sale = true }) => {
+type Props = {
+    data: ProductDetail
+    sale: boolean
+}
+
+const Product = (props: Props) => {
+    const { data, sale = true } = props
     const navigation = useNavigation()
-    const [heart, setHeart] = useState(false)
     const dispatch = useDispatch()
+    const [heart, setHeart] = useState(false)
 
-    const favoriteData = useSelector((state) => state.Favorite.items)
-
-    const showProduct = () => {
-        navigation.setParams({
-            id: data?.id
-        })
-    }
+    const favoriteData = useSelector((state: any) => state.Favorite.items)
 
     useEffect(() => {
         favoriteData.indexOf(data.id) !== -1 ? setHeart(true) : setHeart(false)
     }, [favoriteData])
 
+    const showProduct = () => {
+        navigation.navigate('ProductScreen', {
+            id: data?.id,
+            categoryID: data?.categoryID
+        })
+    }
+
     const onHeart = () => {
         setHeart(!heart)
-        dispatch(Favorite({ id: data.id }))
+        dispatch(Favorite({ id: data?.id }))
+    }
+    const handleCart = () => {
+        dispatch(
+            AddCart({
+                id: data?.id,
+                photoProduct: data?.image,
+                nameProduct: data?.name,
+                priceProduct: data?.price_sale_off,
+                description: data?.description
+            })
+        )
+        ShowToast('Đã thêm sản phẩm vào giỏ hàng')
     }
 
     return (
@@ -52,7 +74,7 @@ const ProductHorizital = ({ data, sale = true }) => {
                         <IconHeart heart={heart} />
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.iconShoping}>
+                <TouchableOpacity style={styles.iconShoping} onPress={handleCart}>
                     <Ionicons name={'ios-cart'} size={24} color={'red'} />
                 </TouchableOpacity>
                 {sale && (
@@ -67,19 +89,19 @@ const ProductHorizital = ({ data, sale = true }) => {
     )
 }
 
-export default ProductHorizital
+export default Product
 
 const height = Dimensions.get('window').height
 
 const styles = StyleSheet.create({
     container: {
-        width: 200,
+        width: '50%',
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 10,
         paddingHorizontal: 5,
         height: 250,
-        marginRight: 10
+        marginBottom: 10
     },
     product: {
         backgroundColor: Constant.COLORS.second,
@@ -99,10 +121,11 @@ const styles = StyleSheet.create({
     boxImg: {
         width: '100%',
         height: '65%',
-        borderRadius: 10
+        borderRadius: 10,
+        alignItems: 'center'
     },
     imgItem: {
-        width: '100%',
+        width: '60%',
         height: '100%',
         borderRadius: 10,
         resizeMode: 'contain'
