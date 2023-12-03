@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-import IconHeader from '../../common/Icon/IconHeader'
+import IconHeader from '../Icon/IconHeader'
 import BoxSearch from '../../Search/component/BoxSearch'
 import Constant from '../../../controller/Constant'
 

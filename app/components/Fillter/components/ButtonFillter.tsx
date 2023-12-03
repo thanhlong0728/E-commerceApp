@@ -3,16 +3,20 @@ import { TouchableOpacity, Text, StyleSheet } from 'react-native'
 
 import Constant from '../../../controller/Constant'
 
-const ButtonFillter = ({ title, onPress, active }) => {
+type Props = {
+    title: string
+    onPress: (value: string) => void
+    active: string
+}
+
+const ButtonFillter = (props: Props) => {
+    const { title, onPress, active } = props
     const choseButton = () => {
         onPress(title)
     }
 
     return (
-        <TouchableOpacity
-            onPress={choseButton}
-            style={[styles.button, active === title && styles.active]}
-        >
+        <TouchableOpacity onPress={choseButton} style={[styles.button, active === title && styles.active]}>
             <Text>{title}</Text>
         </TouchableOpacity>
     )

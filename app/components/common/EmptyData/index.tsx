@@ -6,11 +6,9 @@ import Constant from '../../../controller/Constant'
 
 const EmptyData = () => {
     return (
-        <>
-            <View style={styles.container}>
-                <Image source={Constant.IMAGES.nodata} style={styles.img} />
-            </View>
-        </>
+        <View style={styles.container}>
+            <Image source={Constant.IMAGES.nodata} style={styles.img} />
+        </View>
     )
 }
 

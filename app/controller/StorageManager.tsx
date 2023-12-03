@@ -1,11 +1,12 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Alert } from 'react-native'
 
 export default class StorageManager {
-    static setData = async (key, value) => {
+    static setData = async (key: any, value: any) => {
         try {
             return await AsyncStorage.setItem(key, JSON.stringify(value))
         } catch (error) {
-            alert(error)
+            Alert.alert(error)
         }
     }
 

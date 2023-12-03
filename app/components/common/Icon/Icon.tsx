@@ -2,6 +2,7 @@ import React from 'react'
 import { View, StyleSheet } from 'react-native'
 
 import Constant from '../../../controller/Constant'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 const Icon = () => {
     return (

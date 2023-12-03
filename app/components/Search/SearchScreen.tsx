@@ -8,13 +8,13 @@ import firestore from '@react-native-firebase/firestore'
 
 import Loading from '../common/Loading'
 import Product from '../Product/components/Product'
-import { EmptyData } from '../common/EmptyData'
+import EmptyData from '../common/EmptyData'
 
 const InfoCartScreen = () => {
-    const route = useRoute()
+    const route: any = useRoute()
     const { search } = route.params
     const dispatch = useDispatch()
-    const [items, setItems] = useState({})
+    const [items, setItems] = useState<any>({})
 
     const getAllProductList = async () => {
         RNProgressHud.show()
@@ -55,9 +55,7 @@ const InfoCartScreen = () => {
         <>
             {items.length > 0 ? (
                 <View style={styles.container}>
-                    <View style={styles.aside}>
-                        <FlatList showsVerticalScrollIndicator={false} data={items} renderItem={showItems} keyExtractor={(item) => item.name.toString()} numColumns={2} />
-                    </View>
+                    <FlatList showsVerticalScrollIndicator={false} data={items} renderItem={showItems} keyExtractor={(item) => item.name.toString()} numColumns={2} />
                 </View>
             ) : (
                 <EmptyData />

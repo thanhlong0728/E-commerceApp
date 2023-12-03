@@ -1,6 +1,6 @@
 import { Dimensions } from 'react-native'
 
-export default  {
+export default {
     screen: {
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height
@@ -16,10 +16,7 @@ export default  {
     },
     COLORS: {
         gray: '#868686',
-        white: '#fff',
-        black: '#000',
         border: '#CCCCE3',
-        button: '#00CEFF',
         buttonHome: '#7879E8',
         backgScan: 'rgba(0, 0, 0, 0.2)',
         backgroundHome: '#F7F7F7',

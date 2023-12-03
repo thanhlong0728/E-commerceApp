@@ -1,27 +1,21 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import { useRoute } from '@react-navigation/native'
 
-import IconHeader from '../../common/Icon/IconHeader'
+import IconHeader from '../Icon/IconHeader'
 import BoxSearch from '../../Search/component/BoxSearch'
 import Constant from '../../../controller/Constant'
 
-const Header = ({ icon, name }) => {
-    let iconRight = 'cart'
-    switch (icon) {
-        case 'sort':
-            iconRight = 'sort'
-            break
-        case 'delete':
-            iconRight = 'delete'
-            break
-    }
-
+const HeaderNameScreen = ({ product = false }) => {
+    const route: any = useRoute()
     return (
         <View style={styles.container}>
             <View style={styles.top}>
-                <IconHeader />
-                <Text style={styles.title}> {name}</Text>
-                <IconHeader name={iconRight} />
+                <IconHeader name={'back'} />
+                <Text numberOfLines={1} style={styles.title}>
+                    {route.params.name}
+                </Text>
+                <IconHeader name={'sort'} />
             </View>
             <View style={styles.bottom}>
                 <BoxSearch />
@@ -30,7 +24,7 @@ const Header = ({ icon, name }) => {
     )
 }
 
-export default Header
+export default HeaderNameScreen
 
 const styles = StyleSheet.create({
     container: {
@@ -46,7 +40,8 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 30,
-        color: Constant.COLORS.main
+        color: Constant.COLORS.main,
+        width: '60%'
     },
     bottom: {
         flex: 1,

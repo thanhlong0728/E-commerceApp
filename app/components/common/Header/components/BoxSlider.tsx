@@ -40,30 +40,12 @@ const BoxSlider = () => {
         )
     }
     const pagination = () => {
-        return (
-            <Pagination
-                dotsLength={entries}
-                activeDotIndex={activeSlide}
-                containerStyle={styles.pagiContainer}
-                dotStyle={styles.dotStyle}
-                inactiveDotOpacity={0.4}
-                inactiveDotScale={0.6}
-            />
-        )
+        return <Pagination dotsLength={entries} activeDotIndex={activeSlide} containerStyle={styles.pagiContainer} dotStyle={styles.dotStyle} inactiveDotOpacity={0.4} inactiveDotScale={0.6} />
     }
 
     return (
         <View style={styles.container}>
-            <Carousel
-                data={sliderList}
-                renderItem={renderItems}
-                sliderWidth={350}
-                itemWidth={350}
-                onSnapToItem={(index) => setActiveSlide(index)}
-                loop={true}
-                autoplay={true}
-                enableSnap={true}
-            />
+            <Carousel data={sliderList} renderItem={renderItems} sliderWidth={350} itemWidth={350} onSnapToItem={(index) => setActiveSlide(index)} loop={true} autoplay={true} enableSnap={true} />
             <View style={styles.pagination}>{pagination()}</View>
         </View>
     )
@@ -74,7 +56,6 @@ export default BoxSlider
 const styles = StyleSheet.create({
     container: {
         borderColor: '#ffffff',
-        borderRadius: 20,
         alignItems: 'center',
         marginBottom: 10,
         width: '100%',

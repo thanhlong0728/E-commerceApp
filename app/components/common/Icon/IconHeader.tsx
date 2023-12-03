@@ -3,15 +3,23 @@ import { Alert, TouchableOpacity, View, StyleSheet } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
+import { ReactElement } from 'react'
 
 import { RemoveFavorite } from '../../../redux/slices/favorite'
 import Constant from '../../../controller/Constant'
 
-const IconHeader = ({ name = 'menu', product = false, right = true }) => {
+type Props = {
+    name?: string
+    product?: boolean
+    right?: boolean
+}
+
+const IconHeader = (props: Props) => {
+    const { name = 'menu', product = false, right = true } = props
     const dispatch = useDispatch()
-    const navigation = useNavigation()
-    const favoriteData = useSelector((state) => state.Favorite.items)
-    let icon = ''
+    const navigation = useNavigation<any>()
+    const favoriteData = useSelector((state: any) => state.Favorite.items)
+    let icon: ReactElement | null = null
 
     const openDrawer = () => {
         // navigation.openDrawer()
@@ -43,16 +51,16 @@ const IconHeader = ({ name = 'menu', product = false, right = true }) => {
                 }
             ])
         } else {
-            alert('chưa có sản phẩm nào')
+            Alert.alert('Thông báo', 'Chưa có sản phẩm nào')
         }
     }
 
     switch (name) {
         case 'menu':
             icon = (
-                <View onPress={openDrawer} style={styles.container}>
+                <TouchableOpacity onPress={openDrawer} style={styles.container}>
                     <Ionicons name='menu-outline' size={24} color={Constant.COLORS.main} />
-                </View>
+                </TouchableOpacity>
             )
             break
         case 'cart':

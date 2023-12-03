@@ -19,7 +19,7 @@ const HandleButtonImage = ({ title, icon, onPress }) => {
 }
 
 const Scan = () => {
-    const navigation = useNavigation()
+    const navigation = useNavigation<any>()
     const [isBarcodeRead, setIsBarcodeRead] = useState(false)
     const [flash, setFlash] = useState(false)
 
@@ -28,7 +28,7 @@ const Scan = () => {
         RNQRGenerator.detect({
             uri
         })
-            .then((response) => {
+            .then((response: any) => {
                 const { values } = response
                 const dataValues = JSON.parse(values)
                 if (dataValues.app == Constant.QRCodeType.app) {
@@ -130,7 +130,7 @@ const Scan = () => {
                             }}
                         >
                             <View style={styles.view} />
-                            <View style={styles.contentView}>
+                            <View>
                                 <Image style={styles.scanFrameImg} />
                             </View>
                             <View style={styles.view} />
@@ -141,7 +141,7 @@ const Scan = () => {
                     <View style={styles.viewIcon}>
                         <HandleButtonImage title='Gallery' icon={Constant.icons.gallery} onPress={onShowGallery} />
                         <HandleButtonImage title='Light' icon={Constant.icons.light} onPress={onChangeFlashMode} />
-                        <HandleButtonImage title='Help' icon={Constant.icons.help1} />
+                        <HandleButtonImage title='Help' icon={Constant.icons.help1} onPress={null} />
                     </View>
                 </View>
             </RNCamera>
