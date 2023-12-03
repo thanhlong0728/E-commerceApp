@@ -2,11 +2,11 @@ import React from 'react'
 import { View, Text, TouchableOpacity, FlatList, Image, StyleSheet } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import RatingComponent from '../Components/Rating'
+import RatingComponent from './Rating'
 import Util from '../../../controller/Util'
 
 const CategorySpecial = ({ nameCategory, items }) => {
-    const navigation = useNavigation()
+    const navigation = useNavigation<any>()
 
     const goProduct = (item) => {
         navigation.navigate('ProductScreen', {

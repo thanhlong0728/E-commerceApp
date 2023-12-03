@@ -3,6 +3,7 @@ type CartItem = {
     description: string
     id: string
     image: string
+    name: string
 }
 
 export type { CartItem }

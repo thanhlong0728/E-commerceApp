@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
-import InputStyle from '../../components/common/InputStyle'
-import userModel from '../../components/common/model/userModel'
+import InputStyle from '../common/InputStyle'
+import userModel from '../common/model/userModel'
 import Constant from '../../controller/Constant'
 
 const ChangePassScreen = () => {

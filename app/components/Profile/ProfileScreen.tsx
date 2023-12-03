@@ -30,10 +30,10 @@ const list = [
 ]
 
 const ProfileScreen = () => {
-    const navigation = useNavigation()
+    const navigation = useNavigation<any>()
     const dispatch = useDispatch()
-    const infoUser = useSelector((state) => state.user.data)
-    const { logout } = useContext(AuthContext)
+    const infoUser = useSelector((state: any) => state.user.data)
+    const { logout } = useContext<any>(AuthContext)
     const [avatarUser, setAvatarUser] = useState(auth().currentUser.photoURL)
     const [userName, setUserName] = useState('')
     const [phone, setPhone] = useState('')
@@ -110,7 +110,7 @@ const ProfileScreen = () => {
                 <Text style={styles.text}>Thông tin cá nhân</Text>
             </View>
             <View style={styles.viewInformation}>
-                <TouchableOpacity style={styles.view}>
+                <TouchableOpacity>
                     <Image
                         source={{
                             uri: avatarUser
@@ -130,7 +130,7 @@ const ProfileScreen = () => {
                 <TouchableOpacity activeOpacity={0.7} key={index} onPress={() => handleOnClickItem(item)}>
                     <View style={styles.problem}>
                         <Text style={styles.textProblems}>{item.name}</Text>
-                        <Icon style={styles.iconHandling} name='angle-right' size={15} />
+                        <Icon name='angle-right' size={15} />
                     </View>
                 </TouchableOpacity>
             ))}
@@ -210,7 +210,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: '#fff',
         borderRadius: 5,
-        paddingVertical: 5,
         marginHorizontal: 20,
         alignItems: 'center',
         justifyContent: 'space-between',

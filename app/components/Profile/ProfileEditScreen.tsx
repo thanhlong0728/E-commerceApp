@@ -21,8 +21,8 @@ LogBox.ignoreLogs(['Animated: `useNativeDriver`', 'componentWillReceiveProps'])
 const ProfileEditScreen = () => {
     const navigation = useNavigation()
     const dispatch = useDispatch()
-    const infoUser = useSelector((state) => state.user.data)
-    const { logout } = useContext(AuthContext)
+    const infoUser = useSelector((state: any) => state.user.data)
+    const { logout } = useContext<any>(AuthContext)
     const [avatarUser, setAvatarUser] = useState(auth().currentUser.photoURL)
     const [userName, setUserName] = useState('')
     const [email, setEmail] = useState('')
@@ -41,7 +41,7 @@ const ProfileEditScreen = () => {
             .doc(auth().currentUser.uid)
             .set(profile)
             .then(() => {
-                RNProgressHud.showSuccessWithStatus('cập nhật profile thành công')
+                RNProgressHud.showSuccessWithStatus('cập nhật profile thành công', null)
                 setTimeout(() => {
                     RNProgressHud.dismiss()
                 }, 1500)
@@ -56,7 +56,7 @@ const ProfileEditScreen = () => {
             })
     }
 
-    const _refActionSheet = useRef()
+    const _refActionSheet: any = useRef()
 
     const onShowImageActionSheet = () => {
         _refActionSheet.current?.show(true)
@@ -90,7 +90,7 @@ const ProfileEditScreen = () => {
                             photoURL: url
                         })
                         .then(() => {
-                            RNProgressHud.showSuccessWithStatus('cập nhật avatar thành công')
+                            RNProgressHud.showSuccessWithStatus('cập nhật avatar thành công', null)
                             setAvatarUser(url)
                         })
                         .catch((error) => {
@@ -155,7 +155,7 @@ const ProfileEditScreen = () => {
         <View style={styles.container}>
             <ScrollView>
                 <View style={styles.viewInformation}>
-                    <TouchableOpacity onPress={onShowImageActionSheet} style={styles.view}>
+                    <TouchableOpacity onPress={onShowImageActionSheet}>
                         <Image source={{ uri: avatarUser }} style={styles.avatar} />
                         <Ionicons name='build-outline' size={20} color='black' style={styles.icEdit} />
                     </TouchableOpacity>

@@ -3,11 +3,11 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import { AuthContext } from '../../navigation/AuthProvider'
-import InputStyle from '../../components/common/InputStyle'
+import InputStyle from '../common/InputStyle'
 import Constant from '../../controller/Constant'
 
 const InfoShipScreen = () => {
-    const { user, updateInfo } = useContext(AuthContext)
+    const { user, updateInfo } = useContext<any>(AuthContext)
     const { displayName, email } = user
     const [emailInfo, setEmail] = useState(email)
     const [nickName, setNickName] = useState(displayName)

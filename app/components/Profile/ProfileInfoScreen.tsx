@@ -15,8 +15,8 @@ LogBox.ignoreLogs(['Animated: `useNativeDriver`', 'componentWillReceiveProps'])
 const ProfileInfoScreen = () => {
     const navigation = useNavigation()
     const dispatch = useDispatch()
-    const infoUser = useSelector((state) => state.user.data)
-    const { logout } = useContext(AuthContext)
+    const infoUser = useSelector((state: any) => state.user.data)
+    const { logout } = useContext<any>(AuthContext)
     const [avatarUser, setAvatarUser] = useState(auth().currentUser.photoURL)
     const [userName, setUserName] = useState('')
     const [email, setEmail] = useState('')
@@ -53,7 +53,7 @@ const ProfileInfoScreen = () => {
         <View style={styles.container}>
             <ScrollView>
                 <View style={styles.viewInformation}>
-                    <View style={styles.view}>
+                    <View>
                         <Image source={{ uri: avatarUser }} style={styles.avatar} />
                         <Ionicons name='build-outline' size={20} color='black' style={styles.icEdit} />
                     </View>

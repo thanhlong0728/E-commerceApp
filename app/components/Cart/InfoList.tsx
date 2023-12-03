@@ -4,7 +4,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import Constant from '../../controller/Constant'
 
-const InfoList = ({ name, onPress }) => {
+type Props = {
+    name: string
+    onPress: () => void
+}
+
+const InfoList = (props: Props) => {
+    const { name, onPress } = props
     let icon, text
     switch (name) {
         case 'info':

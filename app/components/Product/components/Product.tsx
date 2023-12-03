@@ -14,12 +14,12 @@ import { ProductDetail } from 'types/Product'
 
 type Props = {
     data: ProductDetail
-    sale: boolean
+    sale?: boolean
 }
 
 const Product = (props: Props) => {
     const { data, sale = true } = props
-    const navigation = useNavigation()
+    const navigation = useNavigation<any>()
     const dispatch = useDispatch()
     const [heart, setHeart] = useState(false)
 
@@ -30,10 +30,13 @@ const Product = (props: Props) => {
     }, [favoriteData])
 
     const showProduct = () => {
-        navigation.navigate('ProductScreen', {
-            id: data?.id,
-            categoryID: data?.categoryID
-        })
+        navigation.navigate(
+            'ProductScreen' as never,
+            {
+                id: data?.id,
+                categoryID: data?.categoryID
+            } as never
+        )
     }
 
     const onHeart = () => {
@@ -63,9 +66,7 @@ const Product = (props: Props) => {
                     <Text numberOfLines={1} style={styles.name}>
                         {data.name}
                     </Text>
-                    <Text numberOfLines={1} style={styles.title}>
-                        {data.summary}
-                    </Text>
+                    <Text numberOfLines={1}>{data.summary}</Text>
                     {sale && <Text style={styles.oldPrice}>{Util.formatPriceNumber(data.price)}</Text>}
                     <Text style={styles.price}>{Util.formatPriceNumber(data.price_sale_off)}</Text>
                 </View>

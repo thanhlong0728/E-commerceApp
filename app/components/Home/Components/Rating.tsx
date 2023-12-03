@@ -5,7 +5,7 @@ import Constant from '../../../controller/Constant'
 const RatingComponent = ({ product = false }) => {
     const [rating, setRating] = useState(3)
 
-    const ratingCompleted = (rating) => {}
+    const ratingCompleted = (rating: string | number) => {}
 
     const color = product ? Constant.COLORS.pink : 'white'
 

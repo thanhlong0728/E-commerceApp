@@ -5,7 +5,7 @@ import Constant from '../../../controller/Constant'
 type Props = {
     handleChangeNumber: any
     quantity: number
-    small: number
+    small: any
 }
 
 const Quantify = (props: Props) => {

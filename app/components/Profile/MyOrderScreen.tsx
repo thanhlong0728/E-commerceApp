@@ -8,7 +8,7 @@ import firestore from '@react-native-firebase/firestore'
 import Util from '../../controller/Util'
 
 const MyOderScreen = () => {
-    const navigation = useNavigation()
+    const navigation = useNavigation<any>()
     const { uid } = auth().currentUser
     const [userName, setUserName] = useState('')
     const [dataOrder, setDataOrder] = useState([])
@@ -37,7 +37,7 @@ const MyOderScreen = () => {
         const ref = firestore().collection('order')
         const snapshot = await ref.where('uid', '==', uid).get()
         const list = []
-        snapshot.forEach((doc) => {
+        snapshot.forEach((doc: any) => {
             list.push({
                 cartID: doc.cartID,
                 ...doc.data()
@@ -74,7 +74,7 @@ const MyOderScreen = () => {
                 .then((snapshot) => {
                     snapshot.forEach((doc) => {
                         var deleteDoc = firestore().collection('order').doc(doc.id).delete()
-                        RNProgressHud.showSuccessWithStatus('Hủy đơn hàng thành công')
+                        RNProgressHud.showSuccessWithStatus('Hủy đơn hàng thành công', null)
                         setRefresh(!isRefresh)
                     })
                 })
@@ -94,13 +94,13 @@ const MyOderScreen = () => {
         return (
             <View style={styles.boxProductOrder}>
                 {item?.cartItems.map((e, index, row) => (
-                    <View style={styles.boxOrder} key={'product' + index}>
+                    <View key={'product' + index}>
                         <View style={styles.productOrder}>
                             <View style={styles.infoOrder}>
                                 <View style={styles.boxImg}>
                                     <Image source={{ uri: e.photoProduct }} style={styles.imgOrder} />
                                 </View>
-                                <View style={styles.info}>
+                                <View>
                                     <Text style={styles.textInfo}>{userName}</Text>
                                     <Text style={styles.textInfo}>{e.nameProduct}</Text>
                                     <Text style={styles.textInfo}>Giá: {Util.formatPriceNumber(e.priceProduct)}</Text>
@@ -207,7 +207,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 7
     },
-    textHuy: {},
     textStatus: {
         fontSize: 16
     },

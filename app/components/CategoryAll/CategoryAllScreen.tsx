@@ -4,15 +4,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
 
-import BoxSlider from '../../components/common/Header/components/BoxSlider'
-import Product from '../../components/Product/components/Product'
+import BoxSlider from '../common/Header/components/BoxSlider'
+import Product from '../Product/components/Product'
 import { fetchProduct } from '../../redux/slices/products'
-
 import Constant from '../../controller/Constant'
 
 const CategoryAllScreen = () => {
     const dispatch = useDispatch()
-    const itemsFillter = useSelector((state) => state.Fillter.items)
+    const itemsFillter = useSelector((state: any) => state.Fillter.items)
     const [allProductList, setAllProductList] = useState([])
     const [isRefreshing, setIsRefreshing] = useState(false)
 

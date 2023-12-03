@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import RNProgressHud from 'progress-hud'
 import firestore from '@react-native-firebase/firestore'
 
-import Product from '../../components/Product/components/Product'
+import Product from '../Product/components/Product'
 import Constant from '../../controller/Constant'
 
 const FavoriteScreen = () => {
-    const favoriteData = useSelector((state) => state.Favorite.items)
+    const favoriteData = useSelector((state: any) => state.Favorite.items)
     const [items, setItems] = useState([])
     const [productList, setProductList] = useState([])
     const [isRefreshing, setIsRefreshing] = useState(false)

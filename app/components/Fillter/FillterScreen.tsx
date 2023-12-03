@@ -5,12 +5,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 
 import { Fillter } from '../../redux/slices/fillter'
-import ButtonFillter from '../../components/Fillter/components/ButtonFillter'
+import ButtonFillter from './components/ButtonFillter'
 import Constant from '../../controller/Constant'
+import Util from 'controller/Util'
 
 const FillterScreen = () => {
     const navigation = useNavigation()
-    const items = useSelector((state) => state.Fillter.items)
+    const items = useSelector((state: any) => state.Fillter.items)
     const [fromValue, setFromValue] = useState(items.fromValue)
     const [toValue, setToValue] = useState(items.toValue)
     const [active, setActive] = useState(items.active)
@@ -29,7 +30,7 @@ const FillterScreen = () => {
             <View style={styles.container}>
                 <View style={styles.fill}>
                     <Text style={styles.fillTitle}>Lọc theo sản phẩm</Text>
-                    <View style={styles.fillProduct}>
+                    <View>
                         <View style={styles.fillProductCol}>
                             <ButtonFillter active={active} onPress={activeButton} title={'Mới nhất'} />
                             <ButtonFillter active={active} onPress={activeButton} title={'Giá giảm'} />
@@ -53,8 +54,8 @@ const FillterScreen = () => {
                             initialToValue={toValue}
                         />
                         <View style={styles.viewPrice}>
-                            <Text style={styles.price}>Giá từ : {formatPriceNumber(fromValue)}</Text>
-                            <Text style={styles.price}>Giá đến : {formatPriceNumber(toValue)}</Text>
+                            <Text style={styles.price}>Giá từ : {Util.formatPriceNumber(fromValue)}</Text>
+                            <Text style={styles.price}>Giá đến : {Util.formatPriceNumber(toValue)}</Text>
                         </View>
                     </View>
                 </View>

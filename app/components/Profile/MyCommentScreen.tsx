@@ -6,7 +6,7 @@ import firestore from '@react-native-firebase/firestore'
 import RNProgressHud from 'progress-hud'
 
 const MyCommentScreen = () => {
-    const navigation = useNavigation()
+    const navigation = useNavigation<any>()
     const { uid } = auth().currentUser
     const [dataAllComment, setAllDataComment] = useState([])
 
@@ -61,8 +61,8 @@ const MyCommentScreen = () => {
                                 {hours + ':' + minutes}
                             </Text>
                         </View>
-                        <View style={styles.contentComment}>
-                            <Text style={styles.textComment}>{item.textComment}</Text>
+                        <View>
+                            <Text>{item.textComment}</Text>
                         </View>
                     </View>
                     <View style={styles.boxImgProduct}>

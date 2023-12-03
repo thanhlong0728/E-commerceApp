@@ -1,11 +1,17 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, FlatList, Image, StyleSheet } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import { CartItem } from 'types/Cart'
 
-const Category = ({ items }) => {
-    const navigation = useNavigation()
+type Props = {
+    items: CartItem
+}
 
-    const showProduct = (item) => {
+const Category = (props: Props) => {
+    const { items } = props
+    const navigation = useNavigation<any>()
+
+    const showProduct = (item: CartItem) => {
         navigation.navigate('CategoryScreen', {
             id: item.id,
             name: item.name

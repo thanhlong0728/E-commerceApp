@@ -20,7 +20,7 @@ const ProductList = (props: Props) => {
     const { item, cart, check } = props
 
     const dispatch = useDispatch()
-    const navigation = useNavigation()
+    const navigation = useNavigation<any>()
     const [heart, setHeart] = useState(false)
     const [number, setNumber] = useState(item?.sum || 1)
     const [data, setData] = useState({})
@@ -51,7 +51,7 @@ const ProductList = (props: Props) => {
         })
     }
 
-    const handleChangeNumber = (val) => {
+    const handleChangeNumber = (val: number) => {
         val === 0
             ? dispatch(RemoveCart({ id: item?.id }))
             : dispatch(
