@@ -15,8 +15,8 @@ const LoginScreen = () => {
     const { colors } = useTheme()
     const { login }: any = useContext(AuthContext)
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('long@gmail.com')
+    const [password, setPassword] = useState('123456')
     const [secureTextEntry, setSecureTextEntry] = useState(true)
 
     const updateSecureTextEntry = () => {
@@ -112,8 +112,8 @@ const LoginScreen = () => {
                         {secureTextEntry ? <Feather name='eye-off' color='grey' size={20} /> : <Feather name='eye' color='grey' size={20} />}
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity>
-                    <Text style={{ color: '#009387', marginTop: 15 }}>Forget Password?</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('ForgotPassScreen' as never)}>
+                    <Text style={{ color: '#009387', marginTop: 15 }}>Forgot Password?</Text>
                 </TouchableOpacity>
                 <View style={styles.button}>
                     <TouchableOpacity style={styles.signIn} onPress={handleLogin}>

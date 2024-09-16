@@ -18,7 +18,6 @@ const HomeScreen = () => {
     const [isRefreshing, setIsRefreshing] = useState(false)
 
     const getCategoryList = async () => {
-        RNProgressHud.show()
         const ref = firestore().collection('category')
         const snapshot = await ref.get()
         const list = []
@@ -26,14 +25,12 @@ const HomeScreen = () => {
             list.push({
                 id: doc.id,
                 ...doc.data()
-            } as never )
+            } as never)
         })
         setCategoryList(list)
-        RNProgressHud.dismiss()
     }
 
     const getProductSpecList = async () => {
-        RNProgressHud.show()
         const ref = firestore().collection('product')
         const snapshot = await ref.where('is_new', '==', true).get()
         const list = []
@@ -44,11 +41,9 @@ const HomeScreen = () => {
             } as never)
         })
         setProductSpecList(list)
-        RNProgressHud.dismiss()
     }
 
     const getProductIsNewList = async () => {
-        RNProgressHud.show()
         const ref = firestore().collection('product')
         const snapshot = await ref.where('special', '==', true).get()
         const list = []
@@ -56,10 +51,9 @@ const HomeScreen = () => {
             list.push({
                 id: doc.id,
                 ...doc.data()
-            } as never ) 
+            } as never)
         })
         setProductIsNewList(list)
-        RNProgressHud.dismiss()
     }
 
     const onRefreshing = () => {

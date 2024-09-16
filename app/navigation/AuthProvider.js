@@ -27,24 +27,21 @@ export const AuthProvider = ({ children }) => {
                     auth()
                         .signInWithEmailAndPassword(email, password)
                         .then(async () => {
-                            // lấy thông tin user từ database
                             await getProfileUser(auth().currentUser.uid)
                                 .then((data) => {
                                     if (data) {
-                                        // lưu data vào data redux
                                         dispatch(setInfoUser(data))
                                         RNProgressHud.showSuccessWithStatus('đăng nhập thành công')
                                         navigation.reset({
                                             index: 0,
                                             routes: [{ name: 'TabStackScreen' }]
                                         })
-                                        setTimeout(() => {
-                                            RNProgressHud.dismiss()
-                                        }, 1500)
                                     }
                                 })
                                 .catch((error) => {
                                     console.log(error)
+                                })
+                                .finally(() => {
                                     setTimeout(() => {
                                         RNProgressHud.dismiss()
                                     }, 1500)
